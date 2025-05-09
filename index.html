@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangita Giri - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #1a202c; /* Fixed black background */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure navbar stays above all content */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for prominence */
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+        }
+        .company-logo {
+            max-width: 150px;
+            height: auto;
+        }
+        .tile {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+        }
+        .home-section {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #14b8a6, #3730a3);
+            position: relative;
+            overflow: hidden;
+        }
+        .home-overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .home-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button {
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #f3f4f6;
+        }
+        .scroll-arrow {
+            animation: bounce 2s infinite;
+        }
+        .home-img {
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 4px solid #2563eb; /* Blue-600 border */
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="navbar w-full text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Sangita Giri</h1>
+            <div>
+                <a href="#home" class="mx-2 hover:text-gray-300">Home</a>
+                <a href="#expertise" class="mx-2 hover:text-gray-300">Expertise</a>
+                <a href="#projects" class="mx-2 hover:text-gray-300">Projects</a>
+                <a href="#experience" class="mx-2 hover:text-gray-300">Experience</a>
+                <a href="#companies" class="mx-2 hover:text-gray-300">Companies</a>
+                <a href="#certifications" class="mx-2 hover:text-gray-300">Certifications</a>
+                <a href="#education" class="mx-2 hover:text-gray-300">Education</a>
+                <a href="#contact" class="mx-2 hover:text-gray-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center home-section text-white relative" data-aos="fade-up">
+        <div class="home-overlay"></div>
+        <div class="container mx-auto px-4 home-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Profile Image -->
+                <div class="flex justify-center" data-aos="fade-right">
+                    <img src="linkedin.jpg" alt="Sangita Giri" class="home-img">
+                </div>
+                <!-- Text Content -->
+                <div class="space-y-6" data-aos="fade-left">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold">Sangita Giri</h1>
+                    <p class="text-xl sm:text-2xl font-semibold">Product Manager | Scrum Master | Java Developer</p>
+                    <p class="text-base sm:text-lg">Product Manager driving Jenkins to Azure DevOps migration, ensuring pipeline stability & strategic execution. I manage value-driven backlogs, optimize product agility & risk assessments, and collaborate with leadership to refine MVPs & roadmaps. Built an Agile Maturity Index for data-driven optimizations and leverage Power BI analytics for Sprint performance & throughput insights. I bridge technical execution with strategic leadership, delivering customer-first innovation & scalable solutions.</p>
+                    <div class="flex justify-start space-x-4">
+                        <a href="https://www.linkedin.com/in/sangita-g-499b4624/" class="text-white hover:text-gray-200 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </a>
+                        <a href="https://github.com/yourusername" class="text-white hover:text-gray-200 transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2.03 1.03-2.74-.1-.25-.45-1.29.1-2.68 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.52.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.39.2 2.43.1 2.68.64.71 1.03 1.63 1.03 2.74 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                        </a>
+                    </div>
+                    <a href="#expertise" class="cta-button inline-block bg-white text-indigo-800 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200">Discover My Journey</a>
+                </div>
+            </div>
+            <a href="#expertise" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white" data-aos="fade-up">
+                <svg class="w-8 h-8 scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Area of Expertise Section -->
+    <section id="expertise" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Area of Expertise</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-700" data-aos="fade-right">
+                    <li>Agile & Scrum</li>
+                    <li>ServiceNow</li>
+                    <li>JIRA</li>
+                    <li>Microsoft Power BI</li>
+                    <li>Java</li>
+                </ul>
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-700" data-aos="fade-left">
+                    <li>Jenkins</li>
+                    <li>GitHub</li>
+                    <li>Risk Management</li>
+                    <li>Prompt Engineering</li>
+                    <li>Operational Excellence</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+            <div class="flex justify-center mb-6">
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="all">All</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="product">Product Management</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="scrum">Scrum</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="java">Java</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="product">
+                    <h3 class="text-xl font-semibold mb-2">Presently</h3>
+                    <p class="text-gray-600">Data driven decision making. Experience in orchestrating agile product release cycles and managing complex and difficults.</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="scrum">
+                    <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
+                    <p class="text-gray-600">Telecom & CPPIB - Coached Multiple Pods through Agile adoption and aligning them for one goal</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="java">
+                    <h3 class="text-xl font-semibold mb-2">Java/J2EE</h3>
+                    <p class="text-gray-600">Worked for Thomascook and Statefarm Insurance clients</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section -->
+    <section id="companies" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Companies I've Worked With</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="accenture-logo1.jpg" alt="Company 1" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="ntt-data.jpg" alt="Company 2" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="cognizant.png" alt="Company 3" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="tcs.jpg" alt="Company 4" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="cgi.jpg" alt="Company 5" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="td.png" alt="Company 6" class="company-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications and Education Section -->
+    <section class="py-16 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Credentials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Certifications Tile -->
+                <div id="certifications" class="tile">
+                    <h3 class="text-2xl font-semibold text-center mb-6">Certifications</h3>
+                    <div class="space-y-6">
+                      <div>
+                            <h4 class="text-xl font-semibold">Level II Secrect Clearance</h4>
+                            <p class="text-gray-600">Federal Gov. Of Canada, 2023</p>
+                           
+                        </div>
+                       <div>
+                            <h4 class="text-xl font-semibold">Certified SAFe 6.0 release Train Engineer</h4>
+                            <p class="text-gray-600">ScaledAgile, 2022</p>
+                           
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Certified Scrum Master (CSM)</h4>
+                            <p class="text-gray-600">Scrum Alliance, 2019</p>
+            
+                        </div>
+                       
+                        <div>
+                            <h4 class="text-xl font-semibold">Sun Certified Java Developer</h4>
+                            <p class="text-gray-600">Sun, 2008</p>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Education Tile -->
+                <div id="education" class="tile">
+                    <h3 class="text-2xl font-semibold text-center mb-6">Education</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold">Bachelor of Technology in Computer Science Engineering</h4>
+                            <p class="text-gray-600">Dr. A. P. J. Kalam Technical University, 2003 - 2007</p>
+                            <p class="text-gray-700">Graduated with honors, focusing on software engineering</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Product Management</h4>
+                            <p class="text-gray-600">University Of Toronto, 2025</p>
+                            <p class="text-gray-700">Specialized in product management and strategic leadership.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
+            <div class="max-w-lg mx-auto">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <div id="contact-form">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="message">Brief Message</label>
+                            <textarea class="w-full p-2 border rounded" id="message" rows="4" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <a id="send-email" href="mailto:sangitagiri01@yahoo.com" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-center inline-block">Send Email</a>
+                    </div>
+                    <p class="text-gray-700 mt-4"><a href="https://www.linkedin.com/in/sangita-g-499b4624/" class="text-blue-600 hover:underline">LinkedIn</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Sangita Giri. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Product Manager</h3>
+            <p class="text-gray-700 mb-4">As a Product Manager, I defined the product roadmap, prioritized features, and collaborated with engineering teams to deliver a user-friendly platform that increased pipeline's performance by 20%.Strategic Product Manager driving platform transformation and Agile execution. Led migration from Jenkins to Azure DevOps, optimizing pipeline stability and scalability. Manage backlog prioritization, aligning cross-functional insights with business objectives. Developed Agile Maturity Index and automated Power BI reporting to enhance decision-making. Passionate about customer-centric solutions and innovation.</p>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Agile Transformation</h3>
+            <p class="text-gray-700 mb-4">As a Agile Transformation Manager, I facilitated Agile training and implemented Scrum practices, improving team velocity by 30% over 6 months.I lead enterprise-scale Agile transformations, driving the adoption of methodologies across large teams to optimize value flow within Agile Release Trains (ARTs). Utilizing tools like Kanban and information radiators, I ensure alignment with Program Increment (PI) objectives, enabling predictable and high-impact delivery outcomes.
+I proactively identify and resolve release challenges, addressing architectural, leadership, and logistical impediments to maintain seamless execution. I also oversee strategic financial planning, managing project budgets to optimize resource allocation and enhance cross-functional collaboration.
+Partnering with Product Management, I play a critical role in prioritizing features for upcoming PI cycles, facilitating cross-team planning, dependency resolution, and stakeholder alignment. Through transparent communication, I ensure that teams remain focused, adaptive, and continuously delivering value.
+By integrating agile forecasting, financial strategy, and execution excellence, I enable ARTs to scale effectively, driving measurable business impact.</p>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Multiple Clients with Java</h3>
+            <p class="text-gray-700 mb-4">From 2007 to 2012, I worked extensively as a Java Developer, specializing in building robust, scalable applications using Spring and Hibernate frameworks. With deep expertise in Spring MVC, Spring Boot, dependency injection, and transaction management, I streamlined backend development, ensuring high-performance and modular architectures. My proficiency in Hibernate ORM enabled efficient database mapping, optimized query performance, and seamless integration with relational databases. I collaborated on enterprise-level applications, handling complex data persistence, implementing RESTful APIs, and prepared automated reconciliations reports. My experience spans designing scalable architectures, troubleshooting performance bottlenecks, and ensuring best practices in object-oriented design and Agile methodologies, making me adept at delivering high-quality, maintainable software solutions.</p>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000 });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Project filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const openModalButtons = document.querySelectorAll('.open-modal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'flex';
+            });
+        });
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.modal').style.display = 'none';
+            });
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+        // Email link update
+        const messageInput = document.getElementById('message');
+        const sendEmailLink = document.getElementById('send-email');
+        messageInput.addEventListener('input', () => {
+            const message = encodeURIComponent(messageInput.value);
+            sendEmailLink.href = `mailto:sangitagiri01@yahoo.com?subject=Message%20from%20Portfolio&body=${message}`;
+        });
+    </script>
+</body>
+</html>

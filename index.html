@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangita Giri - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #1a202c; /* Fixed black background */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure navbar stays above all content */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for prominence */
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 2s ease-in-out;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+        }
+        .profile-img {
+            border: 4px solid #3b82f6;
+        }
+        .company-logo {
+            max-width: 150px;
+            height: auto;
+        }
+        .tile {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+        }
+        .home-section {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #14b8a6, #3730a3);
+            position: relative;
+            overflow: hidden;
+        }
+        .home-overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .home-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button {
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #f3f4f6;
+        }
+        .scroll-arrow {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="navbar w-full text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Sangita Giri</h1>
+            <div>
+                <a href="#home" class="mx-2 hover:text-gray-300">Home</a>
+                <a href="#about" class="mx-2 hover:text-gray-300">About</a>
+                <a href="#skills" class="mx-2 hover:text-gray-300">Skills</a>
+                <a href="#projects" class="mx-2 hover:text-gray-300">Projects</a>
+                <a href="#experience" class="mx-2 hover:text-gray-300">Experience</a>
+                <a href="#companies" class="mx-2 hover:text-gray-300">Companies</a>
+                <a href="#certifications" class="mx-2 hover:text-gray-300">Certifications</a>
+                <a href="#education" class="mx-2 hover:text-gray-300">Education</a>
+                <a href="#contact" class="mx-2 hover:text-gray-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center home-section text-white relative" data-aos="zoom-in">
+        <div class="home-overlay"></div>
+        <div class="container mx-auto px-4 text-center home-content">
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold">Sangita Giri</h1>
+                <p class="text-xl sm:text-2xl font-semibold">Product Manager | Scrum Master | Java Developer</p>
+                <p class="text-lg sm:text-xl">Transforming ideas into impactful products with Agile expertise.</p>
+                <a href="#about" class="cta-button inline-block bg-white text-indigo-800 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200">Discover My Journey</a>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/in/sangita-g-499b4624/" class="text-white hover:text-gray-200 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                    <a href="https://github.com/yourusername" class="text-white hover:text-gray-200 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2.03 1.03-2.74-.1-.25-.45-1.29.1-2.68 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.52.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.39.2 2.43.1 2.68.64.71 1.03 1.63 1.03 2.74 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <a href="#about" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white" data-aos="fade-up">
+                <svg class="w-8 h-8 scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
+            <div class="flex flex-col items-center">
+                <img src="linkedin.jpg" alt="Sangita Giri" class="profile-img w-32 h-32 rounded-full mb-6">
+                <p class="text-lg text-gray-700 max-w-3xl text-center">
+                    I am a passionate Product Manager with a strong foundation in Agile methodologies and 9 years of experience as a Scrum Master. Previously, I worked as a Java developer, bringing technical expertise to my product management approach. I excel at leading cross-functional teams, driving product vision, and delivering value through iterative development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
+            <div class="space-y-6 max-w-2xl mx-auto">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Product Management</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%" data-width="90%"></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Agile & Scrum</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%" data-width="95%"></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Java Development</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+            <div class="flex justify-center mb-6">
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="all">All</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="product">Product Management</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="scrum">Scrum</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="java">Java</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="product">
+                    <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+                    <p class="text-gray-600">Led product development for a scalable e-commerce solution.</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="scrum">
+                    <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
+                    <p class="text-gray-600">Coached 5 teams through Agile adoption.</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="java">
+                    <h3 class="text-xl font-semibold mb-2">Inventory System</h3>
+                    <p class="text-gray-600">Developed a Java-based inventory management system.</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Experience</h2>
+            <div class="space-y-8">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold">Scrum Master</h3>
+                    <p class="text-gray-600">2016 - Present</p>
+                    <p class="text-gray-700">Led Agile transformations, coached teams, and ensured delivery of high-quality products.</p>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold">Java Developer</h3>
+                    <p class="text-gray-600">2012 - 2016</p>
+                    <p class="text-gray-700">Developed enterprise-level applications using Java, Spring, and Hibernate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section -->
+    <section id="companies" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Companies I've Worked With</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="company1-logo.png" alt="Company 1" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="company2-logo.png" alt="Company 2" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="company3-logo.png" alt="Company 3" class="company-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications and Education Section -->
+    <section class="py-16 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Credentials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Certifications Tile -->
+                <div id="certifications" class="tile">
+                    <h3 class="text-2xl font-semibold text-center mb-6">Certifications</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold">Certified ScrumMaster (CSM)</h4>
+                            <p class="text-gray-600">Scrum Alliance, 2016</p>
+                            <p class="text-gray-700">Demonstrated expertise in facilitating Scrum ceremonies and coaching Agile teams.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Professional Scrum Product Owner (PSPO)</h4>
+                            <p class="text-gray-600">Scrum.org, 2018</p>
+                            <p class="text-gray-700">Validated skills in product backlog management and stakeholder collaboration.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Oracle Certified Professional, Java SE Programmer</h4>
+                            <p class="text-gray-600">Oracle, 2013</p>
+                            <p class="text-gray-700">Proven proficiency in Java development and object-oriented programming.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education Tile -->
+                <div id="education" class="tile">
+                    <h3 class="text-2xl font-semibold text-center mb-6">Education</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold">Bachelor of Science in Computer Science</h4>
+                            <p class="text-gray-600">Your University Name, 2008 - 2012</p>
+                            <p class="text-gray-700">Graduated with honors, focusing on software engineering and project management.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Master of Business Administration (MBA)</h4>
+                            <p class="text-gray-600">Your Business School Name, 2014 - 2016</p>
+                            <p class="text-gray-700">Specialized in product management and strategic leadership.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
+            <div class="max-w-lg mx-auto">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <div id="contact-form">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="message">Brief Message</label>
+                            <textarea class="w-full p-2 border rounded" id="message" rows="4" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <a id="send-email" href="mailto:sangitagiri01@yahoo.com" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-center inline-block">Send Email</a>
+                    </div>
+                    <p class="text-gray-700 mt-4">Or connect via: <a href="mailto:sangitagiri01@yahoo.com" class="text-blue-600 hover:underline">sangitagiri01@yahoo.com</a> | <a href="https://www.linkedin.com/in/sangita-g-499b4624/" class="text-blue-600 hover:underline">LinkedIn</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Sangita Giri. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">E-Commerce Platform</h3>
+            <p class="text-gray-700 mb-4">As a Product Manager, I defined the product roadmap, prioritized features, and collaborated with engineering teams to deliver a user-friendly platform that increased sales by 20%.</p>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Agile Transformation</h3>
+            <p class="text-gray-700 mb-4">As a Scrum Master, I facilitated Agile training and implemented Scrum practices, improving team velocity by 30% over 6 months.</p>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Inventory System</h3>
+            <p class="text-gray-700 mb-4">Developed a Java-based system using Spring and Hibernate, reducing inventory errors by 15%.</p>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000 });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate progress bars on scroll
+        const progressBars = document.querySelectorAll('.progress');
+        const animateProgressBars = () => {
+            progressBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    bar.style.width = bar.getAttribute('data-width');
+                }
+            });
+        };
+        window.addEventListener('scroll', animateProgressBars);
+        animateProgressBars();
+
+        // Project filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const openModalButtons = document.querySelectorAll('.open-modal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'flex';
+            });
+        });
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.modal').style.display = 'none';
+            });
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+        // Email link update
+        const messageInput = document.getElementById('message');
+        const sendEmailLink = document.getElementById('send-email');
+        messageInput.addEventListener('input', () => {
+            const message = encodeURIComponent(messageInput.value);
+            sendEmailLink.href = `mailto:sangitagiri01@yahoo.com?subject=Message%20from%20Portfolio&body=${message}`;
+        });
+    </script>
+</body>
+</html>

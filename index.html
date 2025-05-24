@@ -101,8 +101,9 @@
             flex: 1;
         }
         .project-card-logo {
-            max-width: 100px;
-            height: auto;
+            width: 96px; /* Consistent width */
+            height: 48px; /* Consistent height */
+            object-fit: contain; /* Maintains aspect ratio without stretching */
         }
     </style>
 </head>
@@ -177,74 +178,57 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white" data-aos="fade-up">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Products Impacted</h2>
-            <div class="flex justify-center mb-6">
-                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="all">All</button>
-                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="product">Product Management</button>
-                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="scrum">Agile Transformation</button>
-                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="java">Java</button>
+   <!-- Projects Section -->
+<section id="projects" class="py-16 bg-white" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">Products Impacted</h2>
+        <div class="flex justify-center mb-6">
+            <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="all">All</button>
+            <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="product">Product Management</button>
+            <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="scrum">Agile Transformation</button>
+            <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="java">Java</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="product">
+                <div class="project-card-content">
+                    <h3 class="text-xl font-semibold mb-2">Currently</h3>
+                    <p class="text-gray-600">Data driven decision making. Experience in orchestrating agile product release cycles and managing complex and difficults.</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
+                    <div class="mt-4 flex flex-row space-x-4 items-center">
+                        <img src="td1.png" alt="TD Logo" class="project-card-logo">
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="product">
-                    <div class="project-card-content">
-                        <h3 class="text-xl font-semibold mb-2">Currently</h3>
-                        <p class="text-gray-600">Data driven decision making. Experience in orchestrating agile product release cycles and managing complex and difficults.</p>
-                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
-                        <div class="mt-4 flex flex-col space-y-2">
-                            <img src="td1.png" alt="TD Logo" class="project-card-logo">
-                        </div>
+            <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="scrum">
+                <div class="project-card-content">
+                    <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
+                    <p class="text-gray-600">Bell, CPPIB, FedEx, Citibank, Fidelity Investments - Coached Multiple Pods through Agile adoption and aligning them for one goal</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
+                    <div class="mt-4 flex flex-row space-x-4 items-center">
+                        <img src="bell.png" alt="Bell Logo" class="project-card-logo">
+                        <img src="cppib.png" alt="CPPIB Logo" class="project-card-logo">
+                        <img src="fedex.jpg" alt="FedEx Logo" class="project-card-logo">
+                        <img src="citi.png" alt="Citibank Logo" class="project-card-logo">
+                        <img src="fidelity.jpg" alt="Fidelity Investment Logo" class="project-card-logo">
                     </div>
-                   
                 </div>
-                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="scrum">
-                    <div class="project-card-content">
-                        <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
-                        <p class="text-gray-600">Bell, CPPIB, FedEx, Citibank, Fidelity Investments - Coached Multiple Pods through Agile adoption and aligning them for one goal</p>
-                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
-                        <div class="mt-4 flex flex-col space-y-2">
-                            <img src="bell.png" alt="Bell Logo" class="project-card-logo">
-                        </div>
-                         <div class="mt-4 flex flex-col space-y-2">
-                            <img src="cppib.png" alt="CPPIB Logo" class="project-card-logo">
-                         </div>
-                         <div class="mt-4 flex flex-col space-y-2">
-                            <img src="fedex.jpg" alt="FedEx Logo" class="project-card-logo">
-                         </div>
-                         <div class="mt-4 flex flex-col space-y-2">
-                            <img src="citi.png" alt="Citibank Logo" class="project-card-logo">
-                         </div>
-                         <div class="mt-4 flex flex-col space-y-2">
-                            <img src="fidelity.jpg" alt="Fidelity Investment Logo" class="project-card-logo">
-                         </div>
+            </div>
+            <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="java">
+                <div class="project-card-content">
+                    <h3 class="text-xl font-semibold mb-2">Java/J2EE</h3>
+                    <p class="text-gray-600">Worked for Thomascook and Statefarm Insurance clients</p>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
+                    <div class="mt-4 flex flex-row space-x-4 items-center">
+                        <img src="statefarm.png" alt="State Farm Logo" class="project-card-logo">
+                        <img src="thomascook.jpg" alt="Thomas Cook Logo" class="project-card-logo">
+                        <img src="wallgreens.png" alt="Wallgreens Logo" class="project-card-logo">
+                        <img src="uhg.png" alt="United Health Group Logo" class="project-card-logo">
                     </div>
-                   
-                </div>
-                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="java">
-                    <div class="project-card-content">
-                        <h3 class="text-xl font-semibold mb-2">Java/J2EE</h3>
-                        <p class="text-gray-600">Worked for Thomascook and Statefarm Insurance clients</p>
-                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
-                        <div class="mt-4 flex flex-col space-y-2">
-                            <img src="statefarm.png" alt="State Farm Logo" class="project-card-logo">
-                        </div>
-                        <div class="mt-4 flex flex-col space-y-2">
-                            <img src="thomascook.jpg" alt="Thomas Cook Logo" class="project-card-logo">
-                        </div>
-                        <div class="mt-4 flex flex-col space-y-2">
-                            <img src="wallgreens.png" alt="Wallgreens Logo" class="project-card-logo">
-                        </div>
-                        <div class="mt-4 flex flex-col space-y-2">
-                            <img src="uhg.png" alt="United Health Group Logo" class="project-card-logo">
-                        </div>
-                    </div>
-                   
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Companies Section -->
     <section id="companies" class="py-16 bg-white" data-aos="fade-up">

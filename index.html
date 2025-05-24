@@ -97,6 +97,13 @@
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
         }
+        .project-card-content {
+            flex: 1;
+        }
+        .project-card-logo {
+            max-width: 100px;
+            height: auto;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -181,20 +188,32 @@
                 <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="java">Java</button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="product">
-                    <h3 class="text-xl font-semibold mb-2">Presently</h3>
-                    <p class="text-gray-600">Data driven decision making. Experience in orchestrating agile product release cycles and managing complex and difficults.</p>
-                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="product">
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">Currently</h3>
+                        <p class="text-gray-600">Data driven decision making. Experience in orchestrating agile product release cycles and managing complex and difficults.</p>
+                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
+                    </div>
+                    <img src="td1.png" alt="TD Logo" class="project-card-logo ml-4">
                 </div>
-                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="scrum">
-                    <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
-                    <p class="text-gray-600">Telecom & CPPIB - Coached Multiple Pods through Agile adoption and aligning them for one goal</p>
-                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="scrum">
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
+                        <p class="text-gray-600">Telecom & CPPIB - Coached Multiple Pods through Agile adoption and aligning them for one goal</p>
+                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
+                    </div>
+                    <img src="bell.png" alt="Bell Logo" class="project-card-logo ml-4">
                 </div>
-                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card" data-category="java">
-                    <h3 class="text-xl font-semibold mb-2">Java/J2EE</h3>
-                    <p class="text-gray-600">Worked for Thomascook and Statefarm Insurance clients</p>
-                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="java">
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">Java/J2EE</h3>
+                        <p class="text-gray-600">Worked for Thomascook and Statefarm Insurance clients</p>
+                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
+                    </div>
+                    <div class="flex flex-col space-y-2 ml-4">
+                        <img src="statefarm.png" alt="State Farm Logo" class="project-card-logo">
+                        <img src="thomascook.jpeg" alt="Thomas Cook Logo" class="project-card-logo">
+                    </div>
                 </div>
             </div>
         </div>
@@ -236,26 +255,28 @@
                 <div id="certifications" class="tile">
                     <h3 class="text-2xl font-semibold text-center mb-6">Certifications</h3>
                     <div class="space-y-6">
-                      <div>
-                            <h4 class="text-xl font-semibold">Level II Secrect Clearance</h4>
-                            <p class="text-gray-600">Federal Gov. Of Canada, 2023</p>
-                           
+                        <div>
+                            <h4 class="text-xl font-semibold">Level II Secret Clearance</h4>
+                            <p class="text-gray-600">Federal Gov. of Canada</p>
                         </div>
                        <div>
                             <h4 class="text-xl font-semibold">Certified SAFe 6.0 release Train Engineer</h4>
-                            <p class="text-gray-600">ScaledAgile, 2022</p>
+                            <p class="text-gray-600">ScaledAgile</p>
                            
                         </div>
                         <div>
-                            <h4 class="text-xl font-semibold">Certified Scrum Master (CSM)</h4>
-                            <p class="text-gray-600">Scrum Alliance, 2019</p>
+                            <h4 class="text-xl font-semibold">Certified Product Owner</h4>
+                            <p class="text-gray-600">Scrum Alliance</p>
             
                         </div>
-                       
+                        <div>
+                            <h4 class="text-xl font-semibold">Certified Scrum Master</h4>
+                            <p class="text-gray-600">Scrum Alliance</p>
+            
+                        </div>
                         <div>
                             <h4 class="text-xl font-semibold">Sun Certified Java Developer</h4>
-                            <p class="text-gray-600">Sun, 2008</p>
-                           
+                            <p class="text-gray-600">Sun</p>
                         </div>
                         
                     </div>
@@ -266,13 +287,13 @@
                     <div class="space-y-6">
                         <div>
                             <h4 class="text-xl font-semibold">Bachelor of Technology in Computer Science Engineering</h4>
-                            <p class="text-gray-600">Dr. A. P. J. Kalam Technical University, 2003 - 2007</p>
-                            <p class="text-gray-700">Graduated with honors, focusing on software engineering</p>
+                            <p class="text-gray-600">Dr. A. P. J. Kalam Technical University, India</p>
+                            <p class="text-gray-700">Graduated with honors, focusing on Software Engineering</p>
                         </div>
                         <div>
                             <h4 class="text-xl font-semibold">Product Management</h4>
-                            <p class="text-gray-600">University Of Toronto, 2025</p>
-                            <p class="text-gray-700">Specialized in product management and strategic leadership.</p>
+                            <p class="text-gray-600">University Of Toronto, Canada</p>
+                            <p class="text-gray-700">Specialized in Product Management and Strategic Leadership.</p>
                         </div>
                     </div>
                 </div>
@@ -341,7 +362,7 @@
             <h3 class="text-2xl font-semibold mb-4">Java Developer (2007–2012)</h3>
              <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
                     <h3 class="text-2xl font-semibold mb-4">State Farm Insurance – DSS Program</h3>
-                    <li>Developed enterprise-grade applications using Spring MVC, Spring Boot, and Hibernate ORM, enhancing system reliability and scalability</li>
+                    <li>Developed enterprise-grade applications using Spring MVC, Spring Boot, and Hibernate ORM, enhancing system reliability and scalability.</li>
                     <li>Optimized backend architecture, implementing dependency injection and transaction management, reducing processing time by 30%.</li>
                     <li>Built RESTful APIs, integrating with external services and improving data exchange efficiency across insurance platforms.</li>
                     <li>Automated reconciliation reporting, streamlining financial tracking and reducing manual data entry errors by 40%.</li>

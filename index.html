@@ -43,7 +43,7 @@
             height: 24px;
         }
         .home-section {
-            background: linear-gradient(to right, #14b8a6, #3730a3); /* Reverted to previous background */
+            background: linear-gradient(to right, #14b8a6, #3730a3);
             color: white;
             text-align: center;
         }
@@ -66,6 +66,14 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .project-card {
+            min-height: 350px; /* Set a minimum height for consistency */
+        }
+        @media (max-width: 640px) {
+            .project-card {
+                min-height: 300px; /* Adjust for mobile */
+            }
         }
         .modal {
             display: none;

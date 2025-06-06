@@ -87,9 +87,10 @@
             border-radius: 50%;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             border: 4px solid #2563eb;
-            max-width: 250px;
+            max-width: 200px;
             width: 100%;
             height: auto;
+            object-fit: cover;
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -140,6 +141,7 @@
         .nav-menu {
             transition: max-height 0.3s ease-in-out;
             overflow: hidden;
+            background-color: #1a202c; /* Match navbar background */
         }
         .nav-menu.hidden {
             max-height: 0;
@@ -148,13 +150,26 @@
             max-height: 500px;
         }
         /* Ensure Hamburger Icon is Visible */
+        .hamburger {
+            display: block !important; /* Ensure visibility on mobile */
+        }
         .hamburger svg {
-            stroke: white; /* Explicitly set stroke color to white */
+            stroke: white !important; /* Explicitly set stroke color */
+            width: 24px;
+            height: 24px;
         }
         /* Responsive Adjustments */
+        @media (min-width: 640px) {
+            .hamburger {
+                display: none !important; /* Hide on desktop */
+            }
+            .nav-menu {
+                max-height: none !important; /* Always visible on desktop */
+            }
+        }
         @media (max-width: 640px) {
             .home-img {
-                max-width: 200px;
+                max-width: 150px; /* Further reduce on smaller screens */
             }
             .project-card-logo {
                 width: 60px;
@@ -171,6 +186,11 @@
                 max-width: 95%;
             }
         }
+        @media (max-width: 360px) {
+            .home-img {
+                max-width: 120px; /* Extra small screens */
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -178,7 +198,7 @@
     <nav class="navbar w-full text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-xl sm:text-2xl font-bold">Sangita Giri</h1>
-            <button class="sm:hidden hamburger focus:outline-none" aria-label="Toggle menu">
+            <button class="hamburger focus:outline-none" aria-label="Toggle menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -474,115 +494,117 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ duration: 1000 });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({ duration: 1000 });
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
 
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => {
-                navMenu.classList.toggle('hidden');
-                navMenu.classList.toggle('visible');
-                hamburger.querySelector('svg').classList.toggle('rotate-180');
-            });
-
-            // Close mobile menu when a link is clicked
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.add('hidden');
-                    navMenu.classList.remove('visible');
-                    hamburger.querySelector('svg').classList.remove('rotate-180');
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('hidden');
+                    navMenu.classList.toggle('visible');
+                    hamburger.querySelector('svg').classList.toggle('rotate-180');
                 });
-            });
-        } else {
-            console.error('Hamburger or navMenu not found in DOM');
-        }
 
-        // Project filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                // Close mobile menu when a link is clicked
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.add('hidden');
+                        navMenu.classList.remove('visible');
+                        hamburger.querySelector('svg').classList.remove('rotate-180');
+                    });
                 });
-            });
-        });
-
-        // Modal functionality
-        const openModalButtons = document.querySelectorAll('.open-modal');
-        const closeModalButtons = document.querySelectorAll('.close-modal');
-        openModalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modalId = button.getAttribute('data-modal');
-                document.getElementById(modalId).style.display = 'flex';
-            });
-        });
-        closeModalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                button.closest('.modal').style.display = 'none';
-            });
-        });
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
+            } else {
+                console.error('Hamburger or navMenu not found in DOM');
             }
-        });
 
-        // Form submission handling
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-
-        contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            formMessage.classList.remove('success', 'error');
-            formMessage.textContent = '';
-
-            try {
-                const formData = new FormData(contactForm);
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+            // Project filter
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
                 });
+            });
 
-                if (response.ok) {
-                    formMessage.classList.add('success');
-                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-                    contactForm.reset();
-                } else {
-                    const errorData = await response.json();
-                    let errorText = errorData.error || 'Failed to send message. Please try again later.';
-                    if (response.status === 405) {
-                        errorText = 'Form submission method not allowed. Please ensure you’re submitting the form correctly.';
-                        console.error('405 Method Not Allowed: Check if the Formspree endpoint is correct and activated.');
-                    }
-                    formMessage.classList.add('error');
-                    formMessage.textContent = errorText;
+            // Modal functionality
+            const openModalButtons = document.querySelectorAll('.open-modal');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal');
+                    document.getElementById(modalId).style.display = 'flex';
+                });
+            });
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.closest('.modal').style.display = 'none';
+                });
+            });
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
                 }
-            } catch (error) {
-                formMessage.classList.add('error');
-                formMessage.textContent = 'An error occurred. Please check your connection and try again.';
-                console.error('Form submission error:', error);
-            }
+            });
+
+            // Form submission handling
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                formMessage.classList.remove('success', 'error');
+                formMessage.textContent = '';
+
+                try {
+                    const formData = new FormData(contactForm);
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        formMessage.classList.add('success');
+                        formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                        contactForm.reset();
+                    } else {
+                        const errorData = await response.json();
+                        let errorText = errorData.error || 'Failed to send message. Please try again later.';
+                        if (response.status === 405) {
+                            errorText = 'Form submission method not allowed. Please ensure you’re submitting the form correctly.';
+                            console.error('405 Method Not Allowed: Check if the Formspree endpoint is correct and activated.');
+                        }
+                        formMessage.classList.add('error');
+                        formMessage.textContent = errorText;
+                    }
+                } catch (error) {
+                    formMessage.classList.add('error');
+                    formMessage.textContent = 'An error occurred. Please check your connection and try again.';
+                    console.error('Form submission error:', error);
+                }
+            });
         });
     </script>
 </body>

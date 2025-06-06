@@ -121,6 +121,23 @@
             transform: scale(1.1);
             background-color: #004182;
         }
+        .form-message {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+        }
+        .form-message.success {
+            display: block;
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .form-message.error {
+            display: block;
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -145,11 +162,9 @@
         <div class="home-overlay"></div>
         <div class="container mx-auto px-4 home-content">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <!-- Profile Image -->
                 <div class="flex justify-center" data-aos="fade-right">
                     <img src="linkedin.jpg" alt="Sangita Giri" class="home-img">
                 </div>
-                <!-- Text Content -->
                 <div class="space-y-6" data-aos="fade-left">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold">Sangita Giri</h1>
                     <p class="text-xl sm:text-2xl font-semibold">Product Manager | Agile Transformation Manager | Java Developer</p>
@@ -284,7 +299,6 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Credentials</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Certifications Tile -->
                 <div id="certifications" class="tile">
                     <h3 class="text-2xl font-semibold text-center mb-6">Certifications</h3>
                     <div class="space-y-6">
@@ -310,7 +324,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Education Tile -->
                 <div id="education" class="tile">
                     <h3 class="text-2xl font-semibold text-center mb-6">Education</h3>
                     <div class="space-y-6">
@@ -342,7 +355,7 @@
             <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
             <div class="max-w-lg mx-auto">
                 <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
-                    <form id="contact-form" action="https://formspree.io/f/xrbzdewp" method="POST">
+                    <form id="contact-form" action="https://formspree.io/f/mvgrzabb" method="POST">
                         <div class="mb-4">
                             <label class="block text-gray-700 mb-2" for="name">Name</label>
                             <input class="w-full p-2 border rounded" id="name" name="name" type="text" placeholder="Your name" required>
@@ -356,6 +369,7 @@
                             <textarea class="w-full p-2 border rounded" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
                         </div>
                         <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Send Message</button>
+                        <div id="form-message" class="form-message"></div>
                     </form>
                     <p class="text-gray-700 mt-4">
                         <a href="https://www.linkedin.com/in/sangitagiri01/" class="linkedin-highlight">
@@ -479,14 +493,42 @@
             }
         });
 
-        // Form submission feedback
+        // Form submission handling
         const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', function (e) {
-            // Formspree handles the submission, so we just add a success message
-            setTimeout(() => {
-                alert('Thank you for your message! I will get back to you soon.');
-                contactForm.reset();
-            }, 500);
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            formMessage.classList.remove('success', 'error');
+            formMessage.textContent = '';
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formMessage.classList.add('success');
+                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                    contactForm.reset();
+                } else {
+                    // Error
+                    const errorData = await response.json();
+                    formMessage.classList.add('error');
+                    formMessage.textContent = errorData.error || 'Failed to send message. Please try again later.';
+                }
+            } catch (error) {
+                // Network or other errors
+                formMessage.classList.add('error');
+                formMessage.textContent = 'An error occurred. Please try again later.';
+            }
         });
     </script>
 </body>

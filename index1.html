@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangita Giri - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #1a202c;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+        }
+        .company-logo {
+            max-width: 150px;
+            height: auto;
+        }
+        .tile {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+        }
+        .home-section {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #14b8a6, #3730a3);
+            position: relative;
+            overflow: hidden;
+        }
+        .home-overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .home-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button {
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #f3f4f6;
+        }
+        .scroll-arrow {
+            animation: bounce 2s infinite;
+        }
+        .home-img {
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 4px solid #2563eb;
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .project-card-content {
+            flex: 1;
+        }
+        .project-card-logo {
+            width: 96px;
+            height: 48px;
+            object-fit: contain;
+        }
+        .linkedin-highlight {
+            background-color: #0a66c2;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            transform: scale(1);
+            transition: transform 0.2s, background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .linkedin-highlight:hover {
+            transform: scale(1.1);
+            background-color: #004182;
+        }
+        .form-message {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+        }
+        .form-message.success {
+            display: block;
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .form-message.error {
+            display: block;
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="navbar w-full text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Sangita Giri</h1>
+            <div>
+                <a href="#home" class="mx-2 hover:text-gray-300">Home</a>
+                <a href="#expertise" class="mx-2 hover:text-gray-300">Expertise</a>
+                <a href="#projects" class="mx-2 hover:text-gray-300">Products</a>
+                <a href="#companies" class="mx-2 hover:text-gray-300">Companies</a>
+                <a href="#certifications" class="mx-2 hover:text-gray-300">Certifications</a>
+                <a href="#education" class="mx-2 hover:text-gray-300">Education</a>
+                <a href="#contact" class="mx-2 hover:text-gray-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center home-section text-white relative" data-aos="fade-up">
+        <div class="home-overlay"></div>
+        <div class="container mx-auto px-4 home-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="flex justify-center" data-aos="fade-right">
+                    <img src="linkedin.jpg" alt="Sangita Giri" class="home-img">
+                </div>
+                <div class="space-y-6" data-aos="fade-left">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold">Sangita Giri</h1>
+                    <p class="text-xl sm:text-2xl font-semibold">Product Manager | Agile Transformation Manager | Java Developer</p>
+                    <p class="text-base sm:text-lg">Product Manager driving Jenkins to Azure DevOps migration, ensuring pipeline stability & strategic execution. I manage value-driven backlogs, optimize product agility & risk assessments, and collaborate with leadership to refine MVPs & roadmaps. Built an Agile Maturity Index for data-driven optimizations and leverage Power BI analytics for Sprint performance & throughput insights. I bridge technical execution with strategic leadership, delivering customer-first innovation & scalable solutions.</p>
+                    <div class="flex justify-start space-x-4">
+                        <a href="https://www.linkedin.com/in/sangitagiri01/" class="linkedin-highlight">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                    <a href="#expertise" class="cta-button inline-block bg-white text-indigo-800 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200">Discover My Journey</a>
+                </div>
+            </div>
+            <a href="#expertise" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white" data-aos="fade-up">
+                <svg class="w-8 h-8 scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Area of Expertise Section -->
+    <section id="expertise" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Area of Expertise</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-700" data-aos="fade-right">
+                    <li>Agile</li>
+                    <li>ServiceNow</li>
+                    <li>JIRA</li>
+                    <li>Microsoft Power BI</li>
+                    <li>Java</li>
+                </ul>
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-700" data-aos="fade-left">
+                    <li>Jenkins</li>
+                    <li>GitHub</li>
+                    <li>Risk Management</li>
+                    <li>Prompt Engineering</li>
+                    <li>Product Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Products Impacted</h2>
+            <div class="flex justify-center mb-6">
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="all">All</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="product">Product Management</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="scrum">Agile Transformation</button>
+                <button class="filter-btn mx-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" data-filter="java">Java</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="product">
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">Currently</h3>
+                        <p class="text-gray-600">Data driven decision making. Experience in orchestrating agile product release cycles and managing complex and difficults.</p>
+                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal1">Details</button>
+                        <div class="mt-4 flex flex-row space-x-4 items-center">
+                            <img src="td1.png" alt="TD Logo" class="project-card-logo">
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="scrum">
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">Agile Transformation</h3>
+                        <p class="text-gray-600">Bell, CPPIB, FedEx, Citibank, Fidelity Investments - Coached Multiple Pods through Agile adoption and aligning them for one goal</p>
+                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal2">Details</button>
+                        <div class="mt-4">
+                            <div class="flex flex-row space-x-4 items-center">
+                                <img src="bell.png" alt="Bell Logo" class="project-card-logo">
+                                <img src="cppib.png" alt="CPPIB Logo" class="project-card-logo">
+                                <img src="fedex.jpg" alt="FedEx Logo" class="project-card-logo">
+                            </div>
+                            <div class="mt-2 flex flex-row space-x-4 items-center">
+                                <img src="citi.png" alt="Citibank Logo" class="project-card-logo">
+                                <img src="fidelity.jpg" alt="Fidelity Investment Logo" class="project-card-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg project-card flex" data-category="java">
+                    <div class="project-card-content">
+                        <h3 class="text-xl font-semibold mb-2">Java/J2EE</h3>
+                        <p class="text-gray-600">Worked for Thomascook and Statefarm Insurance clients</p>
+                        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 open-modal" data-modal="modal3">Details</button>
+                        <div class="mt-4">
+                            <div class="flex flex-row space-x-4 items-center">
+                                <img src="statefarm.png" alt="State Farm Logo" class="project-card-logo">
+                                <img src="thomascook.jpg" alt="Thomas Cook Logo" class="project-card-logo">
+                                <img src="wallgreens.png" alt="Wallgreens Logo" class="project-card-logo">
+                            </div>
+                            <div class="mt-2 flex flex-row space-x-4 items-center">
+                                <img src="uhg.png" alt="United Health Group Logo" class="project-card-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section -->
+    <section id="companies" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Companies I've Worked With</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="accenture-logo1.jpg" alt="Company 1" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="ntt-data.jpg" alt="Company 2" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="cognizant.png" alt="Company 3" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="tcs.jpg" alt="Company 4" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="cgi.jpg" alt="Company 5" class="company-logo">
+                </div>
+                <div class="card bg-gray-50 p-6 rounded-lg shadow-lg flex justify-center items-center">
+                    <img src="td.png" alt="Company 6" class="company-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications and Education Section -->
+    <section class="py-16 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Credentials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div id="certifications" class="tile">
+                    <h3 class="text-2xl font-semibold text-center mb-6">Certifications</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold">Level II Secret Clearance</h4>
+                            <p class="text-gray-600">Federal Gov. of Canada</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Certified SAFe 6.0 release Train Engineer</h4>
+                            <p class="text-gray-600">ScaledAgile</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Certified Product Owner</h4>
+                            <p class="text-gray-600">Scrum Alliance</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Certified Scrum Master</h4>
+                            <p class="text-gray-600">Scrum Alliance</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Sun Certified Java Developer</h4>
+                            <p class="text-gray-600">Sun</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="education" class="tile">
+                    <h3 class="text-2xl font-semibold text-center mb-6">Education</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <img src="gradcap.png" alt="Graduation Cap" class="w-20 h-20">
+                                <h4 class="text-xl font-semibold">Product Management</h4>
+                            </div>
+                            <p class="text-gray-600">University Of Toronto, Canada</p>
+                            <p class="text-gray-700">Specialized in Product Management and Strategic Leadership.</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <img src="gradcap.png" alt="Graduation Cap" class="w-20 h-20">
+                                <h4 class="text-xl font-semibold">Bachelor of Technology in Computer Science Engineering</h4>
+                            </div>
+                            <p class="text-gray-600">Dr. A. P. J. Kalam Technical University, India</p>
+                            <p class="text-gray-700">Graduated with honors, focusing on Software Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
+            <div class="max-w-lg mx-auto">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <form id="contact-form" action="https://formspree.io/f/mvgrzabb" method="POST">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="name">Name</label>
+                            <input class="w-full p-2 border rounded" id="name" name="name" type="text" placeholder="Your name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="email">Email</label>
+                            <input class="w-full p-2 border rounded" id="email" name="email" type="email" placeholder="Your email" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="message">Message</label>
+                            <textarea class="w-full p-2 border rounded" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Send Message</button>
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                    <p class="text-gray-700 mt-4">
+                        <a href="https://www.linkedin.com/in/sangitagiri01/" class="linkedin-highlight">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                            Connect on LinkedIn
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Sangita Giri. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Product Manager</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+                <li>Defined and executed product roadmap, prioritizing high-impact features that enhanced pipeline efficiency by 20%, driving operational excellence.</li>
+                <li>Led platform transformation, migrating from Jenkins to Azure DevOps, improving pipeline stability and scalability by 30%, ensuring seamless CI/CD workflows.</li>
+                <li>Managed backlog prioritization, integrating cross-functional insights to align features with business goals, reducing deployment errors by 25%.</li>
+                <li>Developed Agile Maturity Index, measuring team progress and optimizing Agile execution, resulting in a 40% increase in sprint velocity.</li>
+                <li>Automated Power BI reporting, providing real-time visibility into key performance metrics, cutting reporting time by 50% and enhancing data-driven decision-making.</li>
+                <li>Championed customer-centric solutions, driving innovation through user feedback analysis and iterative feature releases, increasing user satisfaction by 35%.</li>
+            </ul>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Agile Transformation</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+                <li>Led Agile transformation, training teams and implementing Scrum practices, boosting team velocity by 30% over 6 months, accelerating delivery cycles.</li>
+                <li>Scaled Agile methodologies across enterprise teams, optimizing value flow within Agile Release Trains (ARTs), increasing delivery predictability by 40%.</li>
+                <li>Implemented Kanban and information radiators, enhancing PI alignment and visibility, reducing bottlenecks and improving sprint completion rates by 35%.</li>
+                <li>Resolved complex release challenges, mitigating architectural, leadership, and logistical impediments, cutting deployment failures by 25%.</li>
+                <li>Managed strategic financial planning, optimizing resource allocation, reducing project costs by 20%, and improving cross-functional collaboration effectiveness.</li>
+                <li>Partnered with Product Management, driving feature prioritization for PI cycles, increasing roadmap clarity and execution efficiency by 45%.</li>
+                <li>Integrated Agile forecasting, automating Power BI insights for sprint tracking and financial strategy, reducing reporting time by 50% and enabling real-time decision-making.</li>
+            </ul>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-semibold mb-4">Java Developer (2007–2012)</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+                <h3 class="text-2xl font-semibold mb-4">State Farm Insurance – DSS Program</h3>
+                <li>Developed enterprise-grade applications using Spring MVC, Spring Boot, and Hibernate ORM, enhancing system reliability and scalability.</li>
+                <li>Optimized backend architecture, implementing dependency injection and transaction management, reducing processing time by 30%.</li>
+                <li>Built RESTful APIs, integrating with external services and improving data exchange efficiency across insurance platforms.</li>
+                <li>Automated reconciliation reporting, streamlining financial tracking and reducing manual data entry errors by 40%.</li>
+                <li>Resolved performance bottlenecks, optimizing database queries and improving transaction response time by 25%.</li>
+            </ul>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Thomas Cook – Bin Range Identification, Payment & Review Features</h3>
+                <li>Designed and implemented Bin Range Identification logic, improving payment gateway security and fraud detection accuracy by 35%.</li>
+                <li>Developed transaction review and approval workflows, enhancing customer experience and reducing payment disputes by 20%.</li>
+                <li>Integrated Hibernate ORM, ensuring seamless database mapping and optimized query performance for large-scale financial transactions.</li>
+                <li>Executed Agile methodologies, collaborating with cross-functional teams to deliver high-performance, maintainable software solutions.</li>
+                <li>Managed backend scalability improvements, increasing system uptime and performance stability by 30%.</li>
+            </ul>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000 });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Project filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const openModalButtons = document.querySelectorAll('.open-modal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'flex';
+            });
+        });
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.modal').style.display = 'none';
+            });
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            formMessage.classList.remove('success', 'error');
+            formMessage.textContent = '';
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formMessage.classList.add('success');
+                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                    contactForm.reset();
+                } else {
+                    // Error
+                    const errorData = await response.json();
+                    formMessage.classList.add('error');
+                    formMessage.textContent = errorData.error || 'Failed to send message. Please try again later.';
+                }
+            } catch (error) {
+                // Network or other errors
+                formMessage.classList.add('error');
+                formMessage.textContent = 'An error occurred. Please try again later.';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OutdoorIQ — Research Case Study · Sangita Giri</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:   #1e3a2f;
+  --forest-m: #2d5a45;
+  --sage:     #4a7c59;
+  --leaf:     #6daa7a;
+  --mint:     #c8e6c9;
+  --sky:      #1565c0;
+  --sky-light:#e3f2fd;
+  --amber:    #e65100;
+  --amber-l:  #fff3e0;
+  --paper:    #fafdf8;
+  --paper-2:  #f1f5ef;
+  --rule:     #d8e6d4;
+  --ink:      #1a2e1f;
+  --ink-soft: #3d5247;
+  --ink-mute: #7a9a82;
+  --warn:     #bf360c;
+  --warn-l:   #fbe9e7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16px}
+
+/* progress */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--sage);width:0;z-index:9999;transition:width .1s}
+
+/* nav */
+nav{position:fixed;top:3px;left:0;right:0;background:rgba(250,253,248,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);z-index:999;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--forest);text-decoration:none}
+.nav-links{display:flex;gap:1.4rem;list-style:none}
+.nav-links a{color:var(--ink-mute);text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:'Source Serif 4',serif;transition:color .2s}
+.nav-links a:hover{color:var(--sage)}
+.nav-back{font-size:.78rem;color:var(--ink-mute);text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.nav-back:hover{color:var(--sage)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* hero */
+.hero{padding:116px 2rem 70px;max-width:960px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem;font-family:'Source Serif 4',serif}
+.hero-tag::before{content:'';display:block;width:28px;height:2px;background:var(--sage)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;color:var(--forest);margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero-sub{font-size:1.05rem;color:var(--ink-soft);max-width:640px;font-weight:300;margin-bottom:2.4rem;line-height:1.8}
+.meta-strip{display:flex;flex-wrap:wrap;gap:1.5rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.2rem 0}
+.meta-item{display:flex;flex-direction:column;gap:.15rem}
+.meta-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);font-family:'Source Serif 4',serif}
+.meta-value{font-size:.88rem;font-weight:600;color:var(--ink)}
+
+/* sections */
+.section{max-width:960px;margin:0 auto;padding:4rem 2rem;border-bottom:1px solid var(--rule)}
+.section:last-child{border-bottom:none}
+.sec-label{display:flex;align-items:center;gap:.75rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1.8rem;font-family:'Source Serif 4',serif}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.sec-num{color:var(--sage)}
+.section h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:1rem;line-height:1.2;color:var(--forest)}
+.section p{color:var(--ink-soft);margin-bottom:1rem;font-size:.97rem;font-weight:300}
+.section h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--forest);margin:2rem 0 .8rem}
+
+/* layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+.four-col{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+@media(max-width:700px){.two-col,.three-col,.four-col{grid-template-columns:1fr}}
+
+/* callout */
+.callout{background:var(--paper-2);border-left:3px solid var(--sage);padding:1.2rem 1.4rem;border-radius:0 6px 6px 0;margin:1.5rem 0}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-l)}
+.callout.sky{border-left-color:var(--sky);background:var(--sky-light)}
+.callout strong{color:var(--ink);font-weight:700;display:block;margin-bottom:.3rem;font-size:.95rem}
+.callout p{margin:0;font-size:.9rem}
+
+/* stat cards */
+.stat-card{background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:.3rem}
+.stat-card .big{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--sage);line-height:1}
+.stat-card .big.warn{color:var(--warn)}
+.stat-card .big.sky{color:var(--sky)}
+.stat-card .slabel{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mute)}
+.stat-card .sdesc{font-size:.85rem;color:var(--ink-soft);margin-top:.3rem;font-weight:300}
+
+/* chart containers */
+.chart-box{background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem;margin-top:1.5rem}
+.chart-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);margin-bottom:1rem;font-family:'Source Serif 4',serif}
+.chart-sub{font-size:.78rem;color:var(--ink-mute);margin-top:.6rem;font-style:italic}
+
+/* persona */
+.persona{background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:.6rem}
+.p-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.p-name{font-weight:700;font-size:.97rem;font-family:'Playfair Display',serif}
+.p-role{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mute)}
+.p-quote{font-style:italic;font-size:.88rem;color:var(--ink-soft);border-left:2px solid var(--mint);padding-left:.8rem}
+.p-list{font-size:.83rem;color:var(--ink-soft);font-weight:300}
+.p-list li{margin-bottom:.3rem}
+.p-tag{display:inline-block;padding:.15rem .55rem;border-radius:20px;font-size:.68rem;font-weight:700;margin:.1rem;font-family:'Source Serif 4',serif}
+.tag-green{background:var(--mint);color:var(--forest)}
+.tag-amber{background:var(--amber-l);color:var(--amber)}
+.tag-sky{background:var(--sky-light);color:var(--sky)}
+.tag-warn{background:var(--warn-l);color:var(--warn)}
+
+/* roadmap */
+.rm-row{display:grid;grid-template-columns:100px 1fr;gap:0 1.5rem;margin-bottom:.8rem;align-items:start}
+.qbadge{font-size:.68rem;font-weight:700;letter-spacing:.06em;padding:.3rem .6rem;border-radius:4px;text-align:center;white-space:nowrap;margin-top:.2rem;font-family:'Source Serif 4',serif}
+.q1b{background:var(--mint);color:var(--forest)}
+.q2b{background:var(--sky-light);color:var(--sky)}
+.q3b{background:var(--amber-l);color:var(--amber)}
+.q4b{background:#e8f5e9;color:var(--forest-m)}
+.rm-items{display:flex;flex-wrap:wrap;gap:.5rem;padding:.4rem 0}
+.rm-item{font-size:.8rem;padding:.25rem .7rem;border:1px solid var(--rule);border-radius:20px;background:white;color:var(--ink-soft)}
+.rm-item.hi{border-color:var(--sage);color:var(--sage);background:#f0f8f2;font-weight:600}
+
+/* wireframes */
+.wf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+@media(max-width:640px){.wf-grid{grid-template-columns:1fr}}
+.wf-frame{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:white}
+.wf-bar{background:var(--forest);padding:.45rem 1rem;display:flex;align-items:center;gap:.35rem}
+.wf-dot{width:7px;height:7px;border-radius:50%}
+.wf-bar span{font-size:.68rem;color:rgba(255,255,255,.5);margin-left:auto;font-family:monospace}
+.wf-body{padding:.8rem}
+.wf-cap{font-size:.75rem;color:var(--ink-mute);padding:.5rem .8rem .8rem;border-top:1px solid var(--paper-2);font-style:italic}
+
+/* impact */
+.impact-card{background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:.5rem}
+.impact-icon{font-size:1.4rem}
+.impact-card h4{font-size:.95rem;font-weight:700;color:var(--forest);font-family:'Playfair Display',serif}
+.impact-card p{font-size:.85rem;color:var(--ink-soft);font-weight:300;margin:0}
+.impact-delta{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--sage);margin-top:auto;padding-top:.5rem}
+
+/* vision pillars */
+.pillar{background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem;border-top:4px solid var(--sage)}
+.pillar.sky-top{border-top-color:var(--sky)}
+.pillar.amber-top{border-top-color:var(--amber)}
+.pillar h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.5rem;color:var(--forest)}
+.pillar p{font-size:.85rem;color:var(--ink-soft);font-weight:300;margin:0}
+
+/* finding rows */
+.finding{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
+.finding:last-child{border-bottom:none}
+.fnum{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--rule);min-width:2.2rem;line-height:1;padding-top:.1rem}
+.fbody strong{display:block;font-size:.95rem;margin-bottom:.2rem;color:var(--ink)}
+.fbody p{font-size:.85rem;color:var(--ink-soft);margin:0;font-weight:300}
+
+/* bar charts inline */
+.hbar-wrap{margin:.3rem 0}
+.hbar-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--ink-soft);margin-bottom:.2rem}
+.hbar-track{background:var(--paper-2);border-radius:4px;height:9px;overflow:hidden}
+.hbar-fill{height:100%;border-radius:4px}
+
+/* animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{opacity:0;animation:fadeUp .7s ease forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--rule)}
+footer p{font-size:.82rem;color:var(--ink-mute)}
+footer a{color:var(--sage);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <a href="index.html" class="nav-back">← Portfolio</a>
+  <a href="#" class="nav-logo">Sangita Giri</a>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#personas">Personas</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#screens">Screens</a></li>
+    <li><a href="#impact">Impact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-tag fu d1">Product Research Case Study · Education &amp; Child Development</div>
+  <h1 class="fu d2">OutdoorIQ — <em>Closing the Gap</em> Between Classrooms and the World Outside</h1>
+  <p class="hero-sub fu d3">A research-driven product study exploring the generational decline in outdoor exposure among children aged 6–18, and the design of a school-enterprise tool that empowers educators and administrators to make structured outdoor time a measurable part of student development.</p>
+  <div class="meta-strip fu d4">
+    <div class="meta-item"><span class="meta-label">My Role</span><span class="meta-value">Product Manager · Researcher</span></div>
+    <div class="meta-item"><span class="meta-label">Product Type</span><span class="meta-value">School Enterprise Tool (SaaS)</span></div>
+    <div class="meta-item"><span class="meta-label">Research Scope</span><span class="meta-value">Ages 6–18 · Canada &amp; US</span></div>
+    <div class="meta-item"><span class="meta-label">Study Duration</span><span class="meta-value">10 weeks</span></div>
+    <div class="meta-item"><span class="meta-label">Methods</span><span class="meta-value">Surveys · Interviews · Secondary Data</span></div>
+    <div class="meta-item"><span class="meta-label">Output</span><span class="meta-value">Product Vision + Wireframes</span></div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════ -->
+<!-- 01 · PROBLEM FRAMING -->
+<!-- ══════════════════════════════════ -->
+<section class="section" id="problem">
+  <div class="sec-label"><span class="sec-num">01</span> Problem Framing &amp; Opportunity</div>
+  <h2>A generation growing up indoors — and no one is measuring it.</h2>
+  <p>Children today spend more time in front of screens than any prior generation. But the more troubling shift is not what they are doing — it is what they have stopped doing. Unstructured outdoor time, once a natural part of childhood, has declined sharply over two generations. The average child in North America now spends fewer than 30 minutes per day outside, compared to over 3 hours in the 1980s.</p>
+  <p>What makes this a product problem — and not just a parenting concern — is that schools are the one institution that touches every child, every day. And yet schools have no infrastructure to track, encourage, or report on outdoor engagement the way they track academic performance, attendance, or even cafeteria purchases.</p>
+
+  <div class="callout warn">
+    <strong>The Core Gap</strong>
+    <p>Schools track reading levels, math scores, and attendance to the minute — but have zero visibility into whether a student has spent time outdoors this week, this month, or this term. Outdoor time is invisible to the institution best positioned to act on it.</p>
+  </div>
+
+  <div class="four-col">
+    <div class="stat-card">
+      <span class="big warn">↓91%</span>
+      <span class="slabel">Outdoor Time Loss</span>
+      <span class="sdesc">Children today spend 91% less time in unstructured outdoor play than their grandparents did at the same age</span>
+    </div>
+    <div class="stat-card">
+      <span class="big">29 min</span>
+      <span class="slabel">Daily Outdoor Time</span>
+      <span class="sdesc">Average daily outdoor time for a North American child aged 6–17 in 2024, down from 3+ hours in the 1980s</span>
+    </div>
+    <div class="stat-card">
+      <span class="big warn">7.5h</span>
+      <span class="slabel">Daily Screen Time</span>
+      <span class="sdesc">Average daily recreational screen time for teenagers aged 13–18, not including school-related device use</span>
+    </div>
+    <div class="stat-card">
+      <span class="big sky">$4.2B</span>
+      <span class="slabel">Market Opportunity</span>
+      <span class="sdesc">Estimated addressable market for school wellness & student engagement platforms across North America by 2027</span>
+    </div>
+  </div>
+
+  <h3>Why This Generation? Why Now?</h3>
+  <p>Three structural forces converged after 2010 to produce the sharpest generational decline in outdoor engagement on record. First, the smartphone became a primary leisure device for children as young as 8. Second, urbanisation reduced safe outdoor spaces accessible without adult supervision. Third, school curricula tightened — recess was shortened or eliminated in many districts to create more instructional time, ironically at the expense of the very activities that improve concentration and academic performance.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="chart-box">
+        <div class="chart-title">Average Daily Outdoor Time by Generation (minutes/day)</div>
+        <svg viewBox="0 0 340 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- axes -->
+          <line x1="50" y1="10" x2="50" y2="170" stroke="#d8e6d4" stroke-width="1"/>
+          <line x1="50" y1="170" x2="330" y2="170" stroke="#d8e6d4" stroke-width="1"/>
+          <!-- h guides -->
+          <line x1="50" y1="40" x2="330" y2="40" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="4,4"/>
+          <line x1="50" y1="80" x2="330" y2="80" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="4,4"/>
+          <line x1="50" y1="120" x2="330" y2="120" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="4,4"/>
+          <!-- y labels -->
+          <text x="44" y="44" text-anchor="end" font-size="9" fill="#7a9a82">180m</text>
+          <text x="44" y="84" text-anchor="end" font-size="9" fill="#7a9a82">120m</text>
+          <text x="44" y="124" text-anchor="end" font-size="9" fill="#7a9a82">60m</text>
+          <text x="44" y="174" text-anchor="end" font-size="9" fill="#7a9a82">0</text>
+          <!-- bars: Boomers 210m, GenX 180m, Millennials 90m, GenZ 45m, GenAlpha 29m -->
+          <!-- Boomers -->
+          <rect x="62" y="33" width="36" height="137" rx="4" fill="#4a7c59" opacity=".8"/>
+          <text x="80" y="28" text-anchor="middle" font-size="9" fill="#2d5a45" font-weight="700">210</text>
+          <text x="80" y="185" text-anchor="middle" font-size="8" fill="#7a9a82">Boomers</text>
+          <!-- Gen X -->
+          <rect x="116" y="50" width="36" height="120" rx="4" fill="#4a7c59" opacity=".7"/>
+          <text x="134" y="45" text-anchor="middle" font-size="9" fill="#2d5a45" font-weight="700">180</text>
+          <text x="134" y="185" text-anchor="middle" font-size="8" fill="#7a9a82">Gen X</text>
+          <!-- Millennials -->
+          <rect x="170" y="95" width="36" height="75" rx="4" fill="#e65100" opacity=".6"/>
+          <text x="188" y="90" text-anchor="middle" font-size="9" fill="#e65100" font-weight="700">90</text>
+          <text x="188" y="185" text-anchor="middle" font-size="8" fill="#7a9a82">Millennials</text>
+          <!-- Gen Z -->
+          <rect x="224" y="132" width="36" height="38" rx="4" fill="#e65100" opacity=".8"/>
+          <text x="242" y="127" text-anchor="middle" font-size="9" fill="#e65100" font-weight="700">45</text>
+          <text x="242" y="185" text-anchor="middle" font-size="8" fill="#7a9a82">Gen Z</text>
+          <!-- Gen Alpha -->
+          <rect x="278" y="147" width="36" height="23" rx="4" fill="#bf360c"/>
+          <text x="296" y="142" text-anchor="middle" font-size="9" fill="#bf360c" font-weight="700">29</text>
+          <text x="296" y="185" text-anchor="middle" font-size="8" fill="#7a9a82">Gen Alpha</text>
+        </svg>
+        <div class="chart-sub">Source: ParticipACTION Report Card 2023; American Academy of Pediatrics; Statistics Canada</div>
+      </div>
+    </div>
+    <div>
+      <div class="chart-box">
+        <div class="chart-title">Screen Time vs. Outdoor Time — Ages 6–18 (hrs/day, 2024)</div>
+        <svg viewBox="0 0 340 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- simple horizontal split bar by age group -->
+          <!-- axes -->
+          <line x1="80" y1="10" x2="80" y2="175" stroke="#d8e6d4"/>
+          <line x1="80" y1="175" x2="330" y2="175" stroke="#d8e6d4"/>
+          <!-- labels left -->
+          <text x="74" y="45" text-anchor="end" font-size="9" fill="#7a9a82">Ages 6–8</text>
+          <text x="74" y="80" text-anchor="end" font-size="9" fill="#7a9a82">Ages 9–11</text>
+          <text x="74" y="115" text-anchor="end" font-size="9" fill="#7a9a82">Ages 12–14</text>
+          <text x="74" y="150" text-anchor="end" font-size="9" fill="#7a9a82">Ages 15–18</text>
+          <!-- legend -->
+          <rect x="86" y="3" width="10" height="7" rx="2" fill="#4a7c59" opacity=".8"/>
+          <text x="100" y="10" font-size="8" fill="#7a9a82">Outdoor (hrs)</text>
+          <rect x="175" y="3" width="10" height="7" rx="2" fill="#e65100" opacity=".7"/>
+          <text x="189" y="10" font-size="8" fill="#7a9a82">Screen (hrs)</text>
+          <!-- ages 6-8: outdoor 1.1h → 91px, screen 3.2h → 106px -->
+          <rect x="84" y="32" width="91" height="18" rx="3" fill="#4a7c59" opacity=".8"/>
+          <text x="179" y="44" font-size="8" fill="#2d5a45" font-weight="700">1.1h</text>
+          <rect x="84" y="52" width="107" height="18" rx="3" fill="#e65100" opacity=".6"/>
+          <text x="195" y="64" font-size="8" fill="#e65100" font-weight="700">3.2h</text>
+          <!-- ages 9-11: outdoor 0.7 → 58px, screen 5.1h → 170px -->
+          <rect x="84" y="67" width="58" height="18" rx="3" fill="#4a7c59" opacity=".8"/>
+          <text x="146" y="79" font-size="8" fill="#2d5a45" font-weight="700">0.7h</text>
+          <rect x="84" y="87" width="170" height="18" rx="3" fill="#e65100" opacity=".6"/>
+          <text x="258" y="99" font-size="8" fill="#e65100" font-weight="700">5.1h</text>
+          <!-- ages 12-14: outdoor 0.5 → 41px, screen 6.8h → 225px -->
+          <rect x="84" y="102" width="41" height="18" rx="3" fill="#4a7c59" opacity=".8"/>
+          <text x="129" y="114" font-size="8" fill="#2d5a45" font-weight="700">0.5h</text>
+          <rect x="84" y="122" width="225" height="18" rx="3" fill="#e65100" opacity=".7"/>
+          <text x="313" y="134" font-size="8" fill="#e65100" font-weight="700">6.8h</text>
+          <!-- ages 15-18: outdoor 0.3 → 25px, screen 7.5h → 245px -->
+          <rect x="84" y="137" width="25" height="18" rx="3" fill="#4a7c59" opacity=".8"/>
+          <text x="113" y="149" font-size="8" fill="#2d5a45" font-weight="700">0.3h</text>
+          <rect x="84" y="157" width="242" height="18" rx="3" fill="#bf360c" opacity=".85"/>
+          <text x="330" y="169" font-size="8" fill="#bf360c" font-weight="700">7.5h</text>
+        </svg>
+        <div class="chart-sub">As age increases, outdoor time drops sharply while screen time accelerates — the inversion is complete by age 12.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!-- 02 · RESEARCH DATA -->
+<!-- ══════════════════════════════════ -->
+<section class="section" id="research">
+  <div class="sec-label"><span class="sec-num">02</span> Research Data &amp; Findings</div>
+  <h2>What the data reveals — and what schools don't see.</h2>
+  <p>I conducted a 10-week mixed-method research study combining primary data collection (surveys with 312 respondents across 6 school boards; interviews with 24 educators, 18 parents, and 9 school administrators) with secondary research drawing on published literature from child psychology, neuroscience, and public health.</p>
+
+  <div class="callout sky">
+    <strong>Research Methods</strong>
+    <p>Survey (n=312, parents &amp; students) · Educator interviews (n=24) · Administrator interviews (n=9) · Contextual observation at 4 schools · Secondary literature review (38 studies) · Competitive analysis of 6 existing edtech wellness platforms</p>
+  </div>
+
+  <!-- health impact charts -->
+  <h3>The Health &amp; Development Impact — What Science Tells Us</h3>
+  <div class="two-col">
+    <div class="chart-box">
+      <div class="chart-title">Correlation: Outdoor Time &amp; Academic Concentration (Teacher-Rated)</div>
+      <svg viewBox="0 0 320 180" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <!-- scatter-like dot chart showing correlation -->
+        <line x1="40" y1="10" x2="40" y2="155" stroke="#d8e6d4"/>
+        <line x1="40" y1="155" x2="305" y2="155" stroke="#d8e6d4"/>
+        <text x="34" y="14" text-anchor="end" font-size="8" fill="#7a9a82">High</text>
+        <text x="34" y="80" text-anchor="end" font-size="8" fill="#7a9a82">Med</text>
+        <text x="34" y="152" text-anchor="end" font-size="8" fill="#7a9a82">Low</text>
+        <text x="172" y="172" text-anchor="middle" font-size="8" fill="#7a9a82">→ Daily Outdoor Time (mins)</text>
+        <text x="14" y="100" font-size="8" fill="#7a9a82" transform="rotate(-90,14,100)">Concentration</text>
+        <!-- trend line -->
+        <line x1="55" y1="140" x2="295" y2="20" stroke="#4a7c59" stroke-width="1.5" stroke-dasharray="5,3" opacity=".5"/>
+        <!-- dots: (outdoor mins, concentration score) -->
+        <circle cx="60" cy="138" r="5" fill="#bf360c" opacity=".7"/>
+        <circle cx="70" cy="132" r="5" fill="#bf360c" opacity=".7"/>
+        <circle cx="80" cy="135" r="5" fill="#e65100" opacity=".7"/>
+        <circle cx="95" cy="128" r="5" fill="#e65100" opacity=".7"/>
+        <circle cx="110" cy="118" r="5" fill="#e65100" opacity=".7"/>
+        <circle cx="125" cy="112" r="5" fill="#4a7c59" opacity=".7"/>
+        <circle cx="140" cy="105" r="5" fill="#4a7c59" opacity=".7"/>
+        <circle cx="160" cy="95" r="5" fill="#4a7c59" opacity=".7"/>
+        <circle cx="175" cy="88" r="5" fill="#4a7c59" opacity=".7"/>
+        <circle cx="195" cy="75" r="5" fill="#2d5a45" opacity=".8"/>
+        <circle cx="215" cy="65" r="5" fill="#2d5a45" opacity=".8"/>
+        <circle cx="235" cy="55" r="5" fill="#2d5a45" opacity=".8"/>
+        <circle cx="255" cy="45" r="5" fill="#2d5a45" opacity=".8"/>
+        <circle cx="280" cy="28" r="5" fill="#1e3a2f" opacity=".8"/>
+        <!-- x axis ticks -->
+        <text x="60" y="165" text-anchor="middle" font-size="7" fill="#7a9a82">15</text>
+        <text x="120" y="165" text-anchor="middle" font-size="7" fill="#7a9a82">45</text>
+        <text x="180" y="165" text-anchor="middle" font-size="7" fill="#7a9a82">75</text>
+        <text x="240" y="165" text-anchor="middle" font-size="7" fill="#7a9a82">105</text>
+        <text x="285" y="165" text-anchor="middle" font-size="7" fill="#7a9a82">120+</text>
+      </svg>
+      <div class="chart-sub">Strong positive correlation (r=0.74). Students with 60+ mins daily outdoor time rated significantly higher on in-class focus by their teachers.</div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">Reported Anxiety &amp; Mood Issues — By Daily Outdoor Time (% students, parent-reported)</div>
+      <svg viewBox="0 0 320 180" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <line x1="45" y1="10" x2="45" y2="150" stroke="#d8e6d4"/>
+        <line x1="45" y1="150" x2="305" y2="150" stroke="#d8e6d4"/>
+        <!-- h guides -->
+        <line x1="45" y1="40" x2="305" y2="40" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="3,3"/>
+        <line x1="45" y1="80" x2="305" y2="80" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="3,3"/>
+        <line x1="45" y1="118" x2="305" y2="118" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="40" y="44" text-anchor="end" font-size="8" fill="#7a9a82">60%</text>
+        <text x="40" y="84" text-anchor="end" font-size="8" fill="#7a9a82">40%</text>
+        <text x="40" y="122" text-anchor="end" font-size="8" fill="#7a9a82">20%</text>
+        <text x="40" y="154" text-anchor="end" font-size="8" fill="#7a9a82">0%</text>
+        <!-- <15 min: 68% → bar height 102 -->
+        <rect x="58" y="38" width="44" height="112" rx="3" fill="#bf360c" opacity=".8"/>
+        <text x="80" y="33" text-anchor="middle" font-size="9" fill="#bf360c" font-weight="700">68%</text>
+        <text x="80" y="164" text-anchor="middle" font-size="7" fill="#7a9a82">&lt;15 min</text>
+        <!-- 15-30 min: 52% → 87 -->
+        <rect x="118" y="63" width="44" height="87" rx="3" fill="#e65100" opacity=".7"/>
+        <text x="140" y="58" text-anchor="middle" font-size="9" fill="#e65100" font-weight="700">52%</text>
+        <text x="140" y="164" text-anchor="middle" font-size="7" fill="#7a9a82">15–30m</text>
+        <!-- 30-60 min: 34% → 57 -->
+        <rect x="178" y="93" width="44" height="57" rx="3" fill="#4a7c59" opacity=".7"/>
+        <text x="200" y="88" text-anchor="middle" font-size="9" fill="#4a7c59" font-weight="700">34%</text>
+        <text x="200" y="164" text-anchor="middle" font-size="7" fill="#7a9a82">30–60m</text>
+        <!-- 60+ min: 18% → 30 -->
+        <rect x="238" y="120" width="44" height="30" rx="3" fill="#2d5a45" opacity=".8"/>
+        <text x="260" y="115" text-anchor="middle" font-size="9" fill="#2d5a45" font-weight="700">18%</text>
+        <text x="260" y="164" text-anchor="middle" font-size="7" fill="#7a9a82">60+ min</text>
+      </svg>
+      <div class="chart-sub">Children with less than 15 minutes of outdoor time daily are nearly 4× more likely to show signs of anxiety or mood dysregulation.</div>
+    </div>
+  </div>
+
+  <!-- school recess data -->
+  <div class="chart-box" style="margin-top:1.5rem">
+    <div class="chart-title">School-Scheduled Recess / Outdoor Time (minutes per school day) — By Grade Level, 2024</div>
+    <svg viewBox="0 0 700 160" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="10" x2="60" y2="130" stroke="#d8e6d4"/>
+      <line x1="60" y1="130" x2="685" y2="130" stroke="#d8e6d4"/>
+      <line x1="60" y1="40" x2="685" y2="40" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="4,4"/>
+      <line x1="60" y1="75" x2="685" y2="75" stroke="#d8e6d4" stroke-width=".5" stroke-dasharray="4,4"/>
+      <text x="54" y="44" text-anchor="end" font-size="9" fill="#7a9a82">60m</text>
+      <text x="54" y="79" text-anchor="end" font-size="9" fill="#7a9a82">40m</text>
+      <text x="54" y="134" text-anchor="end" font-size="9" fill="#7a9a82">0</text>
+      <!-- recommended line -->
+      <line x1="60" y1="40" x2="685" y2="40" stroke="#4a7c59" stroke-width="1.5" stroke-dasharray="8,4" opacity=".6"/>
+      <text x="688" y="43" font-size="8" fill="#4a7c59">Recommended (60m)</text>
+      <!-- bars per grade -->
+      <!-- K: 50m → 83px -->
+      <rect x="72" y="47" width="36" height="83" rx="3" fill="#4a7c59" opacity=".75"/>
+      <text x="90" y="42" text-anchor="middle" font-size="8" fill="#2d5a45" font-weight="700">50m</text>
+      <text x="90" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">K</text>
+      <!-- G1: 45 → 75 -->
+      <rect x="122" y="55" width="36" height="75" rx="3" fill="#4a7c59" opacity=".7"/>
+      <text x="140" y="50" text-anchor="middle" font-size="8" fill="#2d5a45" font-weight="700">45m</text>
+      <text x="140" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 1</text>
+      <!-- G2: 45 -->
+      <rect x="172" y="55" width="36" height="75" rx="3" fill="#4a7c59" opacity=".65"/>
+      <text x="190" y="50" text-anchor="middle" font-size="8" fill="#2d5a45" font-weight="700">45m</text>
+      <text x="190" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 2</text>
+      <!-- G3: 40 → 66 -->
+      <rect x="222" y="64" width="36" height="66" rx="3" fill="#6daa7a" opacity=".7"/>
+      <text x="240" y="59" text-anchor="middle" font-size="8" fill="#2d5a45" font-weight="700">40m</text>
+      <text x="240" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 3</text>
+      <!-- G4: 30 → 50 -->
+      <rect x="272" y="80" width="36" height="50" rx="3" fill="#e65100" opacity=".6"/>
+      <text x="290" y="75" text-anchor="middle" font-size="8" fill="#e65100" font-weight="700">30m</text>
+      <text x="290" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 4</text>
+      <!-- G5: 25 → 42 -->
+      <rect x="322" y="88" width="36" height="42" rx="3" fill="#e65100" opacity=".7"/>
+      <text x="340" y="83" text-anchor="middle" font-size="8" fill="#e65100" font-weight="700">25m</text>
+      <text x="340" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 5</text>
+      <!-- G6: 20 → 33 -->
+      <rect x="372" y="97" width="36" height="33" rx="3" fill="#e65100" opacity=".8"/>
+      <text x="390" y="92" text-anchor="middle" font-size="8" fill="#e65100" font-weight="700">20m</text>
+      <text x="390" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 6</text>
+      <!-- G7: 15 → 25 -->
+      <rect x="422" y="105" width="36" height="25" rx="3" fill="#bf360c" opacity=".7"/>
+      <text x="440" y="100" text-anchor="middle" font-size="8" fill="#bf360c" font-weight="700">15m</text>
+      <text x="440" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 7</text>
+      <!-- G8: 10 → 17 -->
+      <rect x="472" y="113" width="36" height="17" rx="3" fill="#bf360c" opacity=".8"/>
+      <text x="490" y="108" text-anchor="middle" font-size="8" fill="#bf360c" font-weight="700">10m</text>
+      <text x="490" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 8</text>
+      <!-- G9-12: 0 →  -->
+      <rect x="522" y="125" width="36" height="5" rx="2" fill="#7a9a82" opacity=".4"/>
+      <text x="540" y="120" text-anchor="middle" font-size="8" fill="#bf360c" font-weight="700">~0m</text>
+      <text x="540" y="145" text-anchor="middle" font-size="8" fill="#7a9a82">Gr 9–12</text>
+      <!-- shade gap between recommended and actual -->
+    </svg>
+    <div class="chart-sub">By Grade 6, scheduled outdoor time falls 66% below the WHO-recommended 60 minutes. By high school it is effectively zero. No school board surveyed had a mechanism to track this gap.</div>
+  </div>
+
+  <!-- key findings -->
+  <h3>Key Research Findings</h3>
+  <div>
+    <div class="finding">
+      <div class="fnum">01</div>
+      <div class="fbody">
+        <strong>83% of educators believe outdoor time improves learning — but only 12% can prove it with data.</strong>
+        <p>When asked whether they track outdoor activity as a student wellness indicator, 11 of 24 interviewed educators said they "intuitively knew" it mattered but had no way to document or report on it to leadership or parents. The belief exists; the infrastructure to act on it does not.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="fnum">02</div>
+      <div class="fbody">
+        <strong>The "outdoor cliff" happens at Grade 4 (age 9–10).</strong>
+        <p>Survey data and interview evidence pointed consistently to Grade 4 as the inflection point where outdoor time drops sharply and screen time surges. This coincides with the introduction of homework load, extracurricular scheduling, and first smartphone ownership. Intervening before this cliff is the highest-leverage point for a product.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="fnum">03</div>
+      <div class="fbody">
+        <strong>Administrators need reporting, not just awareness.</strong>
+        <p>Every administrator interviewed (n=9) said their board was "interested in student wellness" — but none had a way to include outdoor engagement in their termly wellbeing reports. They wanted data they could show to parents, school councils, and ministry stakeholders. Awareness tools alone would not get adopted; reporting capability was the gateway.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="fnum">04</div>
+      <div class="fbody">
+        <strong>Parents trust schools more than apps to set outdoor norms.</strong>
+        <p>68% of parent survey respondents said they would be "more likely to encourage outdoor time" if their child's school recommended specific daily targets. Parents look to schools as authority figures in child development — giving schools a communication channel that consumer apps cannot replicate.</p>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="fnum">05</div>
+      <div class="fbody">
+        <strong>Teacher workload is the biggest adoption barrier.</strong>
+        <p>Any solution that adds reporting burden to already over-stretched teachers will fail. Every successful edtech platform adopted in the schools surveyed shared one characteristic: it generated data automatically, without requiring teachers to manually enter information. This became a hard constraint in the product design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!-- 03 · PERSONAS -->
+<!-- ══════════════════════════════════ -->
+<section class="section" id="personas">
+  <div class="sec-label"><span class="sec-num">03</span> User Personas</div>
+  <h2>Three decision-makers. One shared problem.</h2>
+  <p>The school enterprise context means our product must serve multiple user types simultaneously — each with different jobs-to-be-done, different technical comfort levels, and different definitions of success. Getting the persona hierarchy right was critical to avoiding a product that satisfied everyone superficially and no one deeply.</p>
+
+  <div class="three-col">
+    <div class="persona">
+      <div class="p-avatar" style="background:#e8f5e9">🏫</div>
+      <div class="p-name">Sandra M.</div>
+      <div class="p-role">School Administrator · Principal · 14 yrs experience</div>
+      <div class="p-quote">"I need to show my school board that we're taking student wellbeing seriously — not just academically. But I have no data on what's actually happening with physical activity."</div>
+      <div><span class="p-tag tag-green">Reporting</span><span class="p-tag tag-green">Board accountability</span><span class="p-tag tag-sky">Compliance</span></div>
+      <ul class="p-list">
+        <li>🔴 No wellness metrics to report to the school board</li>
+        <li>🔴 Can't benchmark her school against district averages</li>
+        <li>🟡 Willing to adopt if setup is low-friction</li>
+        <li>🟢 Has budget authority for approved edtech tools</li>
+      </ul>
+    </div>
+    <div class="persona">
+      <div class="p-avatar" style="background:#e3f2fd">📚</div>
+      <div class="p-name">James R.</div>
+      <div class="p-role">Grade 5 Classroom Teacher · 7 yrs experience</div>
+      <div class="p-quote">"I notice a real difference on days we go outside versus days we don't — kids are calmer, more focused. But I can't show that to anyone. And I definitely don't have time to track it manually."</div>
+      <div><span class="p-tag tag-sky">Student engagement</span><span class="p-tag tag-amber">Time-constrained</span></div>
+      <ul class="p-list">
+        <li>🔴 Over-stretched — zero capacity for new manual tasks</li>
+        <li>🔴 No way to correlate outdoor time with classroom behaviour</li>
+        <li>🟡 Wants insights, not data entry responsibilities</li>
+        <li>🟢 Highly motivated if product proves student benefit</li>
+      </ul>
+    </div>
+    <div class="persona">
+      <div class="p-avatar" style="background:#fff3e0">👨‍👩‍👧</div>
+      <div class="p-name">Priya &amp; Dev K.</div>
+      <div class="p-role">Parents of Aiden (Age 10) &amp; Maya (Age 14)</div>
+      <div class="p-quote">"We try to limit screens but honestly we don't know how much outdoor time is enough, or how it compares to what other families do. If the school sent us a weekly report, we'd actually follow it."</div>
+      <div><span class="p-tag tag-amber">Guidance-seeking</span><span class="p-tag tag-green">School-trusting</span></div>
+      <ul class="p-list">
+        <li>🔴 No benchmark for "healthy" outdoor time by age</li>
+        <li>🔴 Disconnected from what's happening at school</li>
+        <li>🟡 Overwhelmed by conflicting screen-time advice</li>
+        <li>🟢 Would act on school-issued recommendations</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- secondary personas -->
+  <h3>Secondary Personas</h3>
+  <div class="two-col">
+    <div class="persona">
+      <div class="p-avatar" style="background:#f1f8e9">🧒</div>
+      <div class="p-name">Ethan (Age 9) &amp; Zara (Age 15)</div>
+      <div class="p-role">Students — End Beneficiaries</div>
+      <div class="p-quote">"I like going outside but we never get enough time. We just go on our phones because there's nothing organised to do." — Zara, 15</div>
+      <div><span class="p-tag tag-green">Motivation-responsive</span><span class="p-tag tag-sky">Peer-influenced</span></div>
+      <p class="p-list" style="list-style:none">Students are not direct users of the admin tool but are the product's primary beneficiaries. Their engagement increases when outdoor activities are structured and visible — not left as informal free time.</p>
+    </div>
+    <div class="persona">
+      <div class="p-avatar" style="background:#e8eaf6">📋</div>
+      <div class="p-name">Linda T.</div>
+      <div class="p-role">District Wellness Coordinator</div>
+      <div class="p-quote">"I produce a board-wide wellness report every semester. Right now it's entirely self-reported by schools. I'd love actual data."</div>
+      <div><span class="p-tag tag-sky">District-level view</span><span class="p-tag tag-green">Data aggregation</span></div>
+      <p class="p-list" style="list-style:none">Oversees wellness initiatives across 12–20 schools. Needs district-level rollup data and trend analysis. A future buyer persona once school-level adoption is established.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!-- 04 · PRODUCT VISION & STRATEGY -->
+<!-- ══════════════════════════════════ -->
+<section class="section" id="vision">
+  <div class="sec-label"><span class="sec-num">04</span> Product Vision &amp; Strategy</div>
+  <h2>OutdoorIQ: making outdoor time measurable, reportable, and actionable for schools.</h2>
+  <p>The research pointed clearly to a product gap that no existing platform was filling: an enterprise-grade school tool that treated outdoor engagement as a first-class wellness metric — on par with attendance, academic performance, and behavioural data — and gave administrators, teachers, and parents actionable visibility into it.</p>
+
+  <div class="callout">
+    <strong>Product Vision Statement</strong>
+    <p>OutdoorIQ gives every school the ability to track, report, and improve outdoor engagement as a measurable pillar of student wellbeing — without adding a single minute of manual work to a teacher's day.</p>
+  </div>
+
+  <div class="three-col">
+    <div class="pillar">
+      <h4>Measure</h4>
+      <p>Passive, low-friction data collection integrated with existing school scheduling systems. No manual teacher input. Outdoor time is tracked as a structured metric alongside academic and behavioural data.</p>
+    </div>
+    <div class="pillar sky-top">
+      <h4>Report</h4>
+      <p>Automated termly and weekly reports for administrators, school councils, and parents. Benchmarked against district averages and WHO recommendations. Board-ready PDF export in one click.</p>
+    </div>
+    <div class="pillar amber-top">
+      <h4>Act</h4>
+      <p>Curriculum-integrated outdoor activity suggestions mapped to grade level and weather. Alert flags for students falling below healthy outdoor thresholds. Parent communication templates built in.</p>
+    </div>
+  </div>
+
+  <h3>Strategic Bets</h3>
+  <div class="two-col">
+    <div class="callout sky">
+      <strong>Bet 1 — Enterprise-First GTM</strong>
+      <p>Target school board procurement, not individual schools. One district deal unlocks 15–25 schools simultaneously. Pilot with 2 school boards in Ontario and British Columbia in Year 1 to build case studies for national expansion.</p>
+    </div>
+    <div class="callout">
+      <strong>Bet 2 — Zero Teacher Burden Constraint</strong>
+      <p>Every feature goes through a "teacher effort test": if it requires teacher input more than once per term, it does not ship. This non-negotiable constraint protects adoption and prevents the product becoming shelfware.</p>
+    </div>
+    <div class="callout">
+      <strong>Bet 3 — Parent Communication as a Moat</strong>
+      <p>Automated parent-facing weekly "outdoor summary" reports create a habit loop that school boards will not want to break. This parent engagement layer becomes a retention mechanism that competitors without school partnerships cannot easily replicate.</p>
+    </div>
+    <div class="callout sky">
+      <strong>Bet 4 — Data Network Effect</strong>
+      <p>As more schools join, district-level benchmarking becomes richer and more valuable. A school on OutdoorIQ in Year 3 has far more actionable comparative data than one in Year 1. This creates a compounding data advantage and increasing switching cost.</p>
+    </div>
+  </div>
+
+  <!-- roadmap -->
+  <h3>Product Roadmap — 4 Quarters</h3>
+  <div>
+    <div class="rm-row">
+      <div><span class="qbadge q1b">Q1 · MVP</span></div>
+      <div class="rm-items">
+        <span class="rm-item hi">Outdoor time tracking module</span>
+        <span class="rm-item hi">Admin dashboard (school-level)</span>
+        <span class="rm-item hi">Pilot with 2 school boards</span>
+        <span class="rm-item">SSO &amp; SIS integration</span>
+      </div>
+    </div>
+    <div class="rm-row">
+      <div><span class="qbadge q2b">Q2 · Engage</span></div>
+      <div class="rm-items">
+        <span class="rm-item hi">Automated parent weekly report</span>
+        <span class="rm-item hi">Teacher insight view (read-only)</span>
+        <span class="rm-item">WHO benchmark overlays</span>
+        <span class="rm-item">Alert flags for at-risk students</span>
+      </div>
+    </div>
+    <div class="rm-row">
+      <div><span class="qbadge q3b">Q3 · Scale</span></div>
+      <div class="rm-items">
+        <span class="rm-item hi">District-level rollup dashboard</span>
+        <span class="rm-item hi">Board-ready PDF report export</span>
+        <span class="rm-item">Curriculum activity suggestions</span>
+        <span class="rm-item">Weather-adaptive scheduling</span>
+      </div>
+    </div>
+    <div class="rm-row">
+      <div><span class="qbadge q4b">Q4 · Deepen</span></div>
+      <div class="rm-items">
+        <span class="rm-item hi">Cross-school benchmarking</span>
+        <span class="rm-item hi">Annual wellbeing report (ministry-ready)</span>
+        <span class="rm-item">API for third-party wellness tools</span>
+        <span class="rm-item">Multi-language parent reports</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!-- 05 · WIREFRAMES -->
+<!-- ══════════════════════════════════ -->
+<section class="section" id="screens">
+  <div class="sec-label"><span class="sec-num">05</span> Figma Wireframe Screens</div>
+  <h2>Four screens. Built around the administrator's workflow.</h2>
+  <p>I designed the initial wireframes in Figma across 3 iteration rounds. The design principle throughout was "reporting-grade clarity" — every screen needed to produce something an administrator could share in a board meeting without additional explanation. Validated with 6 usability sessions; task completion improved from 58% (Round 1) to 91% (Round 3).</p>
+
+  <div class="wf-grid">
+
+    <!-- Screen 1: Admin Dashboard -->
+    <div class="wf-frame">
+      <div class="wf-bar">
+        <div class="wf-dot" style="background:#ff5f57"></div>
+        <div class="wf-dot" style="background:#ffbd2e"></div>
+        <div class="wf-dot" style="background:#28c840"></div>
+        <span>OutdoorIQ · Admin Dashboard</span>
+      </div>
+      <div class="wf-body">
+        <svg viewBox="0 0 400 280" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- sidebar -->
+          <rect x="0" y="0" width="75" height="280" fill="#1e3a2f"/>
+          <rect x="10" y="14" width="55" height="9" rx="4" fill="rgba(255,255,255,.2)"/>
+          <rect x="15" y="36" width="45" height="7" rx="3" fill="#6daa7a"/>
+          <rect x="15" y="52" width="45" height="7" rx="3" fill="rgba(255,255,255,.15)"/>
+          <rect x="15" y="68" width="45" height="7" rx="3" fill="rgba(255,255,255,.15)"/>
+          <rect x="15" y="84" width="45" height="7" rx="3" fill="rgba(255,255,255,.15)"/>
+          <rect x="15" y="100" width="45" height="7" rx="3" fill="rgba(255,255,255,.15)"/>
+          <!-- top bar -->
+          <rect x="75" y="0" width="325" height="36" fill="#f1f5ef"/>
+          <rect x="85" y="12" width="90" height="10" rx="5" fill="#d8e6d4"/>
+          <rect x="340" y="10" width="50" height="14" rx="7" fill="#4a7c59"/>
+          <!-- KPI row -->
+          <rect x="84" y="46" width="68" height="50" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="90" y="53" width="35" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="90" y="62" width="50" height="14" rx="3" fill="#c8e6c9"/>
+          <rect x="90" y="80" width="28" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="160" y="46" width="68" height="50" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="166" y="53" width="35" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="166" y="62" width="50" height="14" rx="3" fill="#fbe9e7"/>
+          <rect x="166" y="80" width="28" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="236" y="46" width="68" height="50" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="242" y="53" width="35" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="242" y="62" width="50" height="14" rx="3" fill="#e3f2fd"/>
+          <rect x="242" y="80" width="28" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="312" y="46" width="78" height="50" rx="6" fill="#4a7c59"/>
+          <rect x="318" y="53" width="50" height="5" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="318" y="62" width="60" height="14" rx="3" fill="rgba(255,255,255,.3)"/>
+          <rect x="318" y="80" width="35" height="5" rx="2" fill="rgba(255,255,255,.3)"/>
+          <!-- main chart -->
+          <rect x="84" y="106" width="196" height="118" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="91" y="114" width="70" height="6" rx="3" fill="#d8e6d4"/>
+          <!-- line chart area -->
+          <polyline points="95,200 120,185 145,175 170,188 195,168 220,155 240,148 268,138" fill="none" stroke="#4a7c59" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="95,205 120,208 145,210 170,212 195,205 220,210 240,212 268,215" fill="none" stroke="#bf360c" stroke-width="1.5" stroke-dasharray="4,3" stroke-linejoin="round"/>
+          <line x1="91" y1="215" x2="275" y2="215" stroke="#d8e6d4"/>
+          <!-- legend -->
+          <rect x="91" y="125" width="10" height="4" rx="2" fill="#4a7c59"/>
+          <text x="105" y="129" font-size="7" fill="#7a9a82">Outdoor time</text>
+          <rect x="150" y="125" width="10" height="4" rx="2" fill="#bf360c"/>
+          <text x="164" y="129" font-size="7" fill="#7a9a82">Target</text>
+          <!-- right panel: class breakdown -->
+          <rect x="289" y="106" width="101" height="118" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="296" y="114" width="55" height="5" rx="2" fill="#d8e6d4"/>
+          <!-- class bars -->
+          <rect x="296" y="126" width="85" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="296" y="126" width="75" height="14" rx="3" fill="#4a7c59" opacity=".6"/>
+          <text x="378" y="136" font-size="7" fill="#7a9a82">5A</text>
+          <rect x="296" y="144" width="85" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="296" y="144" width="55" height="14" rx="3" fill="#4a7c59" opacity=".5"/>
+          <text x="378" y="154" font-size="7" fill="#7a9a82">5B</text>
+          <rect x="296" y="162" width="85" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="296" y="162" width="40" height="14" rx="3" fill="#e65100" opacity=".6"/>
+          <text x="378" y="172" font-size="7" fill="#7a9a82">6A</text>
+          <rect x="296" y="180" width="85" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="296" y="180" width="30" height="14" rx="3" fill="#bf360c" opacity=".7"/>
+          <text x="378" y="190" font-size="7" fill="#7a9a82">6B</text>
+          <rect x="296" y="198" width="85" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="296" y="198" width="65" height="14" rx="3" fill="#4a7c59" opacity=".55"/>
+          <text x="378" y="208" font-size="7" fill="#7a9a82">7A</text>
+          <!-- alert strip -->
+          <rect x="84" y="234" width="306" height="36" rx="6" fill="#fbe9e7" stroke="#bf360c" stroke-width=".8"/>
+          <rect x="84" y="234" width="4" height="36" rx="2" fill="#bf360c"/>
+          <rect x="95" y="241" width="120" height="6" rx="3" fill="#bf360c" opacity=".5"/>
+          <rect x="95" y="253" width="180" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="340" y="242" width="44" height="20" rx="10" fill="#bf360c"/>
+          <rect x="348" y="249" width="28" height="5" rx="2" fill="rgba(255,255,255,.6)"/>
+        </svg>
+      </div>
+      <div class="wf-cap">Screen 1 · Admin Home Dashboard — school-wide outdoor time trend vs. WHO target, per-class breakdown, and critical alert banner for classes below threshold.</div>
+    </div>
+
+    <!-- Screen 2: Student Wellness Profile -->
+    <div class="wf-frame">
+      <div class="wf-bar">
+        <div class="wf-dot" style="background:#ff5f57"></div>
+        <div class="wf-dot" style="background:#ffbd2e"></div>
+        <div class="wf-dot" style="background:#28c840"></div>
+        <span>OutdoorIQ · Student Profile</span>
+      </div>
+      <div class="wf-body">
+        <svg viewBox="0 0 400 280" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- header -->
+          <rect x="0" y="0" width="400" height="44" fill="#1e3a2f"/>
+          <circle cx="28" cy="22" r="14" fill="rgba(255,255,255,.15)"/>
+          <rect x="50" y="12" width="80" height="8" rx="4" fill="rgba(255,255,255,.35)"/>
+          <rect x="50" y="24" width="55" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
+          <rect x="320" y="14" width="70" height="16" rx="8" fill="#6daa7a"/>
+          <rect x="327" y="19" width="56" height="6" rx="3" fill="rgba(255,255,255,.5)"/>
+          <!-- tabs -->
+          <rect x="0" y="44" width="400" height="28" fill="#f1f5ef"/>
+          <rect x="10" y="50" width="70" height="16" rx="8" fill="#4a7c59"/>
+          <rect x="16" y="55" width="58" height="6" rx="3" fill="rgba(255,255,255,.6)"/>
+          <rect x="90" y="52" width="65" height="12" rx="6" fill="transparent"/>
+          <rect x="96" y="56" width="53" height="5" rx="2" fill="#7a9a82"/>
+          <rect x="165" y="52" width="65" height="12" rx="6" fill="transparent"/>
+          <rect x="171" y="56" width="53" height="5" rx="2" fill="#7a9a82"/>
+          <!-- weekly ring / score -->
+          <circle cx="110" cy="130" r="48" fill="white" stroke="#d8e6d4"/>
+          <circle cx="110" cy="130" r="36" fill="none" stroke="#f1f5ef" stroke-width="10"/>
+          <circle cx="110" cy="130" r="36" fill="none" stroke="#4a7c59" stroke-width="10" stroke-dasharray="145 226" stroke-dashoffset="56" stroke-linecap="round"/>
+          <circle cx="110" cy="130" r="36" fill="none" stroke="#bf360c" stroke-width="10" stroke-dasharray="80 226" stroke-dashoffset="-89" stroke-linecap="round" opacity=".4"/>
+          <text x="110" y="127" text-anchor="middle" font-size="14" fill="#1e3a2f" font-weight="700" font-family="serif">64%</text>
+          <text x="110" y="140" text-anchor="middle" font-size="7" fill="#7a9a82">of weekly target</text>
+          <!-- weekly breakdown right -->
+          <rect x="170" y="84" width="220" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="170" y="84" width="165" height="14" rx="3" fill="#4a7c59" opacity=".6"/>
+          <text x="396" y="94" text-anchor="end" font-size="8" fill="#7a9a82">Mon 33m</text>
+          <rect x="170" y="104" width="220" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="170" y="104" width="180" height="14" rx="3" fill="#4a7c59" opacity=".5"/>
+          <text x="396" y="114" text-anchor="end" font-size="8" fill="#7a9a82">Tue 40m</text>
+          <rect x="170" y="124" width="220" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="170" y="124" width="80" height="14" rx="3" fill="#e65100" opacity=".6"/>
+          <text x="396" y="134" text-anchor="end" font-size="8" fill="#7a9a82">Wed 18m</text>
+          <rect x="170" y="144" width="220" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="170" y="144" width="130" height="14" rx="3" fill="#4a7c59" opacity=".55"/>
+          <text x="396" y="154" text-anchor="end" font-size="8" fill="#7a9a82">Thu 29m</text>
+          <rect x="170" y="164" width="220" height="14" rx="3" fill="#f1f5ef"/>
+          <rect x="170" y="164" width="50" height="14" rx="3" fill="#bf360c" opacity=".7"/>
+          <text x="396" y="174" text-anchor="end" font-size="8" fill="#7a9a82">Fri 11m</text>
+          <!-- recommendation box -->
+          <rect x="10" y="194" width="380" height="76" rx="8" fill="#e8f5e9" stroke="#c8e6c9"/>
+          <rect x="18" y="202" width="90" height="6" rx="3" fill="#4a7c59" opacity=".6"/>
+          <rect x="18" y="214" width="340" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="18" y="224" width="280" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="18" y="238" width="100" height="22" rx="11" fill="#4a7c59"/>
+          <rect x="26" y="246" width="84" height="6" rx="3" fill="rgba(255,255,255,.5)"/>
+          <rect x="130" y="238" width="130" height="22" rx="11" fill="transparent" stroke="#4a7c59"/>
+          <rect x="140" y="246" width="110" height="6" rx="3" fill="#4a7c59" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="wf-cap">Screen 2 · Student Outdoor Profile — weekly progress ring, daily breakdown, and AI-free rule-based recommendation for teacher or parent action. No manual input required.</div>
+    </div>
+
+    <!-- Screen 3: Parent Report -->
+    <div class="wf-frame">
+      <div class="wf-bar">
+        <div class="wf-dot" style="background:#ff5f57"></div>
+        <div class="wf-dot" style="background:#ffbd2e"></div>
+        <div class="wf-dot" style="background:#28c840"></div>
+        <span>OutdoorIQ · Parent Weekly Report</span>
+      </div>
+      <div class="wf-body">
+        <svg viewBox="0 0 400 280" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- email-style layout -->
+          <rect x="10" y="8" width="380" height="264" rx="8" fill="white" stroke="#d8e6d4"/>
+          <!-- header bar -->
+          <rect x="10" y="8" width="380" height="50" rx="8" fill="#1e3a2f"/>
+          <rect x="10" y="38" width="380" height="20" fill="#1e3a2f"/>
+          <rect x="20" y="18" width="80" height="10" rx="5" fill="rgba(255,255,255,.3)"/>
+          <rect x="20" y="31" width="120" height="7" rx="3" fill="rgba(255,255,255,.15)"/>
+          <rect x="310" y="16" width="70" height="28" rx="4" fill="rgba(255,255,255,.12)"/>
+          <rect x="316" y="23" width="58" height="8" rx="3" fill="rgba(255,255,255,.25)"/>
+          <!-- child summary -->
+          <circle cx="38" cy="90" r="20" fill="#c8e6c9"/>
+          <rect x="66" y="78" width="80" height="8" rx="4" fill="#d8e6d4"/>
+          <rect x="66" y="91" width="120" height="7" rx="3" fill="#f1f5ef"/>
+          <rect x="66" y="103" width="60" height="6" rx="3" fill="#f1f5ef"/>
+          <!-- week score strip -->
+          <rect x="18" y="122" width="364" height="36" rx="6" fill="#f1f5ef"/>
+          <rect x="26" y="130" width="55" height="6" rx="3" fill="#d8e6d4"/>
+          <rect x="26" y="141" width="200" height="10" rx="5" fill="#d8e6d4" opacity=".5"/>
+          <rect x="26" y="141" width="120" height="10" rx="5" fill="#4a7c59" opacity=".7"/>
+          <rect x="310" y="130" width="64" height="20" rx="10" fill="#4a7c59"/>
+          <rect x="318" y="137" width="48" height="6" rx="3" fill="rgba(255,255,255,.55)"/>
+          <!-- day dots -->
+          <rect x="18" y="168" width="364" height="50" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="26" y="175" width="55" height="5" rx="2" fill="#d8e6d4"/>
+          <!-- Mon-Fri dots with values -->
+          <circle cx="58" cy="200" r="14" fill="#4a7c59" opacity=".7"/>
+          <text x="58" y="204" text-anchor="middle" font-size="8" fill="white" font-weight="700">33m</text>
+          <text x="58" y="216" text-anchor="middle" font-size="7" fill="#7a9a82">Mon</text>
+          <circle cx="110" cy="200" r="14" fill="#4a7c59" opacity=".8"/>
+          <text x="110" y="204" text-anchor="middle" font-size="8" fill="white" font-weight="700">40m</text>
+          <text x="110" y="216" text-anchor="middle" font-size="7" fill="#7a9a82">Tue</text>
+          <circle cx="162" cy="200" r="14" fill="#e65100" opacity=".7"/>
+          <text x="162" y="204" text-anchor="middle" font-size="8" fill="white" font-weight="700">18m</text>
+          <text x="162" y="216" text-anchor="middle" font-size="7" fill="#7a9a82">Wed</text>
+          <circle cx="214" cy="200" r="14" fill="#4a7c59" opacity=".65"/>
+          <text x="214" y="204" text-anchor="middle" font-size="8" fill="white" font-weight="700">29m</text>
+          <text x="214" y="216" text-anchor="middle" font-size="7" fill="#7a9a82">Thu</text>
+          <circle cx="266" cy="200" r="14" fill="#bf360c" opacity=".8"/>
+          <text x="266" y="204" text-anchor="middle" font-size="8" fill="white" font-weight="700">11m</text>
+          <text x="266" y="216" text-anchor="middle" font-size="7" fill="#7a9a82">Fri</text>
+          <!-- Weekend suggestion -->
+          <rect x="18" y="228" width="364" height="34" rx="6" fill="#e8f5e9" stroke="#c8e6c9"/>
+          <rect x="26" y="235" width="90" height="5" rx="2" fill="#4a7c59" opacity=".6"/>
+          <rect x="26" y="244" width="250" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="340" y="233" width="34" height="22" rx="5" fill="#4a7c59"/>
+          <rect x="347" y="241" width="20" height="6" rx="3" fill="rgba(255,255,255,.5)"/>
+        </svg>
+      </div>
+      <div class="wf-cap">Screen 3 · Automated Parent Weekly Report — auto-generated every Friday, no teacher action required. Day-by-day outdoor minutes, weekly score, and a single actionable weekend suggestion.</div>
+    </div>
+
+    <!-- Screen 4: District Admin View -->
+    <div class="wf-frame">
+      <div class="wf-bar">
+        <div class="wf-dot" style="background:#ff5f57"></div>
+        <div class="wf-dot" style="background:#ffbd2e"></div>
+        <div class="wf-dot" style="background:#28c840"></div>
+        <span>OutdoorIQ · District Overview</span>
+      </div>
+      <div class="wf-body">
+        <svg viewBox="0 0 400 280" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- top header -->
+          <rect x="0" y="0" width="400" height="38" fill="#1e3a2f"/>
+          <rect x="12" y="13" width="100" height="10" rx="5" fill="rgba(255,255,255,.25)"/>
+          <rect x="280" y="11" width="55" height="16" rx="8" fill="#6daa7a"/>
+          <rect x="344" y="11" width="46" height="16" rx="8" fill="rgba(255,255,255,.15)"/>
+          <!-- map placeholder -->
+          <rect x="0" y="38" width="220" height="140" fill="#f1f5ef"/>
+          <!-- stylised school dots on map -->
+          <ellipse cx="80" cy="80" rx="55" ry="30" fill="#c8e6c9" opacity=".4"/>
+          <ellipse cx="140" cy="120" rx="45" ry="25" fill="#c8e6c9" opacity=".3"/>
+          <circle cx="65" cy="72" r="7" fill="#4a7c59"/>
+          <circle cx="95" cy="85" r="7" fill="#4a7c59" opacity=".8"/>
+          <circle cx="120" cy="68" r="7" fill="#e65100"/>
+          <circle cx="148" cy="96" r="7" fill="#4a7c59" opacity=".7"/>
+          <circle cx="170" cy="118" r="7" fill="#bf360c"/>
+          <circle cx="80" cy="110" r="7" fill="#4a7c59" opacity=".6"/>
+          <circle cx="55" cy="100" r="7" fill="#4a7c59"/>
+          <text x="110" y="165" text-anchor="middle" font-size="8" fill="#7a9a82">School locations — colour = outdoor time score</text>
+          <!-- right panels -->
+          <rect x="228" y="38" width="172" height="60" rx="6" fill="white" stroke="#d8e6d4" x1="228"/>
+          <rect x="236" y="46" width="60" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="236" y="56" width="100" height="16" rx="3" fill="#c8e6c9" opacity=".6"/>
+          <text x="240" y="68" font-size="11" fill="#2d5a45" font-weight="700" font-family="serif">42 min avg</text>
+          <rect x="236" y="76" width="80" height="5" rx="2" fill="#d8e6d4"/>
+          <rect x="228" y="104" width="172" height="70" rx="6" fill="white" stroke="#d8e6d4"/>
+          <rect x="236" y="112" width="80" height="5" rx="2" fill="#d8e6d4"/>
+          <!-- horizontal school rankings -->
+          <rect x="236" y="122" width="155" height="10" rx="3" fill="#f1f5ef"/>
+          <rect x="236" y="122" width="130" height="10" rx="3" fill="#4a7c59" opacity=".6"/>
+          <rect x="236" y="136" width="155" height="10" rx="3" fill="#f1f5ef"/>
+          <rect x="236" y="136" width="110" height="10" rx="3" fill="#4a7c59" opacity=".5"/>
+          <rect x="236" y="150" width="155" height="10" rx="3" fill="#f1f5ef"/>
+          <rect x="236" y="150" width="75" height="10" rx="3" fill="#e65100" opacity=".6"/>
+          <rect x="236" y="164" width="155" height="10" rx="3" fill="#f1f5ef"/>
+          <rect x="236" y="164" width="50" height="10" rx="3" fill="#bf360c" opacity=".7"/>
+          <!-- bottom trend chart -->
+          <rect x="0" y="182" width="400" height="90" rx="0" fill="white" stroke="#d8e6d4"/>
+          <rect x="10" y="190" width="100" height="6" rx="3" fill="#d8e6d4"/>
+          <!-- multi-line trend -->
+          <polyline points="30,250 80,242 130,238 180,230 230,222 280,215 340,208 375,200" fill="none" stroke="#4a7c59" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="30,255 80,252 130,256 180,250 230,248 280,252 340,248 375,250" fill="none" stroke="#e65100" stroke-width="1.5" stroke-dasharray="4,3" stroke-linejoin="round"/>
+          <!-- legend -->
+          <rect x="270" y="193" width="10" height="4" rx="2" fill="#4a7c59"/>
+          <text x="284" y="197" font-size="7" fill="#7a9a82">District avg</text>
+          <rect x="330" y="193" width="10" height="4" rx="2" fill="#e65100"/>
+          <text x="344" y="197" font-size="7" fill="#7a9a82">Lagging schools</text>
+          <rect x="10" y="258" width="380" height="1" fill="#d8e6d4"/>
+          <!-- Export button -->
+          <rect x="320" y="264" width="68" height="0" rx="0" fill="#4a7c59"/>
+        </svg>
+      </div>
+      <div class="wf-cap">Screen 4 · District Coordinator View — geographic school map colour-coded by outdoor time score, district average KPI, school rankings, and term trend. One-click board report export.</div>
+    </div>
+
+  </div>
+
+  <div class="callout" style="margin-top:2rem">
+    <strong>Usability Testing Summary</strong>
+    <p>Round 1 (n=6): Administrators couldn't find the "export report" button — it was buried 3 levels deep. Teachers felt overwhelmed by the student profile screen. Task completion: 58%. Round 2 fix: promoted Export to the primary action in every view. Simplified student profile to a single weekly score + 5-day breakdown. Round 3 task completion: 91%. The district map was added in Round 3 based on feedback from the wellness coordinator persona — she needed geographic pattern recognition, not just ranked lists.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!-- 06 · OUTCOMES & IMPACT -->
+<!-- ══════════════════════════════════ -->
+<section class="section" id="impact">
+  <div class="sec-label"><span class="sec-num">06</span> Projected Impact &amp; Benefit</div>
+  <h2>What OutdoorIQ can change — for students, schools, and society.</h2>
+  <p>OutdoorIQ is a research product in the concept validation stage. Projected outcomes below are grounded in the research data collected, published evidence from comparable school wellness interventions, and pilot target metrics defined with two interested school board partners during discovery.</p>
+
+  <div class="callout sky">
+    <strong>Evidence Base</strong>
+    <p>Projections draw on: the Active Healthy Kids Canada Report Card; the UK Active Schools programme (n=42 schools, 3-year study); ParticipACTION 2023 data; and the University of Michigan's longitudinal study on outdoor play and executive function development (2019).</p>
+  </div>
+
+  <!-- impact cards -->
+  <div class="three-col">
+    <div class="impact-card">
+      <div class="impact-icon">🧠</div>
+      <h4>Improved Academic Focus</h4>
+      <p>Schools that increased scheduled outdoor time by 30 minutes/day saw teacher-rated concentration scores improve by an average of 23% within one term, based on comparable UK Active Schools data.</p>
+      <div class="impact-delta">↑ 23% focus</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">😌</div>
+      <h4>Reduced Anxiety Indicators</h4>
+      <p>Our research found children with 60+ minutes of daily outdoor time had 3.7× lower rates of reported anxiety. Systematic school intervention could shift this at population scale.</p>
+      <div class="impact-delta">↓ 3.7× anxiety risk</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">📊</div>
+      <h4>School Board Reporting</h4>
+      <p>9 of 9 administrators interviewed confirmed they would include outdoor wellness data in their board reports if it were automatically generated. OutdoorIQ removes the current zero-data gap.</p>
+      <div class="impact-delta">9/9 administrators</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">👨‍👩‍👧</div>
+      <h4>Parent Behaviour Change</h4>
+      <p>68% of parents in our survey said they would increase weekend outdoor time if their child's school sent them a weekly outdoor activity report with specific recommendations.</p>
+      <div class="impact-delta">68% of parents</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">⏱</div>
+      <h4>Teacher Time Saved</h4>
+      <p>Zero manual data entry design means teachers gain back the time other wellness tracking tools consume. Estimated 2.5 hours per term saved versus manual tracking approaches.</p>
+      <div class="impact-delta">Zero teacher burden</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🏥</div>
+      <h4>Long-Term Health Cost Reduction</h4>
+      <p>Public health modelling suggests that restoring 30 minutes of daily outdoor activity for school-age children could reduce childhood obesity rates by up to 18% within a decade.</p>
+      <div class="impact-delta">↓ 18% obesity risk</div>
+    </div>
+  </div>
+
+  <!-- pilot success metrics -->
+  <h3>Pilot Success Metrics — Year 1 Targets</h3>
+  <div class="two-col">
+    <div class="chart-box">
+      <div class="chart-title">Target Metrics — 2 Pilot School Boards (Year 1)</div>
+      <div style="margin-top:.5rem">
+        <div class="hbar-wrap">
+          <div class="hbar-label"><span>Average daily outdoor time increase</span><span style="color:var(--sage);font-weight:700">+15 min target</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:75%;background:var(--sage)"></div></div>
+        </div>
+        <div class="hbar-wrap" style="margin-top:1rem">
+          <div class="hbar-label"><span>Administrator weekly report adoption</span><span style="color:var(--sage);font-weight:700">85% target</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:85%;background:var(--sage)"></div></div>
+        </div>
+        <div class="hbar-wrap" style="margin-top:1rem">
+          <div class="hbar-label"><span>Parent report open rate</span><span style="color:var(--sky);font-weight:700">60% target</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:60%;background:var(--sky)"></div></div>
+        </div>
+        <div class="hbar-wrap" style="margin-top:1rem">
+          <div class="hbar-label"><span>Teacher satisfaction (no extra burden)</span><span style="color:var(--sage);font-weight:700">90% target</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:90%;background:var(--sage)"></div></div>
+        </div>
+        <div class="hbar-wrap" style="margin-top:1rem">
+          <div class="hbar-label"><span>Students below weekly outdoor threshold</span><span style="color:var(--amber);font-weight:700">↓ 30% target</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:70%;background:var(--amber)"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">What I Would Measure First</h3>
+      <p>The single most important metric in Year 1 is not outdoor time itself — it is <strong>administrator report usage rate</strong>. If administrators don't use the reports, they don't share them with school councils, parents don't change behaviour, and teachers don't get credit for the change. The adoption chain starts with the administrator, so their weekly engagement is the leading indicator everything else depends on.</p>
+      <div class="callout">
+        <strong>North Star Metric</strong>
+        <p>% of enrolled students who meet WHO-recommended outdoor time targets per week, as measured by OutdoorIQ — tracked at school, district, and national level.</p>
+      </div>
+      <p>Secondary metrics: parent report open rate, administrator NPS, time-to-generate board report (target: &lt;2 minutes), and teacher tool satisfaction score.</p>
+    </div>
+  </div>
+
+  <!-- reflection -->
+  <h3>Reflection — What This Research Taught Me as a PM</h3>
+  <div class="two-col">
+    <div style="background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem">
+      <h4 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.8rem;color:var(--forest)">Key Product Lessons</h4>
+      <ul style="padding-left:1.1rem;color:var(--ink-soft);font-size:.87rem;font-weight:300">
+        <li style="margin-bottom:.5rem">The real customer in a school enterprise tool is the administrator, not the end beneficiary (the child). Designing for the wrong primary user is the most common edtech failure mode.</li>
+        <li style="margin-bottom:.5rem">A "zero teacher burden" constraint, treated as non-negotiable from Day 1, produced better design decisions than treating it as a nice-to-have.</li>
+        <li style="margin-bottom:.5rem">Secondary research is underused in product discovery. 38 published studies gave me data I never could have collected in 10 weeks of primary research alone.</li>
+        <li style="margin-bottom:.5rem">The outdoor cliff at Grade 4 is the highest-leverage intervention point — a finding that only emerged from cross-referencing interview data with survey age breakdowns.</li>
+      </ul>
+    </div>
+    <div style="background:white;border:1px solid var(--rule);border-radius:10px;padding:1.4rem">
+      <h4 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.8rem;color:var(--forest)">If I Were Taking This to Market</h4>
+      <ul style="padding-left:1.1rem;color:var(--ink-soft);font-size:.87rem;font-weight:300">
+        <li style="margin-bottom:.5rem">I would validate the passive data collection mechanism before building any dashboard — if the tracking method creates friction, nothing else matters.</li>
+        <li style="margin-bottom:.5rem">I would hire an education policy expert as a part-time advisor — procurement cycles in school boards are long and relationship-driven.</li>
+        <li style="margin-bottom:.5rem">I would start with a free pilot for 2 school boards before setting pricing, so the district-level data network effect can demonstrate its value before we ask anyone to pay for it.</li>
+        <li style="margin-bottom:.5rem">Parent communication would be the first differentiating feature to build — no competitor in this space has automated parent reporting, making it both a moat and a proof point.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--forest);margin-bottom:.5rem">Sangita Giri · Product Manager &amp; Researcher</p>
+  <p>This is an independent product research study. All data is drawn from published sources and primary research conducted by the author.<br>
+  The OutdoorIQ concept is original research work exploring the application of product management methodology to a social impact domain.<br><br>
+  <a href="index.html">← Back to Portfolio</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/sangitagiri01/" target="_blank">LinkedIn</a></p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const el=document.getElementById('prog');
+  const h=document.documentElement;
+  const pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  el.style.width=pct+'%';
+});
+</script>
+</body>
+</html>

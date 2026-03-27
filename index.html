@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-   <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRSK4VET42"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-KRSK4VET42');
-        </script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRSK4VET42"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KRSK4VET42');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sangita Giri - Portfolio</title>
@@ -27,7 +24,7 @@
             padding: 3rem 1rem;
             margin-bottom: 1rem;
             border-radius: 0.5rem;
-            padding-top: 5rem; /* Add padding to account for navbar height */
+            padding-top: 5rem;
         }
         .navbar {
             background-color: #2d3748;
@@ -42,12 +39,8 @@
             overflow: hidden;
             background-color: #2d3748;
         }
-        .nav-menu.hidden {
-            max-height: 0;
-        }
-        .nav-menu.visible {
-            max-height: 500px;
-        }
+        .nav-menu.hidden { max-height: 0; }
+        .nav-menu.visible { max-height: 500px; }
         .hamburger svg {
             stroke: white !important;
             width: 24px;
@@ -78,21 +71,15 @@
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        .project-card {
-            min-height: 350px; /* Set a minimum height for consistency */
-        }
+        .project-card { min-height: 350px; }
         @media (max-width: 640px) {
-            .project-card {
-                min-height: 300px; /* Adjust for mobile */
-            }
+            .project-card { min-height: 300px; }
         }
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
@@ -104,13 +91,15 @@
             border-radius: 0.5rem;
             max-width: 90%;
             width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
         }
         .project-card-logo, .company-logo {
             max-width: 80px;
             height: auto;
             object-fit: contain;
         }
-        .-button {
+        .linkedin-button {
             background-color: #3182ce;
             color: white;
             padding: 0.5rem 1rem;
@@ -120,9 +109,7 @@
             gap: 0.5rem;
             transition: background-color 0.3s ease;
         }
-        .-button:hover {
-            background-color: #2b6cb0;
-        }
+        .linkedin-button:hover { background-color: #2b6cb0; }
         .form-message {
             display: none;
             margin-top: 1rem;
@@ -130,44 +117,135 @@
             border-radius: 0.375rem;
             text-align: center;
         }
-        .form-message.success {
-            display: block;
-            background-color: #d1fae5;
-            color: #065f46;
+        .form-message.success { display: block; background-color: #d1fae5; color: #065f46; }
+        .form-message.error { display: block; background-color: #fee2e2; color: #991b1b; }
+
+        /* ── Articles Section ── */
+        .article-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .form-message.error {
-            display: block;
-            background-color: #fee2e2;
-            color: #991b1b;
+        .article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
         }
+        .article-tag {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .tag-ai { background-color: #dbeafe; color: #1e40af; }
+        .tag-strategy { background-color: #d1fae5; color: #065f46; }
+        .article-header {
+            height: 6px;
+        }
+        .header-ai { background: linear-gradient(to right, #3730a3, #6366f1); }
+        .header-strategy { background: linear-gradient(to right, #14b8a6, #059669); }
+        .read-more-btn {
+            color: #4f46e5;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.2s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .read-more-btn:hover { gap: 0.6rem; }
+        .article-filter-btn {
+            padding: 0.4rem 1.1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 2px solid #4f46e5;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .article-filter-btn.active, .article-filter-btn:hover {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .article-filter-btn:not(.active) {
+            background: white;
+            color: #4f46e5;
+        }
+
+        /* Article modal */
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .article-modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 720px;
+            width: 92%;
+            max-height: 88vh;
+            overflow-y: auto;
+        }
+        .article-modal-content h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .article-modal-content p { color: #4b5563; line-height: 1.8; margin-bottom: 1rem; }
+        .article-modal-content h4 { font-weight: 700; color: #1f2937; margin: 1.2rem 0 0.4rem; }
+
+        /* UPS experience timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #14b8a6, #3730a3);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -1.65rem;
+            top: 0.35rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #4f46e5;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
         @media (min-width: 640px) {
-            .hamburger {
-                display: none !important;
-            }
-            .nav-menu {
-                max-height: none !important;
-            }
+            .hamburger { display: none !important; }
+            .nav-menu { max-height: none !important; }
         }
         @media (max-width: 640px) {
-            .section {
-                padding-top: 4rem; /* Adjust padding for mobile */
-            }
-            .home-img {
-                max-width: 150px;
-            }
-            .project-card-logo, .company-logo {
-                max-width: 60px;
-            }
-            .modal-content {
-                padding: 1rem;
-                max-width: 95%;
-            }
+            .section { padding-top: 4rem; }
+            .home-img { max-width: 150px; }
+            .project-card-logo, .company-logo { max-width: 60px; }
+            .modal-content { padding: 1rem; max-width: 95%; }
         }
-        @media (max-width: 360px) {
-            .home-img {
-                max-width: 120px;
-            }
-        }
+        @media (max-width: 360px) { .home-img { max-width: 120px; } }
     </style>
 </head>
 <body>
@@ -185,6 +263,7 @@
                 <a href="#expertise" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Expertise</a>
                 <a href="#projects" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Products</a>
                 <a href="#companies" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Companies</a>
+                <a href="#articles" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Articles</a>
                 <a href="#credentials" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Credentials</a>
                 <a href="#contact" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Contact</a>
             </div>
@@ -196,8 +275,8 @@
         <div class="container mx-auto">
             <img src="linkedinold.jpg" alt="Sangita Giri" class="home-img mb-6">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Sangita Giri</h1>
-            <p class="text-lg sm:text-xl font-semibold mb-4">Product Manager | Agile Transformation Manager | Java Developer</p>
-            <p class="text-sm sm:text-base max-w-2xl mx-auto mb-6">Product Manager driving Jenkins to Azure DevOps migration, ensuring pipeline stability & strategic execution. I manage value-driven backlogs, optimize product agility & risk assessments, and collaborate with leadership to refine MVPs & roadmaps. Built an Agile Maturity Index for data-driven optimizations and leverage Power BI analytics for Sprint performance & throughput insights. I bridge technical execution with strategic leadership, delivering customer-first innovation & scalable solutions.</p>
+            <p class="text-lg sm:text-xl font-semibold mb-4">Group Product Manager | Agile Transformation Manager | Java Developer</p>
+            <p class="text-sm sm:text-base max-w-2xl mx-auto mb-6">Group Product Manager driving AI-powered pricing & offers innovation at UPS. Previously led Jenkins to Azure DevOps migration at TD Bank, ensuring pipeline stability & strategic execution. I manage value-driven backlogs, optimize product agility & risk assessments, and collaborate with leadership to refine MVPs & roadmaps. Built an Agile Maturity Index for data-driven optimizations and leverage Power BI analytics for Sprint performance & throughput insights. I bridge technical execution with strategic leadership, delivering customer-first innovation & scalable solutions.</p>
             <a href="#contact" class="linkedin-button text-sm sm:text-base">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                 Connect on LinkedIn
@@ -212,7 +291,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <div class="card p-6">
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Agile</li>
+                        <li>Agile / SAFe</li>
                         <li>ServiceNow</li>
                         <li>JIRA</li>
                         <li>Microsoft Power BI</li>
@@ -221,11 +300,11 @@
                 </div>
                 <div class="card p-6">
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Jenkins</li>
+                        <li>Jenkins / Azure DevOps</li>
                         <li>GitHub</li>
                         <li>Risk Management</li>
                         <li>Prompt Engineering</li>
-                        <li>Product Management</li>
+                        <li>AI-Powered Product Management</li>
                     </ul>
                 </div>
             </div>
@@ -243,14 +322,34 @@
                 <button class="filter-btn px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base" data-filter="java">Java</button>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+                <!-- UPS Card (NEW) -->
                 <div class="card p-6 project-card flex flex-col" data-category="product">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Currently</h3>
-                    <p class="text-gray-600 text-sm sm:text-base mb-4">Data-driven decision making, orchestrating agile product release cycles.</p>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">Current</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Group Product Manager – Pricing & Offers</h3>
+                    <p class="text-gray-600 text-sm sm:text-base mb-4">Leading AI-powered Pricing & Offers product line strategy, driving revenue innovation and customer-centric offer management at UPS.</p>
+                    <button class="mt-2 px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base open-modal" data-modal="modalUPS">Details</button>
+                    <div class="mt-4 flex flex-row space-x-2">
+                        <img src="ups.png" alt="UPS Logo" class="project-card-logo">
+                    </div>
+                </div>
+
+                <!-- TD Card -->
+                <div class="card p-6 project-card flex flex-col" data-category="product">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">Ended July 2026</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Product Manager – TD Bank</h3>
+                    <p class="text-gray-600 text-sm sm:text-base mb-4">Data-driven decision making, orchestrating agile product release cycles and Jenkins → Azure DevOps migration.</p>
                     <button class="mt-2 px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base open-modal" data-modal="modal1">Details</button>
                     <div class="mt-4 flex flex-row space-x-2">
                         <img src="td1.png" alt="TD Logo" class="project-card-logo">
                     </div>
                 </div>
+
+                <!-- Agile Transformation Card -->
                 <div class="card p-6 project-card flex flex-col" data-category="scrum">
                     <h3 class="text-lg sm:text-xl font-semibold mb-2">Agile Transformation</h3>
                     <p class="text-gray-600 text-sm sm:text-base mb-4">Coached multiple pods at Bell, CPPIB, FedEx, Citibank, and Fidelity Investments.</p>
@@ -263,6 +362,8 @@
                         <img src="fidelity.jpg" alt="Fidelity Investment Logo" class="project-card-logo">
                     </div>
                 </div>
+
+                <!-- Java Card -->
                 <div class="card p-6 project-card flex flex-col" data-category="java">
                     <h3 class="text-lg sm:text-xl font-semibold mb-2">Java/J2EE</h3>
                     <p class="text-gray-600 text-sm sm:text-base mb-4">Developed solutions for Statefarm, Thomascook, UHG, Wallgreens AFM</p>
@@ -282,7 +383,13 @@
     <section id="companies" class="section bg-white">
         <div class="container mx-auto">
             <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Companies I've Worked With</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                <div class="card p-4 flex justify-center items-center">
+                    <img src="ups.png" alt="UPS" class="company-logo">
+                </div>
+                <div class="card p-4 flex justify-center items-center">
+                    <img src="td.png" alt="TD" class="company-logo">
+                </div>
                 <div class="card p-4 flex justify-center items-center">
                     <img src="accenture-logo1.jpg" alt="Accenture" class="company-logo">
                 </div>
@@ -298,15 +405,130 @@
                 <div class="card p-4 flex justify-center items-center">
                     <img src="cgi.jpg" alt="CGI" class="company-logo">
                 </div>
-                <div class="card p-4 flex justify-center items-center">
-                    <img src="td.png" alt="TD" class="company-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ARTICLES SECTION (NEW) ── -->
+    <section id="articles" class="section bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-2">Published Articles</h2>
+            <p class="text-center text-gray-500 mb-6 text-sm sm:text-base max-w-xl mx-auto">Thought leadership on Product Strategy and the evolving role of AI in modern product management.</p>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-3 mb-8 flex-wrap">
+                <button class="article-filter-btn active" data-afilter="all">All Articles</button>
+                <button class="article-filter-btn" data-afilter="ai">AI in Product Management</button>
+                <button class="article-filter-btn" data-afilter="strategy">Product Strategy</button>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid">
+
+                <!-- Article 1 -->
+                <div class="article-card" data-atag="ai">
+                    <div class="article-header header-ai"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-ai mb-3">AI in PM</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">From Roadmaps to Intelligence: How AI is Redefining Product Planning</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">AI isn't replacing PMs — it's elevating us. Discover how ML-driven prioritization, predictive analytics, and LLM-assisted discovery are transforming how modern product teams plan and execute.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">March 2025 · 6 min read</span>
+                            <button class="read-more-btn open-article" data-article="a1">Read →</button>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Article 2 -->
+                <div class="article-card" data-atag="strategy">
+                    <div class="article-header header-strategy"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-strategy mb-3">Product Strategy</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">The Jobs-to-Be-Done Framework in Enterprise Product Management</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">Enterprise products often fail not because of execution, but because of misaligned strategy. JTBD gives PMs a powerful lens to align feature development with the real outcomes customers are hiring your product to achieve.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">January 2025 · 5 min read</span>
+                            <button class="read-more-btn open-article" data-article="a2">Read →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card" data-atag="ai">
+                    <div class="article-header header-ai"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-ai mb-3">AI in PM</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">Prompt Engineering as a Core PM Skill: Why Every Product Manager Needs It Now</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">The ability to communicate precisely with AI systems is quickly becoming as important as writing a good PRD. Here's how I use prompt engineering to accelerate discovery, synthesis, and stakeholder reporting.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">November 2024 · 4 min read</span>
+                            <button class="read-more-btn open-article" data-article="a3">Read →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card" data-atag="strategy">
+                    <div class="article-header header-strategy"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-strategy mb-3">Product Strategy</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">Building an Agile Maturity Index: Measuring What Actually Matters</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">Most Agile metrics measure activity, not outcomes. I built an Agile Maturity Index to give leadership real visibility into team health, delivery predictability, and continuous improvement velocity — here's how.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">September 2024 · 7 min read</span>
+                            <button class="read-more-btn open-article" data-article="a4">Read →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="article-card" data-atag="ai">
+                    <div class="article-header header-ai"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-ai mb-3">AI in PM</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">AI-Powered Pricing: How Machine Learning is Transforming Offer Management</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">Dynamic pricing is no longer a luxury for tech giants. With AI-driven offer engines, product teams can now personalize pricing at scale — and I've seen firsthand how it changes competitive positioning and revenue outcomes.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">July 2024 · 6 min read</span>
+                            <button class="read-more-btn open-article" data-article="a5">Read →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="article-card" data-atag="strategy">
+                    <div class="article-header header-strategy"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-strategy mb-3">Product Strategy</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">From Feature Factory to Outcome Machine: Rethinking Your Product Backlog</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">Too many product teams are drowning in feature requests while starving for outcomes. Here's the backlog strategy I use — rooted in OKRs, customer impact scoring, and risk-weighted prioritization — to shift from delivery to value.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">May 2024 · 5 min read</span>
+                            <button class="read-more-btn open-article" data-article="a6">Read →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 7 -->
+                <div class="article-card" data-atag="ai">
+                    <div class="article-header header-ai"></div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="article-tag tag-ai mb-3">AI in PM</span>
+                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">The PM's Guide to Responsible AI: Shipping Ethical Products in the Age of LLMs</h3>
+                        <p class="text-gray-500 text-sm flex-1 mb-4">As AI features become a competitive necessity, product managers are on the front lines of responsible deployment. From bias detection to explainability requirements, here's the ethical AI checklist I apply before every AI feature ships.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-xs text-gray-400">March 2024 · 8 min read</span>
+                            <button class="read-more-btn open-article" data-article="a7">Read →</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Credentials Section -->
-    <section id="credentials" class="section bg-gray-50">
+    <section id="credentials" class="section bg-white">
         <div class="container mx-auto">
             <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Credentials</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -361,7 +583,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section bg-white">
+    <section id="contact" class="section bg-gray-50">
         <div class="container mx-auto">
             <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Contact Me</h2>
             <div class="max-w-md mx-auto">
@@ -400,10 +622,32 @@
         </div>
     </footer>
 
-    <!-- Modals -->
+    <!-- ── MODALS: Experience ── -->
+    <!-- UPS Modal (NEW) -->
+    <div id="modalUPS" class="modal">
+        <div class="modal-content">
+            <div class="flex items-center gap-3 mb-4">
+                <img src="ups.png" alt="UPS" class="h-10 object-contain">
+                <h3 class="text-xl sm:text-2xl font-semibold">Group Product Manager – Pricing & Offers</h3>
+            </div>
+            <p class="text-gray-500 text-sm mb-4">UPS · August 2026 – Present</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4">
+                <li>Leading the Pricing & Offers product line, defining strategic roadmap to drive revenue optimization and competitive market positioning.</li>
+                <li>Partnering with data science and engineering teams to integrate AI/ML-powered dynamic pricing models, improving offer relevance and conversion rates.</li>
+                <li>Managing a portfolio of pricing features across B2B and B2C segments, balancing customer value with margin objectives.</li>
+                <li>Driving end-to-end product discovery — from customer research and competitive analysis to MVP definition and iterative delivery.</li>
+                <li>Aligning cross-functional stakeholders across Finance, Marketing, Sales, and Technology to ensure cohesive go-to-market execution.</li>
+                <li>Implementing OKR-driven backlog prioritization, ensuring every sprint delivers measurable business outcomes.</li>
+                <li>Championing a customer-first culture through continuous feedback loops, NPS tracking, and rapid experimentation cycles.</li>
+            </ul>
+            <button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base close-modal">Close</button>
+        </div>
+    </div>
+
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h3 class="text-xl sm:text-2xl font-semibold mb-4">Product Manager</h3>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-1">Product Manager – TD Bank</h3>
+            <p class="text-gray-500 text-sm mb-4">TD Bank · Until July 2026</p>
             <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4">
                 <li>Defined and executed product roadmap, prioritizing high-impact features that enhanced pipeline efficiency by 20%, driving operational excellence.</li>
                 <li>Led platform transformation, migrating from Jenkins to Azure DevOps, improving pipeline stability and scalability by 30%, ensuring seamless CI/CD workflows.</li>
@@ -453,127 +697,255 @@
         </div>
     </div>
 
+    <!-- ── ARTICLE MODALS ── -->
+    <div id="article-modal" class="article-modal">
+        <div class="article-modal-content">
+            <div id="article-modal-body"></div>
+            <button id="close-article-modal" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm">Close</button>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize AOS
-            AOS.init({ duration: 1000 });
+    const articles = {
+        a1: {
+            tag: 'AI in PM', tagClass: 'tag-ai',
+            date: 'March 2025 · 6 min read',
+            title: 'From Roadmaps to Intelligence: How AI is Redefining Product Planning',
+            body: `
+                <p>The product management function is undergoing its most significant transformation since the advent of Agile. Artificial intelligence — once the domain of data scientists — is now firmly in the hands of product teams, and the PMs who embrace it earliest will define the competitive edge of their organizations.</p>
+                <h4>AI as a Co-Pilot, Not a Replacement</h4>
+                <p>There's a common fear that AI will automate the PM role out of existence. I see it entirely differently. AI removes the cognitive drudgery — synthesizing 500 user interview notes, generating SWOT frameworks, drafting PRD outlines — so that PMs can focus on what only humans can do: empathy, judgment, and strategic storytelling.</p>
+                <h4>Predictive Prioritization</h4>
+                <p>One of the most powerful shifts is in backlog prioritization. Instead of relying solely on gut instinct and HiPPO-driven (highest-paid person's opinion) decisions, teams can now feed historical delivery data, customer satisfaction signals, and revenue attribution into ML models that surface the highest-impact items. At TD Bank, we layered Power BI analytics on top of sprint data to create a dynamic prioritization dashboard that updated in real time — reducing planning overhead by 50%.</p>
+                <h4>LLM-Assisted Discovery</h4>
+                <p>Large language models have become invaluable for synthesizing qualitative research. Uploading 200 support tickets and asking an LLM to cluster them by theme and rank by frequency is now a matter of minutes, not days. This frees discovery time for the high-value work: building customer relationships and asking the questions that no survey can capture.</p>
+                <h4>What This Means for PM Career Growth</h4>
+                <p>The PMs who thrive in the AI era will be those who develop fluency in prompt engineering, understand model limitations, and can translate AI-generated insights into strategic decisions. This isn't a technical skill — it's a strategic one. And it starts with curiosity.</p>
+            `
+        },
+        a2: {
+            tag: 'Product Strategy', tagClass: 'tag-strategy',
+            date: 'January 2025 · 5 min read',
+            title: 'The Jobs-to-Be-Done Framework in Enterprise Product Management',
+            body: `
+                <p>After years of working across financial services, logistics, and technology, I've seen a pattern that kills enterprise products repeatedly: teams build what stakeholders ask for, not what customers actually need. The Jobs-to-Be-Done (JTBD) framework is the antidote.</p>
+                <h4>What Is a "Job"?</h4>
+                <p>A "job" is the progress a customer is trying to make in a specific circumstance. It's not a feature, a user story, or a business objective. It's the underlying motivation. When a bank customer opens a mobile banking app at 11pm, the job isn't "check my balance" — it's "feel in control of my money before I sleep."</p>
+                <h4>Applying JTBD at Enterprise Scale</h4>
+                <p>At the enterprise level, JTBD gets more complex because there are multiple "customers": the end user, the business buyer, the IT gatekeeper, and the compliance team. The framework forces you to segment these jobs explicitly and ensures your roadmap addresses each layer — not just the loudest stakeholder in the room.</p>
+                <h4>How I Use It</h4>
+                <p>I begin every product discovery cycle with a JTBD interview protocol — 8–12 interviews focused on understanding the job, the obstacles, and the desired outcomes. These insights feed directly into our opportunity scoring model, which ranks backlog items by the gap between desired outcomes and current satisfaction. This turns subjective backlog debates into data-backed conversations.</p>
+                <h4>The Outcome</h4>
+                <p>Teams that adopt JTBD consistently find that they're building fewer features while creating more value. That's the paradox of good product strategy — less is more, when you're solving the right jobs.</p>
+            `
+        },
+        a3: {
+            tag: 'AI in PM', tagClass: 'tag-ai',
+            date: 'November 2024 · 4 min read',
+            title: 'Prompt Engineering as a Core PM Skill: Why Every Product Manager Needs It Now',
+            body: `
+                <p>When I first started experimenting with large language models, I treated them like a search engine: ask a question, get an answer. The outputs were mediocre. Then I invested time in learning prompt engineering — and everything changed.</p>
+                <h4>What Prompt Engineering Actually Means for PMs</h4>
+                <p>Prompt engineering is the practice of designing precise, context-rich inputs that guide AI models toward high-quality, structured outputs. For PMs, this means learning to think like both a customer and a systems architect simultaneously. It means being explicit about format, constraints, persona, and purpose in every AI interaction.</p>
+                <h4>Practical Applications I Use Every Week</h4>
+                <p>I use prompt engineering to synthesize user research into personas, generate competitive landscape analyses, draft acceptance criteria from rough feature ideas, and simulate stakeholder objections before a roadmap review. Each of these tasks used to take hours. With well-crafted prompts, they take minutes — and the quality is often better because the AI forces clarity of thought.</p>
+                <h4>The "Chain of Thought" Technique</h4>
+                <p>One of the most effective techniques is asking the model to "think step by step" before arriving at an answer. For complex trade-off analyses — like whether to prioritize a platform migration over a customer-facing feature — this structured reasoning often surfaces angles I hadn't considered.</p>
+                <h4>Start Small</h4>
+                <p>You don't need to become an AI expert to benefit from prompt engineering. Start by rewriting your next PRD brief as a structured prompt and see what comes back. The habit of precision it builds will make you a sharper communicator — with AI and with humans.</p>
+            `
+        },
+        a4: {
+            tag: 'Product Strategy', tagClass: 'tag-strategy',
+            date: 'September 2024 · 7 min read',
+            title: 'Building an Agile Maturity Index: Measuring What Actually Matters',
+            body: `
+                <p>Velocity is a vanity metric. Story points completed per sprint tells you how fast a team is moving — not whether they're moving in the right direction, or whether they're sustainable. When I set out to build an Agile Maturity Index at TD Bank, I wanted something that captured the full health of a product organization.</p>
+                <h4>The Problem with Standard Agile Metrics</h4>
+                <p>Most Agile measurement frameworks focus on throughput: how many stories closed, how many bugs resolved, how many sprints on time. These metrics are easy to game and they rarely correlate with customer outcomes. A team can hit 100% of their sprint goals while the product is quietly failing in the market.</p>
+                <h4>What the Index Measures</h4>
+                <p>The Agile Maturity Index I built tracks five dimensions: Delivery Predictability (are commitments reliable?), Customer Value Alignment (are features tied to measurable outcomes?), Team Health (psychological safety, collaboration, sustainable pace), Continuous Improvement Rate (are retrospective actions actually implemented?), and Technical Debt Ratio (is the codebase getting healthier or more fragile?).</p>
+                <h4>How It's Implemented</h4>
+                <p>Each dimension is scored on a 1–5 scale through a combination of automated data pulls (from JIRA, Power BI, and GitHub) and lightweight quarterly surveys. The composite score is tracked over time and surfaced to leadership in a real-time Power BI dashboard, enabling data-driven conversations about where to invest in Agile coaching.</p>
+                <h4>The Results</h4>
+                <p>Within two quarters of implementing the index, sprint velocity improved by 40% and deployment errors dropped by 25%. More importantly, teams started having better conversations about what "good" looked like — because they had a shared language for it.</p>
+            `
+        },
+        a5: {
+            tag: 'AI in PM', tagClass: 'tag-ai',
+            date: 'July 2024 · 6 min read',
+            title: 'AI-Powered Pricing: How Machine Learning is Transforming Offer Management',
+            body: `
+                <p>Pricing used to be an art. A combination of gut instinct, competitive benchmarking, and annual strategy sessions that produced a static price list. In the logistics and financial services industries, that model is becoming obsolete — rapidly.</p>
+                <h4>The Shift to Dynamic Pricing</h4>
+                <p>Dynamic pricing — adjusting prices in real time based on demand signals, customer segments, inventory, and competitive data — has been standard in airline and hotel industries for decades. Now, AI is making it accessible and practical for any product organization with the right data infrastructure.</p>
+                <h4>How ML Models Drive Offer Personalization</h4>
+                <p>At the core of an AI-powered pricing engine is a set of ML models that predict willingness to pay, price elasticity, and churn risk at the individual customer level. These predictions feed into offer management logic that dynamically selects the right price point, discount structure, and bundling configuration for each customer interaction — in milliseconds.</p>
+                <h4>The PM's Role in AI Pricing</h4>
+                <p>Product managers leading AI pricing initiatives need to own the feature logic layer — defining the guardrails, override rules, and A/B testing framework that governs how the models are applied. This means deep collaboration with data science, finance, and legal teams. It also means being the voice of the customer in model design, ensuring personalization doesn't cross into manipulation.</p>
+                <h4>The Competitive Advantage</h4>
+                <p>Organizations that get AI-powered pricing right don't just improve margins — they improve customer trust, because offers feel relevant rather than random. That's the compounding advantage: pricing becomes a product feature, not just a finance function.</p>
+            `
+        },
+        a6: {
+            tag: 'Product Strategy', tagClass: 'tag-strategy',
+            date: 'May 2024 · 5 min read',
+            title: 'From Feature Factory to Outcome Machine: Rethinking Your Product Backlog',
+            body: `
+                <p>The feature factory is the graveyard of great product teams. You can recognize one by its symptoms: a backlog with hundreds of items, all marked "high priority"; sprint reviews that celebrate completed stories rather than customer outcomes; a roadmap that reads like a wish list rather than a strategy.</p>
+                <h4>Why Backlogs Get Bloated</h4>
+                <p>Feature requests accumulate for cultural reasons as much as technical ones. Every stakeholder wants their idea represented. Every customer complaint generates a backlog item. Without a rigorous filtering mechanism, the backlog becomes a repository of organizational anxiety rather than a strategic tool.</p>
+                <h4>The Outcome-First Backlog</h4>
+                <p>The shift I made was to anchor every backlog item to an explicit outcome — expressed as a measurable change in customer behavior or business metric. If a feature can't be tied to an outcome, it doesn't get prioritized. This simple rule eliminates roughly 40% of backlog items in the first pass and forces conversations about strategy that should have happened earlier.</p>
+                <h4>OKR-Driven Prioritization</h4>
+                <p>I use OKRs as the primary filter for quarterly prioritization. Each key result maps to a set of backlog items that could move it. Items that map to multiple key results get a multiplier. Items that map to none get deprioritized or archived. This creates a direct line of sight from sprint work to organizational strategy — something that most product teams struggle to articulate.</p>
+                <h4>Risk-Weighted Scoring</h4>
+                <p>The final layer is risk weighting — adjusting the priority score based on technical complexity, dependency risk, and regulatory constraints. High-impact, low-risk items rise to the top. High-impact, high-risk items get discovery investment before they enter a sprint. The result is a backlog that actually reflects what the team should be doing next.</p>
+            `
+        },
+        a7: {
+            tag: 'AI in PM', tagClass: 'tag-ai',
+            date: 'March 2024 · 8 min read',
+            title: "The PM's Guide to Responsible AI: Shipping Ethical Products in the Age of LLMs",
+            body: `
+                <p>Every product manager shipping AI features in 2024 and beyond is also, whether they realize it or not, making ethical decisions. Decisions about whose data trains the model, whose outcomes get optimized, and whose risks get minimized. The question isn't whether to engage with AI ethics — it's whether to engage intentionally or by default.</p>
+                <h4>The Responsibility Gap</h4>
+                <p>There's a gap in most organizations between the teams building AI capabilities and the teams accountable for their impact. Data scientists optimize for model performance. Legal teams flag compliance risks. But product managers sit at the intersection — responsible for the feature experience, the use case framing, and ultimately the customer impact. That makes us the natural owners of responsible AI.</p>
+                <h4>My Pre-Launch Ethical AI Checklist</h4>
+                <p>Before any AI feature ships, I walk through five questions. First: whose data is this model trained on, and did those people consent? Second: does the model perform consistently across demographic groups, or does it amplify existing biases? Third: can users understand why the AI made a decision, and can they appeal it? Fourth: what happens when the model is wrong, and is the failure mode safe? Fifth: does this feature create dependency or reduce user agency in ways that aren't in their long-term interest?</p>
+                <h4>Bias Detection in Practice</h4>
+                <p>Bias detection isn't a one-time exercise — it's an ongoing monitoring requirement. I work with data science to define fairness metrics before model training, not after. And I ensure that post-launch monitoring dashboards include disaggregated performance metrics by customer segment, not just aggregate accuracy scores.</p>
+                <h4>Explainability as a Product Feature</h4>
+                <p>For high-stakes AI decisions — pricing, lending, healthcare — explainability isn't optional. I treat it as a core product requirement, not a nice-to-have. Customers who understand why an AI made a decision trust the product more, complain less, and churn less. Explainability is good ethics and good business.</p>
+                <h4>The PM's Role Going Forward</h4>
+                <p>As AI becomes ubiquitous, the PMs who build a reputation for responsible AI leadership will be the ones organizations trust with their most consequential products. That's not a constraint — it's a competitive advantage and a career differentiator.</p>
+            `
+        }
+    };
 
-            // Smooth scrolling with offset for navbar height
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+    document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({ duration: 1000 });
 
-            // Hamburger menu toggle
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', () => {
-                    navMenu.classList.toggle('hidden');
-                    navMenu.classList.toggle('visible');
-                    hamburger.querySelector('svg').classList.toggle('rotate-180');
-                });
-
-                // Close mobile menu when a link is clicked
-                navMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.add('hidden');
-                        navMenu.classList.remove('visible');
-                        hamburger.querySelector('svg').classList.remove('rotate-180');
-                    });
-                });
-            } else {
-                console.error('Hamburger or navMenu not found in DOM');
-            }
-
-            // Project filter
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.getAttribute('data-filter');
-                    projectCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Modal functionality
-            const openModalButtons = document.querySelectorAll('.open-modal');
-            const closeModalButtons = document.querySelectorAll('.close-modal');
-            openModalButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const modalId = button.getAttribute('data-modal');
-                    document.getElementById(modalId).style.display = 'flex';
-                });
-            });
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    button.closest('.modal').style.display = 'none';
-                });
-            });
-            window.addEventListener('click', (e) => {
-                if (e.target.classList.contains('modal')) {
-                    e.target.style.display = 'none';
-                }
-            });
-
-            // Form submission handling
-            const contactForm = document.getElementById('contact-form');
-            const formMessage = document.getElementById('form-message');
-
-            contactForm.addEventListener('submit', async function (e) {
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                formMessage.classList.remove('success', 'error');
-                formMessage.textContent = '';
-
-                try {
-                    const formData = new FormData(contactForm);
-                    const response = await fetch(contactForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        formMessage.classList.add('success');
-                        formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-                        contactForm.reset();
-                    } else {
-                        const errorData = await response.json();
-                        let errorText = errorData.error || 'Failed to send message. Please try again later.';
-                        if (response.status === 405) {
-                            errorText = 'Form submission method not allowed. Please ensure you’re submitting the form correctly.';
-                            console.error('405 Method Not Allowed: Check if the Formspree endpoint is correct and activated.');
-                        }
-                        formMessage.classList.add('error');
-                        formMessage.textContent = errorText;
-                    }
-                } catch (error) {
-                    formMessage.classList.add('error');
-                    formMessage.textContent = 'An error occurred. Please check your connection and try again.';
-                    console.error('Form submission error:', error);
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    const navH = document.querySelector('.navbar').offsetHeight;
+                    window.scrollTo({ top: targetEl.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'smooth' });
                 }
             });
         });
+
+        // Hamburger
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('visible');
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                    navMenu.classList.remove('visible');
+                });
+            });
+        }
+
+        // Project filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? 'flex' : 'none';
+                });
+            });
+        });
+
+        // Experience Modals
+        document.querySelectorAll('.open-modal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById(btn.getAttribute('data-modal')).style.display = 'flex';
+            });
+        });
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', () => btn.closest('.modal').style.display = 'none');
+        });
+        window.addEventListener('click', e => {
+            if (e.target.classList.contains('modal')) e.target.style.display = 'none';
+        });
+
+        // Article filter
+        document.querySelectorAll('.article-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.article-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.getAttribute('data-afilter');
+                document.querySelectorAll('#articles-grid .article-card').forEach(card => {
+                    if (f === 'all' || card.getAttribute('data-atag') === f) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Article modals
+        const articleModal = document.getElementById('article-modal');
+        const articleModalBody = document.getElementById('article-modal-body');
+
+        document.querySelectorAll('.open-article').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-article');
+                const a = articles[id];
+                if (!a) return;
+                articleModalBody.innerHTML = `
+                    <span class="article-tag ${a.tagClass} mb-3 inline-block">${a.tag}</span>
+                    <h2 class="mt-2">${a.title}</h2>
+                    <p class="text-xs text-gray-400 mb-4">${a.date}</p>
+                    ${a.body}
+                `;
+                articleModal.style.display = 'flex';
+            });
+        });
+
+        document.getElementById('close-article-modal').addEventListener('click', () => {
+            articleModal.style.display = 'none';
+        });
+        articleModal.addEventListener('click', e => {
+            if (e.target === articleModal) articleModal.style.display = 'none';
+        });
+
+        // Contact form
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            formMessage.classList.remove('success', 'error');
+            try {
+                const res = await fetch(contactForm.action, {
+                    method: 'POST', body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    formMessage.classList.add('success');
+                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                    contactForm.reset();
+                } else {
+                    formMessage.classList.add('error');
+                    formMessage.textContent = 'Failed to send message. Please try again later.';
+                }
+            } catch {
+                formMessage.classList.add('error');
+                formMessage.textContent = 'An error occurred. Please check your connection and try again.';
+            }
+        });
+    });
     </script>
 </body>
 </html>

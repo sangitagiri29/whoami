@@ -139,8 +139,8 @@ function hero() {
       <dl class="stats">
         ${s.stats
           .map(
-            (st) => `<div class="stat">
-          <dt class="stat__label"><span class="stat__unit">${h(st.unit)}</span> ${h(st.label)}</dt>
+            (st) => `<div class="stat${st.secondary ? ' stat--secondary' : ''}">
+          <dt class="stat__label"><span class="stat__unit">${h(st.unit)}</span> <span class="stat__desc">${h(st.label)}</span></dt>
           <dd class="stat__value${/[a-z]/i.test(st.value) ? ' stat__value--text' : ''}">${h(st.value)}</dd>
         </div>`,
           )

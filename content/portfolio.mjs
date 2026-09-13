@@ -52,7 +52,7 @@ export const hero = {
     { value: '20', unit: 'Years', label: 'Technology leadership' },
     { value: '5', unit: 'Products', label: 'Portfolio scope' },
     { value: '19', unit: 'Pods', label: 'Cross-product ecosystem' },
-    { value: '6+', unit: 'Teams', label: 'Program leadership' },
+    { value: '6+', unit: 'Teams', label: 'Program leadership', secondary: true },
     { value: 'SPC + RTE', unit: 'SAFe', label: 'Enterprise credentials' },
   ],
 };
@@ -78,7 +78,7 @@ export const work = {
         challenge:
           'Move the portfolio from activity-based planning to outcome-based product management: clear strategy and roadmaps, OKRs that mean something, prioritization that respects capacity and cross-product dependencies, and product KPIs leadership can act on.',
         role:
-          'I drive improvement of the product operating model. I influence product strategy and roadmaps, partner with Product Managers and Product Owners on OKRs, prioritization and measurable outcomes, guide portfolio and quarterly planning with capacity and dependency management across the pods, and coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers. I work alongside Engineering and business leaders and give senior leadership the analysis behind portfolio decisions; the decisions stay with the accountable product and business owners.',
+          'I influence product strategy and roadmaps, partner with Product Managers and Product Owners on OKRs and prioritization, and guide portfolio and quarterly planning with capacity and dependency management across the pods. I bring product and operational KPIs into Power BI insights that Product, Engineering and business leaders use to decide, coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers, and improve the product operating model. Decisions stay with the accountable product and business owners.',
         approach:
           'Start from customer and business outcomes and work back to roadmaps, quarterly commitments and pod capacity. Surface cross-product dependencies before planning, not after. Treat prioritization as a data-grounded trade-off conversation, and build the habits (OKR reviews, KPI check-ins, roadmap refreshes) that let teams run it themselves.',
         signals:

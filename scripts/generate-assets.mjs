@@ -112,7 +112,7 @@ ${w.foundation.roles.map((r) => `  <li><strong>${h(r.company)}</strong>, ${h(r.t
   </div>
   <div>
     <h2>Certifications</h2>
-    <ul>${c.credentials.certifications.map((e) => `<li>${h(e.title)}, ${h(e.org)}</li>`).join('')}${c.credentials.other.map((e) => `<li>${h(e.title)}, ${h(e.org)}</li>`).join('')}</ul>
+    <ul>${c.credentials.certifications.map((e) => `<li>${h(e.title)}, ${h(e.org)}</li>`).join('')}${(c.credentials.other || []).map((e) => `<li>${h(e.title)}, ${h(e.org)}</li>`).join('')}</ul>
   </div>
 </div>
 </body></html>`;

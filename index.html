@@ -50,9 +50,8 @@
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <ul>
         <li><a href="#work">Work</a></li>
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#data">Data</a></li>
-        <li><a href="#ai">AI</a></li>
+        <li><a href="#thinking">Product Thinking</a></li>
+        <li><a href="#data">Data &amp; AI</a></li>
         <li><a href="#journey">Journey</a></li>
         <li><a href="#credentials">Credentials</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -64,10 +63,15 @@
 <section class="hero" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="eyebrow">Product &amp; Transformation Leader</p>
-      <h1 id="hero-heading" class="hero__name">Sangita Giri</h1>
+      <div class="hero__identity">
+        <img class="hero__portrait" src="assets/img/sangita-giri.jpg" alt="Portrait of Sangita Giri" width="640" height="640" fetchpriority="high">
+        <div>
+          <h1 id="hero-heading" class="hero__name">Sangita Giri</h1>
+          <p class="hero__role">Product &amp; Transformation Leader</p>
+        </div>
+      </div>
       <p class="hero__headline">Turning complex enterprise problems into measurable product outcomes.</p>
-      <p class="hero__intro">20 years across software engineering, enterprise technology delivery, product management and transformation. I work at the intersection of product strategy, data, technology and execution, helping teams turn customer and business problems into clear priorities, measurable outcomes and scalable products.</p>
+      <p class="hero__intro">20 years across software engineering, enterprise technology delivery, product management and transformation. I work where product strategy, data, technology and execution meet, turning customer and business problems into clear priorities, measurable outcomes and scalable products.</p>
       <ul class="capabilities" aria-label="Capabilities">
         <li>Product Strategy</li>
         <li>Portfolio Leadership</li>
@@ -81,39 +85,31 @@
           <a href="assets/resume/Sangita-Giri-Resume.pdf" class="btn btn--secondary" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download Resume<span class="visually-hidden"> (PDF)</span></a>
       </div>
     </div>
-    <div class="hero__portrait">
-      <img src="assets/img/sangita-giri.jpg" alt="Portrait of Sangita Giri" width="640" height="640" fetchpriority="high">
+    <div class="snapshot" aria-labelledby="snapshot-heading" role="group">
+      <h2 id="snapshot-heading" class="snapshot__heading">Leadership snapshot</h2>
+      <dl class="stats">
+        <div class="stat">
+          <dt class="stat__label"><span class="stat__unit">Years</span> Technology leadership</dt>
+          <dd class="stat__value">20</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat__label"><span class="stat__unit">Products</span> Portfolio scope</dt>
+          <dd class="stat__value">5</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat__label"><span class="stat__unit">Pods</span> Cross-product ecosystem</dt>
+          <dd class="stat__value">19</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat__label"><span class="stat__unit">Teams</span> Program leadership</dt>
+          <dd class="stat__value">6+</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat__label"><span class="stat__unit">SAFe</span> Enterprise credentials</dt>
+          <dd class="stat__value stat__value--text">SPC + RTE</dd>
+        </div>
+      </dl>
     </div>
-  </div>
-</section>
-<section class="section section--tight" id="snapshot" aria-labelledby="snapshot-heading">
-  <div class="container">
-    <div class="section__head">
-      <h2 id="snapshot-heading">Leadership snapshot</h2>
-      <p class="section__intro">A few indicators of scope. The case studies below show how the work actually happens.</p>
-    </div>
-    <ul class="stats" aria-label="Leadership indicators">
-      <li class="stat">
-        <p class="stat__value">20<span class="stat__unit">years</span></p>
-        <p class="stat__label">Technology experience across engineering, delivery, program and product leadership</p>
-      </li>
-      <li class="stat">
-        <p class="stat__value">5<span class="stat__unit">products</span></p>
-        <p class="stat__label">Portfolio scope in my current product transformation role</p>
-      </li>
-      <li class="stat">
-        <p class="stat__value">19<span class="stat__unit">delivery pods</span></p>
-        <p class="stat__label">Cross-product ecosystem I help plan, prioritize and measure</p>
-      </li>
-      <li class="stat">
-        <p class="stat__value">6+<span class="stat__unit">teams</span></p>
-        <p class="stat__label">Enterprise program leadership as a Release Train Engineer</p>
-      </li>
-      <li class="stat">
-        <p class="stat__value stat__value--text">SPC · RTE<span class="stat__unit">SAFe</span></p>
-        <p class="stat__label">Program Consultant and Release Train Engineer credentials</p>
-      </li>
-    </ul>
   </div>
 </section>
 <section class="section" id="work" aria-labelledby="work-heading">
@@ -121,18 +117,18 @@
     <div class="section__head">
       <p class="eyebrow">Case studies</p>
       <h2 id="work-heading">Selected product leadership work</h2>
-      <p class="section__intro">Three engagements that show the progression from enterprise program leadership to product transformation. Each is written as a product story: the problem, my role, the thinking, the signals that informed decisions and what changed.</p>
+      <p class="section__intro">Three engagements, from enterprise program leadership to product transformation. Each is told as a product story: challenge, role, approach, signals and what changed.</p>
     </div>
-    <div class="cases">
-    <article class="case" id="case-ups" aria-labelledby="case-ups-title">
-      <header class="case__header">
-        <img class="case__logo" src="assets/img/ups.png" alt="UPS logo" loading="lazy" width="80" height="80">
+    <article class="case case--featured" id="case-ups" aria-labelledby="case-ups-title">
+      <div class="case__lead">
+        <header class="case__header">
+        <img class="case__logo" src="assets/img/ups.png" alt="UPS logo" width="48" height="48">
         <div>
           <p class="case__company">UPS <span class="case__period">July 2025 – present</span></p>
           <h3 id="case-ups-title" class="case__title">Product transformation &amp; portfolio leadership</h3>
         </div>
       </header>
-      <p class="case__summary">Leading product transformation across a portfolio of five enterprise products delivered by nineteen pods, and building the product management capability that keeps them aligned.</p>
+      <p class="case__summary">Leading product transformation across five enterprise products and nineteen delivery pods, and building the product management capability that keeps them aligned.</p>
       <ul class="chips" aria-label="Scope">
         <li>5 products</li>
         <li>19 delivery pods</li>
@@ -143,42 +139,44 @@
         <li>Flow, throughput &amp; predictability</li>
         <li>Power BI insights</li>
       </ul>
-      <div class="case__grid">
         <div class="case__block">
           <h4>Context</h4>
-          <p>A cross-product ecosystem where five products share customers, data, platforms and delivery capacity. Nineteen pods plan and ship in parallel, and decisions made in one product surface as dependencies, risks or capacity constraints in another.</p>
+          <p>Five products share customers, data, platforms and delivery capacity. Nineteen pods plan and ship in parallel, so a decision in one product becomes a dependency, risk or capacity constraint in another.</p>
         </div>
+      </div>
+      <div class="case__body">
         <div class="case__block">
           <h4>Challenge</h4>
-          <p>Move the portfolio from activity-based planning to outcome-based product management: clear strategy and roadmaps, OKRs that mean something, prioritization that respects capacity and cross-product dependencies, and product KPIs that leadership can act on.</p>
+          <p>Move the portfolio from activity-based planning to outcome-based product management: clear strategy and roadmaps, OKRs that mean something, prioritization that respects capacity and cross-product dependencies, and product KPIs leadership can act on.</p>
         </div>
         <div class="case__block">
           <h4>My role</h4>
-          <p>I drive improvement of the product operating model across the portfolio. I influence product strategy and roadmaps, partner with Product Managers and Product Owners on OKRs, prioritization and measurable outcomes, guide portfolio and quarterly planning with capacity and dependency management across the nineteen pods, and coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers. I work alongside Engineering and business leaders and give senior leadership the analysis behind portfolio decisions; the decisions themselves stay with the accountable product and business owners.</p>
+          <p>I drive improvement of the product operating model. I influence product strategy and roadmaps, partner with Product Managers and Product Owners on OKRs, prioritization and measurable outcomes, guide portfolio and quarterly planning with capacity and dependency management across the pods, and coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers. I work alongside Engineering and business leaders and give senior leadership the analysis behind portfolio decisions; the decisions stay with the accountable product and business owners.</p>
         </div>
         <div class="case__block">
           <h4>Approach</h4>
-          <p>Start from customer and business outcomes, then work back to roadmaps, quarterly commitments and pod capacity. Make cross-product dependencies explicit before planning, not after. Treat prioritization as a trade-off conversation grounded in data, and build the habits (OKR reviews, KPI check-ins, roadmap refreshes) that let teams run it themselves.</p>
+          <p>Start from customer and business outcomes and work back to roadmaps, quarterly commitments and pod capacity. Surface cross-product dependencies before planning, not after. Treat prioritization as a data-grounded trade-off conversation, and build the habits (OKR reviews, KPI check-ins, roadmap refreshes) that let teams run it themselves.</p>
         </div>
         <div class="case__block">
           <h4>Signals &amp; data</h4>
-          <p>Product and operational KPIs, adoption, capacity by pod, flow, throughput and predictability, dependency maps and risk trends. Power BI models bring these together so that a planning conversation starts from the same picture for every product.</p>
+          <p>Product and operational KPIs, adoption, capacity by pod, flow, throughput and predictability, dependency maps and risk trends, brought together in Power BI so every planning conversation starts from the same picture.</p>
         </div>
         <div class="case__block">
           <h4>Impact</h4>
-          <ul><li>A portfolio-level view of strategy, roadmaps, OKRs and capacity across five products and nineteen pods, replacing product-by-product planning.</li><li>Flow, throughput and predictability measured consistently across pods, so capacity and dependency conversations use the same evidence.</li><li>PI and quarterly planning that surfaces cross-product dependencies and constraints early, so trade-offs are made deliberately.</li><li>Product KPIs and operational metrics in Power BI that senior leaders use in decision forums, not just status reviews.</li><li>Stronger Product Manager and Product Owner practice through hands-on coaching on outcomes, prioritization and evidence.</li></ul>
+          <ul><li>One portfolio view of strategy, roadmaps, OKRs and capacity across five products and nineteen pods.</li><li>Flow, throughput and predictability measured consistently across pods, so capacity and dependency conversations use the same evidence.</li><li>PI and quarterly planning that surfaces cross-product dependencies early, so trade-offs are deliberate.</li><li>Product and operational KPIs in Power BI used in leadership decision forums, not just status reviews.</li><li>Stronger Product Manager and Product Owner practice through hands-on coaching on outcomes, prioritization and evidence.</li></ul>
         </div>
       </div>
     </article>
-    <article class="case" id="case-td" aria-labelledby="case-td-title">
+    <div class="cases-secondary">
+    <article class="case case--secondary" id="case-td" aria-labelledby="case-td-title">
       <header class="case__header">
-        <img class="case__logo" src="assets/img/td.png" alt="TD Bank logo" loading="lazy" width="80" height="80">
+        <img class="case__logo" src="assets/img/td.png" alt="TD Bank logo" width="48" height="48">
         <div>
           <p class="case__company">TD Bank <span class="case__period">2023 – July 2025</span></p>
           <h3 id="case-td-title" class="case__title">Enterprise product &amp; program delivery</h3>
         </div>
       </header>
-      <p class="case__summary">The bridge between enterprise program leadership and product leadership: owning roadmaps, prioritization and release readiness for enterprise delivery platforms in a regulated bank, and using performance data to steer them.</p>
+      <p class="case__summary">The bridge from program leadership to product leadership: roadmaps, prioritization and release readiness for enterprise delivery platforms in a regulated bank, steered with performance data.</p>
       <ul class="chips" aria-label="Scope">
         <li>Product &amp; technology roadmaps</li>
         <li>Quarterly planning</li>
@@ -186,42 +184,39 @@
         <li>Power BI dashboards</li>
         <li>Senior governance</li>
       </ul>
-      <div class="case__grid">
-        <div class="case__block">
-          <h4>Context</h4>
-          <p>Enterprise technology delivery inside a large bank, where every release passes through Business, Product, Architecture, Engineering, Risk and Compliance. The platform work included the migration of delivery pipelines from Jenkins to Azure DevOps, with stability and scalability as non-negotiables.</p>
-        </div>
-        <div class="case__block">
+      <div class="case__block">
           <h4>Challenge</h4>
-          <p>Keep a product and technology roadmap moving while managing risk, dependencies and release readiness across many stakeholders, and give leadership a trustworthy picture of delivery health without adding reporting overhead.</p>
+          <p>Every release passed through Business, Product, Architecture, Engineering, Risk and Compliance. The platform work included migrating delivery pipelines from Jenkins to Azure DevOps with stability and scalability as non-negotiables. Keep the product and technology roadmap moving while managing risk, dependencies and release readiness across many stakeholders, and give leadership a trustworthy view of delivery health without adding reporting overhead.</p>
         </div>
-        <div class="case__block">
+      <div class="case__block">
           <h4>My role</h4>
-          <p>As Product Manager I defined and prioritized the roadmap, ran quarterly planning and capacity planning, managed risks and dependencies, and led release readiness. I built the Agile Maturity Index and Power BI performance dashboards that leadership used to see velocity, throughput, cycle time and predictability, and I represented the product in senior governance forums.</p>
+          <p>As Product Manager I defined and prioritized the roadmap, ran quarterly and capacity planning, managed risks and dependencies and led release readiness. I built the Agile Maturity Index and the Power BI dashboards leadership used to see velocity, throughput, cycle time and predictability, and represented the product in senior governance forums.</p>
         </div>
+      <details class="case__more">
+        <summary>Approach and signals</summary>
         <div class="case__block">
           <h4>Approach</h4>
-          <p>Anchor prioritization in business goals and platform stability rather than in the loudest request. Make readiness criteria explicit before a release, not during it. Measure the delivery system (flow, predictability, quality) so that improvement conversations are about evidence rather than opinion.</p>
+          <p>Anchor prioritization in business goals and platform stability rather than the loudest request. Make readiness criteria explicit before a release, not during it. Measure the delivery system so improvement conversations run on evidence, not opinion.</p>
         </div>
         <div class="case__block">
           <h4>Signals &amp; data</h4>
-          <p>Velocity, throughput and cycle time by team; predictability against quarterly commitments; pipeline stability and deployment outcomes through the Azure DevOps migration; customer and user feedback on released features; risk and dependency status ahead of each release.</p>
+          <p>Velocity, throughput and cycle time by team; predictability against quarterly commitments; pipeline stability through the Azure DevOps migration; customer feedback on released features; risk and dependency status before each release.</p>
         </div>
-        <div class="case__block">
+      </details>
+      <div class="case__block">
           <h4>Impact</h4>
-          <ul><li>Delivered the Jenkins-to-Azure DevOps platform migration with pipeline stability and scalability treated as explicit product outcomes.</li><li>Roadmap and backlog prioritization tied directly to business goals, with cross-functional input gathered before commitments were made.</li><li>An Agile Maturity Index and automated Power BI reporting that gave leadership a shared, near-real-time view of team performance and reduced manual reporting effort.</li><li>Customer feedback folded into iterative releases as a standing practice rather than a one-off exercise.</li></ul>
+          <ul><li>Delivered the Jenkins-to-Azure DevOps migration with pipeline stability and scalability treated as product outcomes.</li><li>Roadmap and backlog prioritization tied to business goals, with cross-functional input gathered before commitments.</li><li>Agile Maturity Index and automated Power BI reporting gave leadership a shared, near-real-time view and reduced manual reporting effort.</li><li>Customer feedback built into iterative releases as a standing practice.</li></ul>
         </div>
-      </div>
     </article>
-    <article class="case" id="case-cgi" aria-labelledby="case-cgi-title">
+    <article class="case case--secondary" id="case-cgi" aria-labelledby="case-cgi-title">
       <header class="case__header">
-        <img class="case__logo" src="assets/img/cgi.png" alt="CGI logo" loading="lazy" width="80" height="80">
+        <img class="case__logo" src="assets/img/cgi.png" alt="CGI logo" width="48" height="48">
         <div>
           <p class="case__company">CGI <span class="case__period">2022 – 2023</span></p>
           <h3 id="case-cgi-title" class="case__title">Large-scale program &amp; Release Train leadership</h3>
         </div>
       </header>
-      <p class="case__summary">Leading enterprise program execution across six or more teams as a Release Train Engineer, with SAFe used as the mechanism for planning, dependency management and predictable delivery at scale.</p>
+      <p class="case__summary">Enterprise program execution across six or more teams as Release Train Engineer, with SAFe as the mechanism for planning, dependency management and predictable delivery.</p>
       <ul class="chips" aria-label="Scope">
         <li>6+ teams</li>
         <li>PI planning</li>
@@ -229,245 +224,220 @@
         <li>Predictability metrics</li>
         <li>Organizational transformation</li>
       </ul>
-      <div class="case__grid">
-        <div class="case__block">
-          <h4>Context</h4>
-          <p>A large enterprise program with more than six teams whose work had to land together. Planning happened in silos, dependencies were discovered late and leadership had limited visibility into whether commitments would hold.</p>
-        </div>
-        <div class="case__block">
+      <div class="case__block">
           <h4>Challenge</h4>
-          <p>Bring the program onto a single planning cadence, make dependencies and risks visible early, align delivery to the product roadmap and give leadership metrics they could trust.</p>
+          <p>More than six teams whose work had to land together. Planning happened in silos, dependencies surfaced late and leadership could not see whether commitments would hold. Bring the program onto one planning cadence, make dependencies and risks visible early, align delivery to the product roadmap and give leadership metrics they could trust.</p>
         </div>
-        <div class="case__block">
+      <div class="case__block">
           <h4>My role</h4>
-          <p>I led program execution as the Release Train Engineer: enterprise and PI planning, cross-team dependency and risk management, roadmap alignment with Product Management, and the metrics and information radiators that tracked flow and predictability. The organizational transformation part of the role meant coaching teams and leaders through the change, not just running events.</p>
+          <p>I led program execution: enterprise and PI planning, cross-team dependency and risk management, roadmap alignment with Product Management, and the metrics and information radiators that tracked flow and predictability. Coaching teams and leaders through the organizational change was part of the job, not a side activity.</p>
         </div>
+      <details class="case__more">
+        <summary>Approach and signals</summary>
         <div class="case__block">
           <h4>Approach</h4>
-          <p>Use the planning cadence to force the hard conversations early: capacity, dependencies, architectural and leadership impediments. Partner with Product Management on feature prioritization so the train works on what matters. Instrument the program with flow and forecasting data so that course corrections happen between planning events, not only at them.</p>
+          <p>Use the planning cadence to force the hard conversations early: capacity, dependencies, architectural and leadership impediments. Partner with Product Management on prioritization so the train works on what matters. Instrument the program so course corrections happen between planning events.</p>
         </div>
         <div class="case__block">
           <h4>Signals &amp; data</h4>
-          <p>Planned versus delivered by PI, dependency and risk registers, flow bottlenecks visible through Kanban and information radiators, Power BI forecasting for sprint tracking and program planning.</p>
+          <p>Planned versus delivered by PI, dependency and risk registers, flow bottlenecks on Kanban and information radiators, Power BI forecasting for sprint tracking and program planning.</p>
         </div>
-        <div class="case__block">
+      </details>
+      <div class="case__block">
           <h4>Impact</h4>
-          <ul><li>A shared planning cadence and dependency map across six or more teams, giving leadership an early and honest view of delivery risk.</li><li>Improved predictability of program commitments through explicit capacity planning and impediment resolution.</li><li>Product roadmap and PI priorities aligned through a standing partnership with Product Management.</li><li>Power BI forecasting and flow metrics adopted as the program’s decision-making tools.</li></ul>
+          <ul><li>One planning cadence and dependency map across six or more teams, giving leadership an early, honest view of delivery risk.</li><li>More predictable program commitments through explicit capacity planning and impediment resolution.</li><li>Product roadmap and PI priorities aligned through a standing partnership with Product Management.</li><li>Power BI forecasting and flow metrics adopted as the program’s decision tools.</li></ul>
         </div>
-      </div>
     </article>
     </div>
 
     <div class="foundation" aria-labelledby="foundation-heading">
       <div class="foundation__head">
         <h3 id="foundation-heading">Earlier career: technical foundation</h3>
-        <p>The first fifteen years built the technical and delivery credibility the product work stands on: shipping enterprise software, analyzing systems, running enterprise projects and then leading large-scale Agile delivery.</p>
+        <p>Fifteen years of shipping enterprise software, analyzing systems, running enterprise projects and leading large-scale Agile delivery. It is why I can hold my own with architects and engineers on trade-offs, platform risk and delivery reality.</p>
       </div>
-      <ol class="foundation__roles">
-        <li>
-          <p class="foundation__company">TCS <span class="foundation__years">2020 – 2022</span></p>
-          <p class="foundation__title">Agile Delivery Manager</p>
-          <p class="foundation__summary">Large-scale enterprise delivery: led Agile delivery across client programs, the step from project delivery into program and transformation leadership.</p>
+      <ol class="roles">
+        <li class="roles__row">
+          <span class="roles__years">2020 – 2022</span>
+          <span class="roles__company">TCS</span>
+          <span class="roles__title">Agile Delivery Manager</span>
+          <span class="roles__summary">Large-scale Agile delivery across client programs: the step from project delivery into program and transformation leadership.</span>
         </li>
-        <li>
-          <p class="foundation__company">Cognizant <span class="foundation__years">Nov 2016 – Dec 2019</span></p>
-          <p class="foundation__title">Technical Project Manager</p>
-          <p class="foundation__summary">Enterprise technology delivery: planning, execution and stakeholder management across delivery teams.</p>
+        <li class="roles__row">
+          <span class="roles__years">Nov 2016 – Dec 2019</span>
+          <span class="roles__company">Cognizant</span>
+          <span class="roles__title">Technical Project Manager</span>
+          <span class="roles__summary">Enterprise technology delivery: planning, execution and stakeholder management across delivery teams.</span>
         </li>
-        <li>
-          <p class="foundation__company">NTT DATA <span class="foundation__years">2014 – 2016</span></p>
-          <p class="foundation__title">Agile Consultant</p>
-          <p class="foundation__summary">Guided enterprise teams through Agile adoption and aligned pods around shared goals.</p>
+        <li class="roles__row">
+          <span class="roles__years">2014 – 2016</span>
+          <span class="roles__company">NTT DATA</span>
+          <span class="roles__title">Agile Consultant</span>
+          <span class="roles__summary">Guided enterprise teams through Agile adoption and aligned pods around shared goals.</span>
         </li>
-        <li>
-          <p class="foundation__company">Accenture (USA) <span class="foundation__years">2012 – 2014</span></p>
-          <p class="foundation__title">Systems Analyst, State Farm</p>
-          <p class="foundation__summary">Systems analysis and enterprise Java delivery for the State Farm DSS program: REST APIs, reconciliation reporting and performance work.</p>
+        <li class="roles__row">
+          <span class="roles__years">2012 – 2014</span>
+          <span class="roles__company">Accenture (USA)</span>
+          <span class="roles__title">Systems Analyst, State Farm</span>
+          <span class="roles__summary">Systems analysis and enterprise Java delivery for the State Farm DSS program: REST APIs, reconciliation reporting, performance work.</span>
         </li>
-        <li>
-          <p class="foundation__company">Accenture (India) <span class="foundation__years">2007 – 2011</span></p>
-          <p class="foundation__title">Senior Software Engineer</p>
-          <p class="foundation__summary">Java / J2EE engineering for clients including Thomas Cook (payment and review workflows), UnitedHealth Group and Walgreens.</p>
+        <li class="roles__row">
+          <span class="roles__years">2007 – 2011</span>
+          <span class="roles__company">Accenture (India)</span>
+          <span class="roles__title">Senior Software Engineer</span>
+          <span class="roles__summary">Java / J2EE engineering for Thomas Cook (payment and review workflows), UnitedHealth Group and Walgreens.</span>
         </li>
       </ol>
-      <p class="foundation__note">Software engineering and systems analysis (Java, Spring, Hibernate, REST) from 2007 to 2014 are my technical foundation. It is why I can hold my own with architects and engineers on trade-offs, platform risk and delivery reality.</p>
-      <p class="foundation__note foundation__note--muted">Consulting engagements across the career have included Bell, CPPIB, FedEx, Citibank and Fidelity Investments.</p>
+      <p class="foundation__note">Technical foundation: Java, Spring, Hibernate and REST, 2007 to 2014. Consulting engagements have included Bell, CPPIB, FedEx, Citibank and Fidelity Investments.</p>
+      <ul class="logos__list" aria-label="Organizations">
+        <li><img src="assets/img/ups.png" alt="UPS" height="32"></li>
+        <li><img src="assets/img/td.png" alt="TD Bank" height="32"></li>
+        <li><img src="assets/img/cgi.png" alt="CGI" height="32"></li>
+        <li><img src="assets/img/tcs.png" alt="Tata Consultancy Services" height="32"></li>
+        <li><img src="assets/img/cognizant.png" alt="Cognizant" height="32"></li>
+        <li><img src="assets/img/ntt-data.png" alt="NTT DATA" height="32"></li>
+        <li><img src="assets/img/accenture.png" alt="Accenture" height="32"></li>
+      </ul>
     </div>
   </div>
 </section>
-<section class="logos" aria-labelledby="orgs-heading">
+<section class="section section--alt" id="thinking" aria-labelledby="thinking-heading">
   <div class="container">
-    <h2 id="orgs-heading" class="logos__heading">Organizations</h2>
-    <ul class="logos__list">
-      <li><img src="assets/img/ups.png" alt="UPS" height="40"></li>
-      <li><img src="assets/img/td.png" alt="TD Bank" height="40"></li>
-      <li><img src="assets/img/cgi.png" alt="CGI" height="40"></li>
-      <li><img src="assets/img/cognizant.png" alt="Cognizant" height="40"></li>
-      <li><img src="assets/img/ntt-data.png" alt="NTT DATA" height="40"></li>
-      <li><img src="assets/img/accenture.png" alt="Accenture" height="40"></li>
-      <li><img src="assets/img/tcs.png" alt="Tata Consultancy Services" height="40"></li>
-    </ul>
-  </div>
-</section>
-<section class="section" id="approach" aria-labelledby="approach-heading">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">Product thinking</p>
-      <h2 id="approach-heading">How I approach product leadership</h2>
-      <p class="section__intro">The same loop whether the problem is one product or a portfolio. The value is in doing it with evidence and with the people who have to live with the decision.</p>
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow">Product thinking</p>
+        <h2 id="thinking-heading">How I approach product leadership</h2>
+      </div>
+      <p class="section__intro">The same loop for one product or a whole portfolio, run with evidence and with the people who live with the decision.</p>
     </div>
-    <ol class="steps">
-      <li class="step">
-        <span class="step__num" aria-hidden="true">01</span>
-        <h3 class="step__name">Understand</h3>
-        <p class="step__text">Customer problem, business context and the data we already have.</p>
+    <ol class="flow">
+      <li class="flow__step">
+        <span class="flow__num" aria-hidden="true">01</span>
+        <h3 class="flow__name">Understand</h3>
+        <p class="flow__text">Customer problem, business context and the data we already have.</p>
       </li>
-      <li class="step">
-        <span class="step__num" aria-hidden="true">02</span>
-        <h3 class="step__name">Prioritize</h3>
-        <p class="step__text">Outcomes, value, constraints and the trade-offs nobody wants to say out loud.</p>
+      <li class="flow__step">
+        <span class="flow__num" aria-hidden="true">02</span>
+        <h3 class="flow__name">Prioritize</h3>
+        <p class="flow__text">Outcomes, value, constraints and the trade-offs nobody wants to say out loud.</p>
       </li>
-      <li class="step">
-        <span class="step__num" aria-hidden="true">03</span>
-        <h3 class="step__name">Build</h3>
-        <p class="step__text">Partner with Product, Design, Engineering and stakeholders on the smallest thing that tests the idea.</p>
+      <li class="flow__step">
+        <span class="flow__num" aria-hidden="true">03</span>
+        <h3 class="flow__name">Build</h3>
+        <p class="flow__text">Partner with Product, Design and Engineering on the smallest thing that tests the idea.</p>
       </li>
-      <li class="step">
-        <span class="step__num" aria-hidden="true">04</span>
-        <h3 class="step__name">Measure</h3>
-        <p class="step__text">KPIs, adoption, outcomes and operational performance, not just delivery.</p>
+      <li class="flow__step">
+        <span class="flow__num" aria-hidden="true">04</span>
+        <h3 class="flow__name">Measure</h3>
+        <p class="flow__text">KPIs, adoption, outcomes and operational performance, not just delivery.</p>
       </li>
-      <li class="step">
-        <span class="step__num" aria-hidden="true">05</span>
-        <h3 class="step__name">Learn</h3>
-        <p class="step__text">Use the evidence to adjust direction, and be explicit about what changed and why.</p>
+      <li class="flow__step">
+        <span class="flow__num" aria-hidden="true">05</span>
+        <h3 class="flow__name">Learn</h3>
+        <p class="flow__text">Use the evidence to adjust direction and say what changed and why.</p>
       </li>
     </ol>
   </div>
 </section>
 <section class="section section--dark" id="data" aria-labelledby="data-heading">
   <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">Data-driven product leadership</p>
-      <h2 id="data-heading">From dashboards to decisions</h2>
-      <p class="section__intro">I use data to answer the questions behind the metrics: What is changing? Why is it changing? What decision should we make next? Reporting is the by-product. The point is a better decision, made sooner, by people who can see the same picture.</p>
+    <div class="data">
+      <div class="data__lead">
+        <p class="eyebrow">Data-driven product leadership</p>
+        <h2 id="data-heading">From dashboards to decisions</h2>
+        <p class="section__intro">I use data to understand what is changing, why it is changing and what decision should come next. Reporting is the by-product; the point is a better decision, made sooner, by people who see the same picture.</p>
+        <ul class="data__practice"><li>Separate a real shift from noise before anyone reacts to it.</li><li>Trace a metric back to the product, team or dependency behind it.</li><li>Frame the decision, the options and what each one costs.</li><li>Set the follow-up measure so we know whether it worked.</li></ul>
+        <p class="data__tools"><span>Enabling tools</span> <strong>Power BI</strong> · <strong>Jira</strong> · <strong>Azure DevOps</strong></p>
+      </div>
+      <div class="signals">
+        <div class="signals__group">
+          <h3>Product signals</h3>
+          <ul><li>KPIs</li><li>Adoption</li><li>Outcomes</li><li>Operational performance</li></ul>
+        </div>
+        <div class="signals__group">
+          <h3>Delivery signals</h3>
+          <ul><li>Throughput</li><li>Cycle time</li><li>Predictability</li><li>Flow</li></ul>
+        </div>
+        <div class="signals__group">
+          <h3>Portfolio signals</h3>
+          <ul><li>Capacity</li><li>Dependencies</li><li>Risk</li><li>Trends</li></ul>
+        </div>
+      </div>
     </div>
-    <div class="data-grid">
-      <div class="data-col">
-        <h3>Signals I read</h3>
-        <ul><li>Product KPIs and adoption</li><li>Capacity and resource signals</li><li>Velocity, throughput and cycle time</li><li>Flow and predictability</li><li>Operational performance</li><li>Trends and risk indicators</li></ul>
+    <div class="ai" aria-labelledby="ai-heading">
+      <div class="ai__head">
+        <p class="eyebrow">AI + Product</p>
+        <h3 id="ai-heading">AI as a supporting capability</h3>
       </div>
-      <div class="data-col">
-        <h3>What I do with them</h3>
-        <ul><li>Separate a real shift from noise before anyone reacts to it</li><li>Trace a metric back to the product, team or dependency behind it</li><li>Frame the decision, the options and what each one costs</li><li>Set the follow-up measure so we know if the decision worked</li></ul>
-      </div>
-      <div class="data-col">
-        <h3>How it shows up</h3>
-        <ul><li>Power BI models for portfolio, program and team performance</li><li>Planning conversations that start from the same evidence</li><li>Leadership forums that use the data to decide, not to report</li><li>An Agile Maturity Index that turned improvement into something measurable</li></ul>
-      </div>
+      <ol class="ai__flow" aria-label="How I use AI">
+        <li>Research</li>
+        <li>Explore</li>
+        <li>Analyze</li>
+        <li>Prototype</li>
+        <li>Communicate</li>
+      </ol>
+      <p class="ai__statement">I use AI daily in product work: synthesizing discovery research, exploring hypotheses and challenging assumptions, refining requirements, interpreting data, prototyping quickly and producing documentation at pace. It shortens the distance from question to first answer; judgement, accountability and the decision stay with the people in the room.</p>
     </div>
-    <p class="data-tools"><span>Enabling tools</span> <strong>Power BI</strong> · <strong>Jira</strong> · <strong>Azure DevOps</strong></p>
   </div>
 </section>
-<section class="section" id="ai" aria-labelledby="ai-heading">
+<section class="section" id="journey" aria-labelledby="journey-heading">
   <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">AI + Product</p>
-      <h2 id="ai-heading">AI as a product and productivity capability</h2>
-      <p class="section__intro">I use AI every day as part of how product work gets done. It compresses the time between a question and a first answer, which leaves more room for judgement, conversation and decisions. It does not replace any of those.</p>
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow">Progression</p>
+        <h2 id="journey-heading">Career journey</h2>
+      </div>
+      <p class="section__intro">One progression rather than a series of job changes: each stage widened the scope and changed the kind of decision.</p>
     </div>
-    <ul class="ai-grid">
-      <li class="ai-card">
-        <h3>Discovery and research</h3>
-        <p>Synthesizing interviews, feedback and market context faster, and finding the patterns worth testing.</p>
+    <ol class="stages">
+      <li class="stage">
+        <p class="stage__years">2007 – 2014</p>
+        <h3 class="stage__name">Technical Foundation</h3>
+        <ol class="stage__roles">
+          <li><span class="stage__company">Accenture (India)</span><span class="stage__role">Senior Software Engineer, 2007 – 2011</span></li>
+          <li><span class="stage__company">Accenture (USA)</span><span class="stage__role">Systems Analyst, State Farm, 2012 – 2014</span></li>
+        </ol>
+        <p class="stage__text">Enterprise Java engineering, then systems analysis on a large insurance program.</p>
       </li>
-      <li class="ai-card">
-        <h3>Hypotheses and assumptions</h3>
-        <p>Exploring alternatives and deliberately challenging the assumptions behind a roadmap or an OKR.</p>
+      <li class="stage">
+        <p class="stage__years">2014 – 2019</p>
+        <h3 class="stage__name">Enterprise Delivery</h3>
+        <ol class="stage__roles">
+          <li><span class="stage__company">NTT DATA</span><span class="stage__role">Agile Consultant, 2014 – 2016</span></li>
+          <li><span class="stage__company">Cognizant</span><span class="stage__role">Technical Project Manager, Nov 2016 – Dec 2019</span></li>
+        </ol>
+        <p class="stage__text">Agile adoption across enterprise teams, then owning delivery plans, risks and stakeholders.</p>
       </li>
-      <li class="ai-card">
-        <h3>Requirements and product thinking</h3>
-        <p>Sharpening problem statements, acceptance criteria and product narratives before they reach a team.</p>
+      <li class="stage">
+        <p class="stage__years">2020 – 2023</p>
+        <h3 class="stage__name">Program &amp; Transformation Leadership</h3>
+        <ol class="stage__roles">
+          <li><span class="stage__company">TCS</span><span class="stage__role">Agile Delivery Manager, 2020 – 2022</span></li>
+          <li><span class="stage__company">CGI</span><span class="stage__role">Release Train Engineer, 2022 – 2023</span></li>
+        </ol>
+        <p class="stage__text">Large-scale Agile delivery, then multi-team programs and organizational change as Release Train Engineer.</p>
       </li>
-      <li class="ai-card">
-        <h3>Data interpretation</h3>
-        <p>Asking better questions of dashboards and datasets, and pressure-testing the story the numbers seem to tell.</p>
-      </li>
-      <li class="ai-card">
-        <h3>Rapid prototyping and experimentation</h3>
-        <p>Turning an idea into something a stakeholder can react to in hours rather than weeks.</p>
-      </li>
-      <li class="ai-card">
-        <h3>Documentation at pace</h3>
-        <p>Producing roadmaps, briefs and decision records quickly so the thinking is captured while it is fresh.</p>
-      </li>
-    </ul>
-    <p class="ai-note">I am a product leader who uses AI well, not an AI engineer or data scientist. The judgement, the accountability and the decision stay with the humans in the room.</p>
-  </div>
-</section>
-<section class="section section--alt" id="journey" aria-labelledby="journey-heading">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">Progression</p>
-      <h2 id="journey-heading">Career journey</h2>
-      <p class="section__intro">One progression rather than a series of job changes: each stage added a wider scope of responsibility and a different kind of decision.</p>
-    </div>
-    <ol class="timeline">
-      <li class="timeline__item">
-        <p class="timeline__year">01 · 2007 – 2011</p>
-        <h3 class="timeline__stage">Software Engineering</h3>
-        <ul class="timeline__roles"><li><span class="timeline__where">Accenture (India)</span> Senior Software Engineer</li></ul>
-        <p class="timeline__text">Building enterprise Java systems and learning how software really ships.</p>
-      </li>
-      <li class="timeline__item">
-        <p class="timeline__year">02 · 2012 – 2014</p>
-        <h3 class="timeline__stage">Systems Analysis</h3>
-        <ul class="timeline__roles"><li><span class="timeline__where">Accenture (USA), State Farm</span> Systems Analyst</li></ul>
-        <p class="timeline__text">Translating business needs into system behaviour on a large insurance program.</p>
-      </li>
-      <li class="timeline__item">
-        <p class="timeline__year">03 · 2014 – 2019</p>
-        <h3 class="timeline__stage">Enterprise Technology Delivery</h3>
-        <ul class="timeline__roles"><li><span class="timeline__where">NTT DATA</span> Agile Consultant, 2014 – 2016</li><li><span class="timeline__where">Cognizant</span> Technical Project Manager, 2016 – 2019</li></ul>
-        <p class="timeline__text">Guiding enterprise teams through Agile adoption, then owning delivery plans, risks and stakeholders on enterprise projects.</p>
-      </li>
-      <li class="timeline__item">
-        <p class="timeline__year">04 · 2020 – 2023</p>
-        <h3 class="timeline__stage">Agile &amp; Program Leadership</h3>
-        <ul class="timeline__roles"><li><span class="timeline__where">TCS</span> Agile Delivery Manager, 2020 – 2022</li><li><span class="timeline__where">CGI</span> Release Train Engineer, 2022 – 2023</li></ul>
-        <p class="timeline__text">Leading large-scale enterprise delivery, then multi-team programs and organizational transformation as a Release Train Engineer.</p>
-      </li>
-      <li class="timeline__item">
-        <p class="timeline__year">05 · 2023 – 2025</p>
-        <h3 class="timeline__stage">Enterprise Product Delivery</h3>
-        <ul class="timeline__roles"><li><span class="timeline__where">TD Bank</span> Product Manager</li></ul>
-        <p class="timeline__text">Product roadmaps, prioritization, release readiness and performance data in a regulated enterprise.</p>
-      </li>
-      <li class="timeline__item">
-        <p class="timeline__year">06 · July 2025 – present</p>
-        <h3 class="timeline__stage">Product Transformation &amp; Portfolio Leadership</h3>
-        <ul class="timeline__roles"><li><span class="timeline__where">UPS</span></li></ul>
-        <p class="timeline__text">Product strategy influence, OKRs, portfolio planning and capability building across five products and nineteen pods.</p>
+      <li class="stage">
+        <p class="stage__years">2023 – present</p>
+        <h3 class="stage__name">Product Leadership</h3>
+        <ol class="stage__roles">
+          <li><span class="stage__company">TD Bank</span><span class="stage__role">Product Manager, 2023 – July 2025</span></li>
+          <li><span class="stage__company">UPS</span><span class="stage__role">Product transformation &amp; portfolio leadership, July 2025 – present</span></li>
+        </ol>
+        <p class="stage__text">Enterprise product delivery, then product transformation across a five-product portfolio.</p>
       </li>
     </ol>
   </div>
 </section>
-<section class="section" id="credentials" aria-labelledby="credentials-heading">
-  <div class="container">
-    <div class="section__head">
-      <h2 id="credentials-heading">Credentials</h2>
+<section class="section section--alt section--compact" id="credentials" aria-labelledby="credentials-heading">
+  <div class="container creds">
+    <h2 id="credentials-heading">Credentials</h2>
+    <div class="creds__group">
+      <h3>Education</h3>
+      <ul class="creds__list"><li><span class="creds__title">Product Management</span><span class="creds__org">University of Toronto</span></li><li><span class="creds__title">B.Tech, Computer Science &amp; Engineering</span><span class="creds__org">Dr. A. P. J. Abdul Kalam Technical University</span></li></ul>
     </div>
-    <div class="creds">
-      <div class="creds__col">
-        <h3>Education</h3>
-        <ul class="cred-list"><li><span class="cred__title">Product Management</span><span class="cred__org">University of Toronto</span><span class="cred__note">Product management and strategic leadership.</span></li><li><span class="cred__title">B.Tech, Computer Science &amp; Engineering</span><span class="cred__org">Dr. A. P. J. Abdul Kalam Technical University</span><span class="cred__note">Software engineering focus.</span></li></ul>
-      </div>
-      <div class="creds__col">
-        <h3>Certifications</h3>
-        <ul class="cred-list cred-list--compact"><li><span class="cred__title">SAFe Program Consultant (SPC)</span><span class="cred__org">Scaled Agile</span></li><li><span class="cred__title">SAFe Release Train Engineer (RTE)</span><span class="cred__org">Scaled Agile</span></li><li><span class="cred__title">Certified ScrumMaster (CSM)</span><span class="cred__org">Scrum Alliance</span></li></ul>
-        <h3 class="creds__sub">Other</h3>
-        <ul class="cred-list cred-list--compact"><li><span class="cred__title">Level II Secret Clearance</span><span class="cred__org">Government of Canada</span></li></ul>
-      </div>
+    <div class="creds__group">
+      <h3>Certifications</h3>
+      <ul class="creds__list creds__list--inline"><li><span class="creds__title">SAFe Program Consultant (SPC)</span><span class="creds__org">Scaled Agile</span></li><li><span class="creds__title">SAFe Release Train Engineer (RTE)</span><span class="creds__org">Scaled Agile</span></li><li><span class="creds__title">Certified ScrumMaster (CSM)</span><span class="creds__org">Scrum Alliance</span></li></ul>
     </div>
   </div>
 </section>
@@ -475,7 +445,7 @@
   <div class="container contact">
     <div class="contact__lead">
       <h2 id="contact-heading">Let’s build products that make complex decisions simpler.</h2>
-      <p class="section__intro">If you are hiring for senior product, portfolio or product transformation leadership, or you want to compare notes on running product at enterprise scale, I would like to hear from you.</p>
+      <p class="section__intro">Hiring for senior product, portfolio or product transformation leadership, or want to compare notes on running product at enterprise scale? I would like to hear from you.</p>
       <div class="contact__actions">
         <a class="btn btn--primary" href="https://www.linkedin.com/in/sangitagiri01/" target="_blank" rel="noopener noreferrer me"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Connect on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
         <a class="btn btn--secondary" href="assets/resume/Sangita-Giri-Resume.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download Resume<span class="visually-hidden"> (PDF)</span></a>
@@ -483,17 +453,19 @@
     </div>
     <form class="contact-form" id="contact-form" action="https://formspree.io/f/mvgrzabb" method="POST" novalidate>
       <h3>Send a message</h3>
-      <div class="field">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required>
+      <div class="contact-form__row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
       </div>
       <div class="field">
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="4" required></textarea>
       </div>
       <button class="btn btn--primary" type="submit">Send message</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite" data-success="Thank you. Your message has been sent and I will reply soon." data-error="The message could not be sent. Please try again or reach me on LinkedIn."></p>

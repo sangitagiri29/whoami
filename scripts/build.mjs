@@ -117,8 +117,13 @@ function hero() {
   return `<section class="hero" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="eyebrow">${h(s.eyebrow)}</p>
-      <h1 id="hero-heading" class="hero__name">${h(c.site.name)}</h1>
+      <div class="hero__identity">
+        <img class="hero__portrait" src="${h(c.site.portrait.src)}" alt="${h(c.site.portrait.alt)}" width="640" height="640" fetchpriority="high">
+        <div>
+          <h1 id="hero-heading" class="hero__name">${h(c.site.name)}</h1>
+          <p class="hero__role">${h(s.eyebrow)}</p>
+        </div>
+      </div>
       <p class="hero__headline">${h(s.headline)}</p>
       <p class="hero__intro">${h(s.intro)}</p>
       <ul class="capabilities" aria-label="Capabilities">
@@ -129,31 +134,19 @@ function hero() {
         ${secondary}
       </div>
     </div>
-    <div class="hero__portrait">
-      <img src="${h(c.site.portrait.src)}" alt="${h(c.site.portrait.alt)}" width="640" height="640" fetchpriority="high">
+    <div class="snapshot" aria-labelledby="snapshot-heading" role="group">
+      <h2 id="snapshot-heading" class="snapshot__heading">Leadership snapshot</h2>
+      <dl class="stats">
+        ${s.stats
+          .map(
+            (st) => `<div class="stat">
+          <dt class="stat__label"><span class="stat__unit">${h(st.unit)}</span> ${h(st.label)}</dt>
+          <dd class="stat__value${/[a-z]/i.test(st.value) ? ' stat__value--text' : ''}">${h(st.value)}</dd>
+        </div>`,
+          )
+          .join('\n        ')}
+      </dl>
     </div>
-  </div>
-</section>`;
-}
-
-function snapshot() {
-  const s = c.snapshot;
-  return `<section class="section section--tight" id="snapshot" aria-labelledby="snapshot-heading">
-  <div class="container">
-    <div class="section__head">
-      <h2 id="snapshot-heading">${h(s.heading)}</h2>
-      <p class="section__intro">${h(s.intro)}</p>
-    </div>
-    <ul class="stats" aria-label="Leadership indicators">
-      ${s.stats
-        .map(
-          (st) => `<li class="stat">
-        <p class="stat__value${/[a-z]/i.test(st.value) ? ' stat__value--text' : ''}">${h(st.value)}<span class="stat__unit">${h(st.unit)}</span></p>
-        <p class="stat__label">${h(st.label)}</p>
-      </li>`,
-        )
-        .join('\n      ')}
-    </ul>
   </div>
 </section>`;
 }
@@ -164,20 +157,24 @@ function caseStudy(cs) {
           <h4>${h(title)}</h4>
           ${Array.isArray(body) ? `<ul>${body.map((i) => `<li>${h(i)}</li>`).join('')}</ul>` : `<p>${h(body)}</p>`}
         </div>`;
-  return `<article class="case" id="case-${h(cs.id)}" aria-labelledby="case-${h(cs.id)}-title">
-      <header class="case__header">
-        <img class="case__logo" src="${h(cs.logo.src)}" alt="${h(cs.logo.alt)} logo" loading="lazy" width="80" height="80">
+  const header = `<header class="case__header">
+        <img class="case__logo" src="${h(cs.logo.src)}" alt="${h(cs.logo.alt)} logo" width="48" height="48">
         <div>
-          <p class="case__company">${h(cs.company)}${cs.period ? ` <span class="case__period">${h(cs.period)}</span>` : ''}</p>
+          <p class="case__company">${h(cs.company)} <span class="case__period">${h(cs.period)}</span></p>
           <h3 id="case-${h(cs.id)}-title" class="case__title">${h(cs.title)}</h3>
         </div>
       </header>
       <p class="case__summary">${h(cs.summary)}</p>
       <ul class="chips" aria-label="Scope">
         ${cs.scope.map((s) => `<li>${h(s)}</li>`).join('\n        ')}
-      </ul>
-      <div class="case__grid">
+      </ul>`;
+  if (cs.featured) {
+    return `<article class="case case--featured" id="case-${h(cs.id)}" aria-labelledby="case-${h(cs.id)}-title">
+      <div class="case__lead">
+        ${header}
         ${block('Context', b.context)}
+      </div>
+      <div class="case__body">
         ${block('Challenge', b.challenge)}
         ${block('My role', b.role)}
         ${block('Approach', b.approach)}
@@ -185,11 +182,25 @@ function caseStudy(cs) {
         ${block('Impact', b.impact)}
       </div>
     </article>`;
+  }
+  return `<article class="case case--secondary" id="case-${h(cs.id)}" aria-labelledby="case-${h(cs.id)}-title">
+      ${header}
+      ${block('Challenge', `${b.context} ${b.challenge}`)}
+      ${block('My role', b.role)}
+      <details class="case__more">
+        <summary>Approach and signals</summary>
+        ${block('Approach', b.approach)}
+        ${block('Signals & data', b.signals)}
+      </details>
+      ${block('Impact', b.impact)}
+    </article>`;
 }
 
 function work() {
   const w = c.work;
   const f = w.foundation;
+  const featured = w.caseStudies.filter((x) => x.featured);
+  const secondary = w.caseStudies.filter((x) => !x.featured);
   return `<section class="section" id="work" aria-labelledby="work-heading">
   <div class="container">
     <div class="section__head">
@@ -197,8 +208,9 @@ function work() {
       <h2 id="work-heading">${h(w.heading)}</h2>
       <p class="section__intro">${h(w.intro)}</p>
     </div>
-    <div class="cases">
-    ${w.caseStudies.map(caseStudy).join('\n    ')}
+    ${featured.map(caseStudy).join('\n')}
+    <div class="cases-secondary">
+    ${secondary.map(caseStudy).join('\n    ')}
     </div>
 
     <div class="foundation" aria-labelledby="foundation-heading">
@@ -206,52 +218,45 @@ function work() {
         <h3 id="foundation-heading">${h(f.heading)}</h3>
         <p>${h(f.intro)}</p>
       </div>
-      <ol class="foundation__roles">
+      <ol class="roles">
         ${f.roles
           .map(
-            (r) => `<li>
-          <p class="foundation__company">${h(r.company)} <span class="foundation__years">${h(r.years)}</span></p>
-          <p class="foundation__title">${h(r.title)}</p>
-          <p class="foundation__summary">${h(r.summary)}</p>
+            (r) => `<li class="roles__row">
+          <span class="roles__years">${h(r.years)}</span>
+          <span class="roles__company">${h(r.company)}</span>
+          <span class="roles__title">${h(r.title)}</span>
+          <span class="roles__summary">${h(r.summary)}</span>
         </li>`,
           )
           .join('\n        ')}
       </ol>
-      <p class="foundation__note">${h(f.techNote)}</p>
-      <p class="foundation__note foundation__note--muted">${h(f.clientsNote)}</p>
+      <p class="foundation__note">${h(f.techNote)} ${h(f.clientsNote)}</p>
+      <ul class="logos__list" aria-label="${h(c.organizations.heading)}">
+        ${c.organizations.logos.map((l) => `<li><img src="${h(l.src)}" alt="${h(l.alt)}" height="32"></li>`).join('\n        ')}
+      </ul>
     </div>
   </div>
 </section>`;
 }
 
-function organizations() {
-  const o = c.organizations;
-  return `<section class="logos" aria-labelledby="orgs-heading">
+function thinking() {
+  const a = c.thinking;
+  return `<section class="section section--alt" id="thinking" aria-labelledby="thinking-heading">
   <div class="container">
-    <h2 id="orgs-heading" class="logos__heading">${h(o.heading)}</h2>
-    <ul class="logos__list">
-      ${o.logos.map((l) => `<li><img src="${h(l.src)}" alt="${h(l.alt)}" height="40"></li>`).join('\n      ')}
-    </ul>
-  </div>
-</section>`;
-}
-
-function approach() {
-  const a = c.approach;
-  return `<section class="section" id="approach" aria-labelledby="approach-heading">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">Product thinking</p>
-      <h2 id="approach-heading">${h(a.heading)}</h2>
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow">Product thinking</p>
+        <h2 id="thinking-heading">${h(a.heading)}</h2>
+      </div>
       <p class="section__intro">${h(a.intro)}</p>
     </div>
-    <ol class="steps">
+    <ol class="flow">
       ${a.steps
         .map(
-          (s, i) => `<li class="step">
-        <span class="step__num" aria-hidden="true">0${i + 1}</span>
-        <h3 class="step__name">${h(s.name)}</h3>
-        <p class="step__text">${h(s.text)}</p>
+          (s, i) => `<li class="flow__step">
+        <span class="flow__num" aria-hidden="true">0${i + 1}</span>
+        <h3 class="flow__name">${h(s.name)}</h3>
+        <p class="flow__text">${h(s.text)}</p>
       </li>`,
         )
         .join('\n      ')}
@@ -260,71 +265,65 @@ function approach() {
 </section>`;
 }
 
-function data() {
+function dataAi() {
   const d = c.data;
+  const a = c.ai;
   return `<section class="section section--dark" id="data" aria-labelledby="data-heading">
   <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">${h(d.eyebrow)}</p>
-      <h2 id="data-heading">${h(d.heading)}</h2>
-      <p class="section__intro">${h(d.intro)}</p>
+    <div class="data">
+      <div class="data__lead">
+        <p class="eyebrow">${h(d.eyebrow)}</p>
+        <h2 id="data-heading">${h(d.heading)}</h2>
+        <p class="section__intro">${h(d.intro)}</p>
+        <ul class="data__practice">${d.practice.map((i) => `<li>${h(i)}</li>`).join('')}</ul>
+        <p class="data__tools"><span>Enabling tools</span> ${d.tools.map((t) => `<strong>${h(t)}</strong>`).join(' · ')}</p>
+      </div>
+      <div class="signals">
+        ${d.groups
+          .map(
+            (g) => `<div class="signals__group">
+          <h3>${h(g.title)}</h3>
+          <ul>${g.items.map((i) => `<li>${h(i)}</li>`).join('')}</ul>
+        </div>`,
+          )
+          .join('\n        ')}
+      </div>
     </div>
-    <div class="data-grid">
-      ${d.columns
-        .map(
-          (col) => `<div class="data-col">
-        <h3>${h(col.title)}</h3>
-        <ul>${col.items.map((i) => `<li>${h(i)}</li>`).join('')}</ul>
-      </div>`,
-        )
-        .join('\n      ')}
+    <div class="ai" aria-labelledby="ai-heading">
+      <div class="ai__head">
+        <p class="eyebrow">${h(a.eyebrow)}</p>
+        <h3 id="ai-heading">${h(a.heading)}</h3>
+      </div>
+      <ol class="ai__flow" aria-label="How I use AI">
+        ${a.flow.map((f) => `<li>${h(f)}</li>`).join('\n        ')}
+      </ol>
+      <p class="ai__statement">${h(a.statement)}</p>
     </div>
-    <p class="data-tools"><span>Enabling tools</span> ${d.tools.map((t) => `<strong>${h(t)}</strong>`).join(' · ')}</p>
-  </div>
-</section>`;
-}
-
-function ai() {
-  const a = c.ai;
-  return `<section class="section" id="ai" aria-labelledby="ai-heading">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">${h(a.eyebrow)}</p>
-      <h2 id="ai-heading">${h(a.heading)}</h2>
-      <p class="section__intro">${h(a.intro)}</p>
-    </div>
-    <ul class="ai-grid">
-      ${a.uses
-        .map(
-          (u) => `<li class="ai-card">
-        <h3>${h(u.name)}</h3>
-        <p>${h(u.text)}</p>
-      </li>`,
-        )
-        .join('\n      ')}
-    </ul>
-    <p class="ai-note">${h(a.note)}</p>
   </div>
 </section>`;
 }
 
 function journey() {
   const j = c.journey;
-  return `<section class="section section--alt" id="journey" aria-labelledby="journey-heading">
+  return `<section class="section" id="journey" aria-labelledby="journey-heading">
   <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">Progression</p>
-      <h2 id="journey-heading">${h(j.heading)}</h2>
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow">Progression</p>
+        <h2 id="journey-heading">${h(j.heading)}</h2>
+      </div>
       <p class="section__intro">${h(j.intro)}</p>
     </div>
-    <ol class="timeline">
+    <ol class="stages">
       ${j.stages
         .map(
-          (s, i) => `<li class="timeline__item">
-        <p class="timeline__year">${String(i + 1).padStart(2, '0')} · ${h(s.years)}</p>
-        <h3 class="timeline__stage">${h(s.stage)}</h3>
-        <ul class="timeline__roles">${s.roles.map((r) => `<li><span class="timeline__where">${h(r.company)}</span>${r.title ? ` ${h(r.title)}` : ''}</li>`).join('')}</ul>
-        <p class="timeline__text">${h(s.text)}</p>
+          (s, i) => `<li class="stage">
+        <p class="stage__years">${h(s.years)}</p>
+        <h3 class="stage__name">${h(s.name)}</h3>
+        <ol class="stage__roles">
+          ${s.roles.map((r) => `<li><span class="stage__company">${h(r.company)}</span><span class="stage__role">${h(r.title)}, ${h(r.years)}</span></li>`).join('\n          ')}
+        </ol>
+        <p class="stage__text">${h(s.text)}</p>
       </li>`,
         )
         .join('\n      ')}
@@ -335,23 +334,16 @@ function journey() {
 
 function credentials() {
   const cr = c.credentials;
-  const item = (i) => `<li><span class="cred__title">${h(i.title)}</span><span class="cred__org">${h(i.org)}</span>${i.note ? `<span class="cred__note">${h(i.note)}</span>` : ''}</li>`;
-  return `<section class="section" id="credentials" aria-labelledby="credentials-heading">
-  <div class="container">
-    <div class="section__head">
-      <h2 id="credentials-heading">${h(cr.heading)}</h2>
+  return `<section class="section section--alt section--compact" id="credentials" aria-labelledby="credentials-heading">
+  <div class="container creds">
+    <h2 id="credentials-heading">${h(cr.heading)}</h2>
+    <div class="creds__group">
+      <h3>Education</h3>
+      <ul class="creds__list">${cr.education.map((e) => `<li><span class="creds__title">${h(e.title)}</span><span class="creds__org">${h(e.org)}</span></li>`).join('')}</ul>
     </div>
-    <div class="creds">
-      <div class="creds__col">
-        <h3>Education</h3>
-        <ul class="cred-list">${cr.education.map(item).join('')}</ul>
-      </div>
-      <div class="creds__col">
-        <h3>Certifications</h3>
-        <ul class="cred-list cred-list--compact">${cr.certifications.map(item).join('')}</ul>
-        <h3 class="creds__sub">Other</h3>
-        <ul class="cred-list cred-list--compact">${cr.other.map(item).join('')}</ul>
-      </div>
+    <div class="creds__group">
+      <h3>Certifications</h3>
+      <ul class="creds__list creds__list--inline">${cr.certifications.map((e) => `<li><span class="creds__title">${h(e.title)}</span><span class="creds__org">${h(e.org)}</span></li>`).join('')}</ul>
     </div>
   </div>
 </section>`;
@@ -371,17 +363,19 @@ function contact() {
     </div>
     <form class="contact-form" id="contact-form" action="${h(c.site.formEndpoint)}" method="POST" novalidate>
       <h3>${h(ct.form.heading)}</h3>
-      <div class="field">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required>
+      <div class="contact-form__row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
       </div>
       <div class="field">
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="4" required></textarea>
       </div>
       <button class="btn btn--primary" type="submit">Send message</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite" data-success="${h(ct.form.success)}" data-error="${h(ct.form.error)}"></p>
@@ -407,12 +401,9 @@ ${head({ title: c.site.title, description: c.site.description, canonical: c.site
 ${header()}
 <main id="main">
 ${hero()}
-${snapshot()}
 ${work()}
-${organizations()}
-${approach()}
-${data()}
-${ai()}
+${thinking()}
+${dataAi()}
 ${journey()}
 ${credentials()}
 ${contact()}

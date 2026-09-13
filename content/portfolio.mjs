@@ -73,8 +73,8 @@ export const work = {
       company: 'UPS',
       logo: { src: 'assets/img/ups.png', alt: 'UPS' },
       title: 'Product transformation & portfolio leadership',
-      period: '2026 – present',
-      scope: ['5 products', '19 delivery pods', 'Product operating model', 'OKRs & roadmaps', 'Power BI insights'],
+      period: 'July 2025 – present',
+      scope: ['5 products', '19 delivery pods', 'Strategy & roadmap influence', 'OKRs & prioritization', 'Portfolio & quarterly planning', 'Capacity & dependencies', 'Flow, throughput & predictability', 'Power BI insights'],
       summary:
         'Leading product transformation across a portfolio of five enterprise products delivered by nineteen pods, and building the product management capability that keeps them aligned.',
       sections: {
@@ -83,13 +83,14 @@ export const work = {
         challenge:
           'Move the portfolio from activity-based planning to outcome-based product management: clear strategy and roadmaps, OKRs that mean something, prioritization that respects capacity and cross-product dependencies, and product KPIs that leadership can act on.',
         role:
-          'I drive the product operating model across the portfolio. I partner with Product Managers and Product Owners on strategy, roadmaps, OKRs and prioritization, guide PI and quarterly planning across pods, and coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers. I provide senior leadership with the analysis behind portfolio decisions rather than owning the decisions alone.',
+          'I drive improvement of the product operating model across the portfolio. I influence product strategy and roadmaps, partner with Product Managers and Product Owners on OKRs, prioritization and measurable outcomes, guide portfolio and quarterly planning with capacity and dependency management across the nineteen pods, and coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers. I work alongside Engineering and business leaders and give senior leadership the analysis behind portfolio decisions; the decisions themselves stay with the accountable product and business owners.',
         approach:
           'Start from customer and business outcomes, then work back to roadmaps, quarterly commitments and pod capacity. Make cross-product dependencies explicit before planning, not after. Treat prioritization as a trade-off conversation grounded in data, and build the habits (OKR reviews, KPI check-ins, roadmap refreshes) that let teams run it themselves.',
         signals:
-          'Product KPIs and adoption, operational metrics, capacity and throughput by pod, delivery predictability, dependency maps and risk trends. Power BI models bring these together so that a planning conversation starts from the same picture for every product.',
+          'Product and operational KPIs, adoption, capacity by pod, flow, throughput and predictability, dependency maps and risk trends. Power BI models bring these together so that a planning conversation starts from the same picture for every product.',
         impact: [
           'A portfolio-level view of strategy, roadmaps, OKRs and capacity across five products and nineteen pods, replacing product-by-product planning.',
+          'Flow, throughput and predictability measured consistently across pods, so capacity and dependency conversations use the same evidence.',
           'PI and quarterly planning that surfaces cross-product dependencies and constraints early, so trade-offs are made deliberately.',
           'Product KPIs and operational metrics in Power BI that senior leaders use in decision forums, not just status reviews.',
           'Stronger Product Manager and Product Owner practice through hands-on coaching on outcomes, prioritization and evidence.',
@@ -101,7 +102,7 @@ export const work = {
       company: 'TD Bank',
       logo: { src: 'assets/img/td.png', alt: 'TD Bank' },
       title: 'Enterprise product & program delivery',
-      period: 'to 2026',
+      period: '2023 – July 2025',
       scope: ['Product & technology roadmaps', 'Quarterly planning', 'Release readiness', 'Power BI dashboards', 'Senior governance'],
       summary:
         'The bridge between enterprise program leadership and product leadership: owning roadmaps, prioritization and release readiness for enterprise delivery platforms in a regulated bank, and using performance data to steer them.',
@@ -129,7 +130,7 @@ export const work = {
       company: 'CGI',
       logo: { src: 'assets/img/cgi.png', alt: 'CGI' },
       title: 'Large-scale program & Release Train leadership',
-      period: '',
+      period: '2022 – 2023',
       scope: ['6+ teams', 'PI planning', 'Cross-team dependencies', 'Predictability metrics', 'Organizational transformation'],
       summary:
         'Leading enterprise program execution across six or more teams as a Release Train Engineer, with SAFe used as the mechanism for planning, dependency management and predictable delivery at scale.',
@@ -156,31 +157,41 @@ export const work = {
   foundation: {
     heading: 'Earlier career: technical foundation',
     intro:
-      'The first decade built the technical and delivery credibility the product work stands on: shipping enterprise software, then analyzing systems, then running programs.',
+      'The first fifteen years built the technical and delivery credibility the product work stands on: shipping enterprise software, analyzing systems, running enterprise projects and then leading large-scale Agile delivery.',
     roles: [
+      {
+        company: 'TCS',
+        title: 'Agile Delivery Manager',
+        years: '2020 – 2022',
+        summary: 'Large-scale enterprise delivery: led Agile delivery across client programs, the step from project delivery into program and transformation leadership.',
+      },
       {
         company: 'Cognizant',
         title: 'Technical Project Manager',
+        years: 'Nov 2016 – Dec 2019',
         summary: 'Enterprise technology delivery: planning, execution and stakeholder management across delivery teams.',
       },
       {
         company: 'NTT DATA',
         title: 'Agile Consultant',
+        years: '2014 – 2016',
         summary: 'Guided enterprise teams through Agile adoption and aligned pods around shared goals.',
       },
       {
         company: 'Accenture (USA)',
         title: 'Systems Analyst, State Farm',
+        years: '2012 – 2014',
         summary: 'Systems analysis and enterprise Java delivery for the State Farm DSS program: REST APIs, reconciliation reporting and performance work.',
       },
       {
         company: 'Accenture (India)',
         title: 'Senior Software Engineer',
+        years: '2007 – 2011',
         summary: 'Java / J2EE engineering for clients including Thomas Cook (payment and review workflows), UnitedHealth Group and Walgreens.',
       },
     ],
     techNote:
-      'Software engineering (Java, Spring, Hibernate, REST) from 2007 to 2012 is my technical foundation. It is why I can hold my own with architects and engineers on trade-offs, platform risk and delivery reality.',
+      'Software engineering and systems analysis (Java, Spring, Hibernate, REST) from 2007 to 2014 are my technical foundation. It is why I can hold my own with architects and engineers on trade-offs, platform risk and delivery reality.',
     clientsNote:
       'Consulting engagements across the career have included Bell, CPPIB, FedEx, Citibank and Fidelity Investments.',
   },
@@ -271,12 +282,48 @@ export const journey = {
   heading: 'Career journey',
   intro: 'One progression rather than a series of job changes: each stage added a wider scope of responsibility and a different kind of decision.',
   stages: [
-    { year: '2007', stage: 'Software Engineering', where: 'Accenture (India)', text: 'Building enterprise Java systems and learning how software really ships.' },
-    { year: '', stage: 'Systems Analysis', where: 'Accenture (USA), State Farm', text: 'Translating business needs into system behaviour on a large insurance program.' },
-    { year: '', stage: 'Technical Project & Enterprise Delivery', where: 'Cognizant', text: 'Owning delivery plans, risks and stakeholders across enterprise projects.' },
-    { year: '', stage: 'Agile & Program Leadership', where: 'NTT DATA, CGI', text: 'Coaching enterprise teams, then leading multi-team programs as a Release Train Engineer.' },
-    { year: 'to 2026', stage: 'Enterprise Product Delivery', where: 'TD Bank', text: 'Product roadmaps, prioritization, release readiness and performance data in a regulated enterprise.' },
-    { year: '2026', stage: 'Product Transformation & Portfolio Leadership', where: 'UPS', text: 'Product strategy, OKRs, planning and capability building across five products and nineteen pods.' },
+    {
+      years: '2007 – 2011',
+      stage: 'Software Engineering',
+      roles: [{ company: 'Accenture (India)', title: 'Senior Software Engineer' }],
+      text: 'Building enterprise Java systems and learning how software really ships.',
+    },
+    {
+      years: '2012 – 2014',
+      stage: 'Systems Analysis',
+      roles: [{ company: 'Accenture (USA), State Farm', title: 'Systems Analyst' }],
+      text: 'Translating business needs into system behaviour on a large insurance program.',
+    },
+    {
+      years: '2014 – 2019',
+      stage: 'Enterprise Technology Delivery',
+      roles: [
+        { company: 'NTT DATA', title: 'Agile Consultant, 2014 – 2016' },
+        { company: 'Cognizant', title: 'Technical Project Manager, 2016 – 2019' },
+      ],
+      text: 'Guiding enterprise teams through Agile adoption, then owning delivery plans, risks and stakeholders on enterprise projects.',
+    },
+    {
+      years: '2020 – 2023',
+      stage: 'Agile & Program Leadership',
+      roles: [
+        { company: 'TCS', title: 'Agile Delivery Manager, 2020 – 2022' },
+        { company: 'CGI', title: 'Release Train Engineer, 2022 – 2023' },
+      ],
+      text: 'Leading large-scale enterprise delivery, then multi-team programs and organizational transformation as a Release Train Engineer.',
+    },
+    {
+      years: '2023 – 2025',
+      stage: 'Enterprise Product Delivery',
+      roles: [{ company: 'TD Bank', title: 'Product Manager' }],
+      text: 'Product roadmaps, prioritization, release readiness and performance data in a regulated enterprise.',
+    },
+    {
+      years: 'July 2025 – present',
+      stage: 'Product Transformation & Portfolio Leadership',
+      roles: [{ company: 'UPS', title: '' }],
+      text: 'Product strategy influence, OKRs, portfolio planning and capability building across five products and nineteen pods.',
+    },
   ],
 };
 
@@ -289,8 +336,7 @@ export const credentials = {
   certifications: [
     { title: 'SAFe Program Consultant (SPC)', org: 'Scaled Agile' },
     { title: 'SAFe Release Train Engineer (RTE)', org: 'Scaled Agile' },
-    { title: 'Certified Scrum Product Owner', org: 'Scrum Alliance' },
-    { title: 'Certified Scrum Master', org: 'Scrum Alliance' },
+    { title: 'Certified ScrumMaster (CSM)', org: 'Scrum Alliance' },
   ],
   other: [{ title: 'Level II Secret Clearance', org: 'Government of Canada' }],
 };

@@ -37,7 +37,7 @@ Commit the regenerated `index.html` and `404.html` together with your content ch
 
 ### Replacing the resume
 
-Drop your own PDF at `assets/resume/Sangita-Giri-Resume.pdf` (same name) and commit it. The generated one is a two-page summary built from the site content; a full resume is a better download for recruiters.
+**The generated PDF is a placeholder that needs replacement.** It is a two-page summary built only from the site content and is marked as such on the document. Drop the verified full resume at `assets/resume/Sangita-Giri-Resume.pdf` (same name) and commit it.
 
 ## Deployment
 
@@ -47,5 +47,5 @@ GitHub Pages, branch deployment from `main` at the repository root. There is no 
 
 - No invented metrics. Only counts the owner can defend (20 years, 5 products, 19 pods, 6+ teams).
 - No claims of P&L, pricing, revenue ownership or direct reports unless there is evidence.
-- No startup, founder, side-project or private product content; this is the professional portfolio only.
+- Professional career content only. Nothing outside employment history, credentials and publicly appropriate case studies.
 - The confidential-content guard in `scripts/check.mjs` fails the build if any of that reappears.

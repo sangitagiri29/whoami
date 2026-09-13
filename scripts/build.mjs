@@ -210,7 +210,7 @@ function work() {
         ${f.roles
           .map(
             (r) => `<li>
-          <p class="foundation__company">${h(r.company)}</p>
+          <p class="foundation__company">${h(r.company)} <span class="foundation__years">${h(r.years)}</span></p>
           <p class="foundation__title">${h(r.title)}</p>
           <p class="foundation__summary">${h(r.summary)}</p>
         </li>`,
@@ -321,9 +321,9 @@ function journey() {
       ${j.stages
         .map(
           (s, i) => `<li class="timeline__item">
-        <p class="timeline__year">${String(i + 1).padStart(2, '0')}${s.year ? ` · ${h(s.year)}` : ''}</p>
+        <p class="timeline__year">${String(i + 1).padStart(2, '0')} · ${h(s.years)}</p>
         <h3 class="timeline__stage">${h(s.stage)}</h3>
-        <p class="timeline__where">${h(s.where)}</p>
+        <ul class="timeline__roles">${s.roles.map((r) => `<li><span class="timeline__where">${h(r.company)}</span>${r.title ? ` ${h(r.title)}` : ''}</li>`).join('')}</ul>
         <p class="timeline__text">${h(s.text)}</p>
       </li>`,
         )

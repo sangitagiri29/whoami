@@ -81,6 +81,7 @@ li{margin:0 0 1.5pt;color:#344054}
 <h1>${h(c.site.name)}</h1>
 <p class="role">${h(c.site.role)}</p>
 <p class="meta">${h(c.site.location)} · <a href="${h(c.site.linkedin)}">${h(c.site.linkedin.replace('https://www.', ''))}</a> · <a href="${h(c.site.url)}">${h(c.site.url.replace('https://', ''))}</a></p>
+<p class="meta"><em>Portfolio summary generated from the website content. Full resume available on request.</em></p>
 <p class="summary">${h(c.hero.intro)}</p>
 <p class="caps"><strong>Capabilities:</strong> ${h(c.hero.capabilities.join(' · '))}</p>
 
@@ -100,7 +101,7 @@ ${w.caseStudies
 
 <h2>Earlier career</h2>
 <ul class="early">
-${w.foundation.roles.map((r) => `  <li><strong>${h(r.company)}</strong>, ${h(r.title)}. ${h(r.summary)}</li>`).join('\n')}
+${w.foundation.roles.map((r) => `  <li><strong>${h(r.company)}</strong>, ${h(r.title)} (${h(r.years)}). ${h(r.summary)}</li>`).join('\n')}
 </ul>
 <p class="caps" style="margin-top:4pt">${h(w.foundation.techNote)}</p>
 

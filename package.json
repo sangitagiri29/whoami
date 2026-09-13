@@ -1,0 +1,17 @@
+{
+  "name": "sangita-giri-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Portfolio of Sangita Giri, Product & Transformation Leader. Static site for GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "assets": "NODE_PATH=$(npm root -g) node scripts/generate-assets.mjs",
+    "check": "node scripts/check.mjs",
+    "serve": "python3 -m http.server 8080 --bind 127.0.0.1",
+    "verify": "npm run build && npm run check"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

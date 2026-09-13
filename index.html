@@ -1,380 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRSK4VET42"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KRSK4VET42');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sangita Giri - Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f7fafc; }
-        .section { padding: 3rem 1rem; margin-bottom: 1rem; border-radius: 0.5rem; padding-top: 5rem; }
-        .navbar { background-color: #2d3748; position: sticky; top: 0; width: 100%; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .nav-menu { transition: max-height 0.3s ease-in-out; overflow: hidden; background-color: #2d3748; }
-        .nav-menu.hidden { max-height: 0; }
-        .nav-menu.visible { max-height: 500px; }
-        .hamburger svg { stroke: white !important; width: 24px; height: 24px; }
-        .home-section { background: linear-gradient(to right, #14b8a6, #3730a3); color: white; text-align: center; }
-        .home-img { border-radius: 50%; border: 4px solid #fff; box-shadow: 0 8px 16px rgba(0,0,0,0.2); max-width: 200px; width: 100%; height: auto; object-fit: cover; margin: 0 auto; }
-        .card { background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
-        .project-card { min-height: 350px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background-color: white; padding: 1.5rem; border-radius: 0.5rem; max-width: 90%; width: 600px; max-height: 85vh; overflow-y: auto; }
-        .project-card-logo, .company-logo { max-width: 80px; height: auto; object-fit: contain; }
-        .linkedin-button { background-color: #3182ce; color: white; padding: 0.5rem 1rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.5rem; transition: background-color 0.3s ease; }
-        .linkedin-button:hover { background-color: #2b6cb0; }
-        .form-message { display: none; margin-top: 1rem; padding: 1rem; border-radius: 0.375rem; text-align: center; }
-        .form-message.success { display: block; background-color: #d1fae5; color: #065f46; }
-        .form-message.error { display: block; background-color: #fee2e2; color: #991b1b; }
-
-        /* Articles */
-        .article-card { background: white; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; display: flex; flex-direction: column; }
-        .article-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
-        .article-tag { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
-        .tag-ai { background-color: #dbeafe; color: #1e40af; }
-        .tag-strategy { background-color: #d1fae5; color: #065f46; }
-        .article-header { height: 6px; }
-        .header-ai { background: linear-gradient(to right, #3730a3, #6366f1); }
-        .header-strategy { background: linear-gradient(to right, #14b8a6, #059669); }
-        .read-more-btn { color: #4f46e5; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.2s ease; background: none; border: none; cursor: pointer; padding: 0; }
-        .read-more-btn:hover { gap: 0.6rem; }
-        .article-filter-btn { padding: 0.4rem 1.1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; border: 2px solid #4f46e5; transition: all 0.2s ease; cursor: pointer; }
-        .article-filter-btn.active, .article-filter-btn:hover { background-color: #4f46e5; color: white; }
-        .article-filter-btn:not(.active) { background: white; color: #4f46e5; }
-        .article-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 2000; }
-        .article-modal-content { background: white; border-radius: 1rem; padding: 2rem; max-width: 720px; width: 92%; max-height: 88vh; overflow-y: auto; }
-        .article-modal-content h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .article-modal-content p { color: #4b5563; line-height: 1.8; margin-bottom: 1rem; }
-        .article-modal-content h4 { font-weight: 700; color: #1f2937; margin: 1.2rem 0 0.4rem; }
-
-        /* Research / Case Study Cards */
-        .research-card { background: linear-gradient(135deg, #f0fdf4, #ecfdf5 50%, #f0f9ff); border: 1.5px solid #6ee7b7; border-radius: 0.75rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.07); }
-        .research-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(16,185,129,0.15); }
-        .research-card-header { height: 6px; background: linear-gradient(to right, #059669, #0d9488, #0284c7); }
-        .research-tag { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background-color: #d1fae5; color: #065f46; }
-        .view-study-btn { display: inline-flex; align-items: center; gap: 0.4rem; background-color: #059669; color: white; padding: 0.45rem 1rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: background-color 0.2s ease, gap 0.2s ease; }
-        .view-study-btn:hover { background-color: #047857; gap: 0.65rem; }
-
-        @media (min-width: 640px) { .hamburger { display: none !important; } .nav-menu { max-height: none !important; } }
-        @media (max-width: 640px) { .section { padding-top: 4rem; } .home-img { max-width: 150px; } .project-card-logo, .company-logo { max-width: 60px; } .modal-content { padding: 1rem; max-width: 95%; } .project-card { min-height: 300px; } }
-        @media (max-width: 360px) { .home-img { max-width: 120px; } }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sangita Giri | Product &amp; Transformation Leader</title>
+  <meta name="description" content="Product and transformation leader with 20 years across software engineering, enterprise technology delivery, program leadership and product management. Product strategy, portfolio leadership and data-driven decisions for enterprise technology.">
+  <meta name="author" content="Sangita Giri">
+  
+  <link rel="canonical" href="https://sangitagiri29.github.io/whoami/">
+  <meta name="theme-color" content="#0f1f3d">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Sangita Giri">
+  <meta property="og:title" content="Sangita Giri | Product &amp; Transformation Leader">
+  <meta property="og:description" content="Product and transformation leader with 20 years across software engineering, enterprise technology delivery, program leadership and product management. Product strategy, portfolio leadership and data-driven decisions for enterprise technology.">
+  <meta property="og:url" content="https://sangitagiri29.github.io/whoami/">
+  <meta property="og:image" content="https://sangitagiri29.github.io/whoami/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sangita Giri, Product &amp; Transformation Leader">
+  <meta property="profile:first_name" content="Sangita">
+  <meta property="profile:last_name" content="Giri">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sangita Giri | Product &amp; Transformation Leader">
+  <meta name="twitter:description" content="Product and transformation leader with 20 years across software engineering, enterprise technology delivery, program leadership and product management. Product strategy, portfolio leadership and data-driven decisions for enterprise technology.">
+  <meta name="twitter:image" content="https://sangitagiri29.github.io/whoami/assets/img/og-image.png">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRSK4VET42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KRSK4VET42');
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sangita Giri","jobTitle":"Product & Transformation Leader","description":"Product and transformation leader with 20 years across software engineering, enterprise technology delivery, program leadership and product management. Product strategy, portfolio leadership and data-driven decisions for enterprise technology.","url":"https://sangitagiri29.github.io/whoami/","image":"https://sangitagiri29.github.io/whoami/assets/img/sangita-giri.jpg","sameAs":["https://www.linkedin.com/in/sangitagiri01/"],"address":{"@type":"PostalAddress","addressLocality":"Toronto","addressCountry":"CA"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Toronto"},{"@type":"CollegeOrUniversity","name":"Dr. A. P. J. Abdul Kalam Technical University"}],"knowsAbout":["Senior Product Manager","Group Product Manager","Product Strategy","Product Leadership","Product Transformation","Technical Program Management","Portfolio Management","Data-Driven Product Management","Enterprise Technology","Product Analytics"]}</script>
 </head>
 <body>
-    <nav class="navbar w-full text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl sm:text-2xl font-bold">Sangita Giri</h1>
-            <button class="hamburger focus:outline-none" aria-label="Toggle menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-            <div class="nav-menu hidden sm:flex sm:items-center sm:space-x-4" id="nav-menu">
-                <a href="#home" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Home</a>
-                <a href="#expertise" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Expertise</a>
-                <a href="#projects" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Products</a>
-                <a href="#research" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Research</a>
-                <a href="#companies" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Companies</a>
-                <a href="#articles" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Articles</a>
-                <a href="#credentials" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Credentials</a>
-                <a href="#contact" class="block sm:inline-block px-2 py-1 hover:bg-gray-700 rounded">Contact</a>
-            </div>
-        </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="top">
+  <div class="container site-header__inner">
+    <a class="brand" href="#top" aria-label="Sangita Giri, back to top">Sangita Giri</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#ai">AI</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
-
-    <section id="home" class="section home-section">
-        <div class="container mx-auto">
-            <img src="linkedinold.jpg" alt="Sangita Giri" class="home-img mb-6">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Sangita Giri</h1>
-            <p class="text-lg sm:text-xl font-semibold mb-4">Group Product Manager | Agile Transformation Manager | Java Developer</p>
-            <p class="text-sm sm:text-base max-w-2xl mx-auto mb-6">Group Product Manager driving AI-powered pricing & offers innovation at UPS. Previously led Jenkins to Azure DevOps migration at TD Bank, ensuring pipeline stability & strategic execution. I manage value-driven backlogs, optimize product agility & risk assessments, and collaborate with leadership to refine MVPs & roadmaps. Built an Agile Maturity Index for data-driven optimizations and leverage Power BI analytics for Sprint performance & throughput insights. I bridge technical execution with strategic leadership, delivering customer-first innovation & scalable solutions.</p>
-            <a href="#contact" class="linkedin-button text-sm sm:text-base">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                Connect on LinkedIn
-            </a>
+  </div>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="eyebrow">Product &amp; Transformation Leader</p>
+      <h1 id="hero-heading" class="hero__name">Sangita Giri</h1>
+      <p class="hero__headline">Turning complex enterprise problems into measurable product outcomes.</p>
+      <p class="hero__intro">20 years across software engineering, enterprise technology delivery, product management and transformation. I work at the intersection of product strategy, data, technology and execution, helping teams turn customer and business problems into clear priorities, measurable outcomes and scalable products.</p>
+      <ul class="capabilities" aria-label="Capabilities">
+        <li>Product Strategy</li>
+        <li>Portfolio Leadership</li>
+        <li>Data-Driven Decisions</li>
+        <li>Enterprise Technology</li>
+        <li>AI-Enabled Product Development</li>
+      </ul>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#work">View My Work<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a href="https://www.linkedin.com/in/sangitagiri01/" class="btn btn--secondary" target="_blank" rel="noopener noreferrer me"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="assets/resume/Sangita-Giri-Resume.pdf" class="btn btn--secondary" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download Resume<span class="visually-hidden"> (PDF)</span></a>
+      </div>
+    </div>
+    <div class="hero__portrait">
+      <img src="assets/img/sangita-giri.jpg" alt="Portrait of Sangita Giri" width="640" height="640" fetchpriority="high">
+    </div>
+  </div>
+</section>
+<section class="section section--tight" id="snapshot" aria-labelledby="snapshot-heading">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="snapshot-heading">Leadership snapshot</h2>
+      <p class="section__intro">A few indicators of scope. The case studies below show how the work actually happens.</p>
+    </div>
+    <ul class="stats" aria-label="Leadership indicators">
+      <li class="stat">
+        <p class="stat__value">20<span class="stat__unit">years</span></p>
+        <p class="stat__label">Technology experience across engineering, delivery, program and product leadership</p>
+      </li>
+      <li class="stat">
+        <p class="stat__value">5<span class="stat__unit">products</span></p>
+        <p class="stat__label">Portfolio scope in my current product transformation role</p>
+      </li>
+      <li class="stat">
+        <p class="stat__value">19<span class="stat__unit">delivery pods</span></p>
+        <p class="stat__label">Cross-product ecosystem I help plan, prioritize and measure</p>
+      </li>
+      <li class="stat">
+        <p class="stat__value">6+<span class="stat__unit">teams</span></p>
+        <p class="stat__label">Enterprise program leadership as a Release Train Engineer</p>
+      </li>
+      <li class="stat">
+        <p class="stat__value stat__value--text">SPC · RTE<span class="stat__unit">SAFe</span></p>
+        <p class="stat__label">Program Consultant and Release Train Engineer credentials</p>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="section" id="work" aria-labelledby="work-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Case studies</p>
+      <h2 id="work-heading">Selected product leadership work</h2>
+      <p class="section__intro">Three engagements that show the progression from enterprise program leadership to product transformation. Each is written as a product story: the problem, my role, the thinking, the signals that informed decisions and what changed.</p>
+    </div>
+    <div class="cases">
+    <article class="case" id="case-ups" aria-labelledby="case-ups-title">
+      <header class="case__header">
+        <img class="case__logo" src="assets/img/ups.png" alt="UPS logo" loading="lazy" width="80" height="80">
+        <div>
+          <p class="case__company">UPS <span class="case__period">2026 – present</span></p>
+          <h3 id="case-ups-title" class="case__title">Product transformation &amp; portfolio leadership</h3>
         </div>
-    </section>
-
-    <section id="expertise" class="section bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Areas of Expertise</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                <div class="card p-6"><ul class="list-disc list-inside space-y-2 text-gray-700"><li>Agile / SAFe</li><li>ServiceNow</li><li>JIRA</li><li>Microsoft Power BI</li><li>Java</li></ul></div>
-                <div class="card p-6"><ul class="list-disc list-inside space-y-2 text-gray-700"><li>Jenkins / Azure DevOps</li><li>GitHub</li><li>Risk Management</li><li>Prompt Engineering</li><li>AI-Powered Product Management</li></ul></div>
-            </div>
+      </header>
+      <p class="case__summary">Leading product transformation across a portfolio of five enterprise products delivered by nineteen pods, and building the product management capability that keeps them aligned.</p>
+      <ul class="chips" aria-label="Scope">
+        <li>5 products</li>
+        <li>19 delivery pods</li>
+        <li>Product operating model</li>
+        <li>OKRs &amp; roadmaps</li>
+        <li>Power BI insights</li>
+      </ul>
+      <div class="case__grid">
+        <div class="case__block">
+          <h4>Context</h4>
+          <p>A cross-product ecosystem where five products share customers, data, platforms and delivery capacity. Nineteen pods plan and ship in parallel, and decisions made in one product surface as dependencies, risks or capacity constraints in another.</p>
         </div>
-    </section>
-
-    <section id="projects" class="section bg-gray-50">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Products Impacted</h2>
-            <div class="flex flex-wrap justify-center mb-6 gap-2">
-                <button class="filter-btn px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base" data-filter="all">All</button>
-                <button class="filter-btn px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base" data-filter="product">Product Management</button>
-                <button class="filter-btn px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base" data-filter="scrum">Agile Transformation</button>
-                <button class="filter-btn px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base" data-filter="java">Java</button>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div class="card p-6 project-card flex flex-col" data-category="product">
-                    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">Current</span></div>
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Group Product Manager – Pricing & Offers</h3>
-                    <p class="text-gray-600 text-sm sm:text-base mb-4">Leading AI-powered Pricing & Offers product line strategy, driving revenue innovation and customer-centric offer management at UPS.</p>
-                    <button class="mt-2 px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base open-modal" data-modal="modalUPS">Details</button>
-                    <div class="mt-4"><img src="ups.png" alt="UPS Logo" class="project-card-logo"></div>
-                </div>
-                <div class="card p-6 project-card flex flex-col" data-category="product">
-                    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">Ended July 2026</span></div>
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Product Manager – TD Bank</h3>
-                    <p class="text-gray-600 text-sm sm:text-base mb-4">Data-driven decision making, orchestrating agile product release cycles and Jenkins → Azure DevOps migration.</p>
-                    <button class="mt-2 px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base open-modal" data-modal="modal1">Details</button>
-                    <div class="mt-4"><img src="td1.png" alt="TD Logo" class="project-card-logo"></div>
-                </div>
-                <div class="card p-6 project-card flex flex-col" data-category="scrum">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Agile Transformation</h3>
-                    <p class="text-gray-600 text-sm sm:text-base mb-4">Coached multiple pods at Bell, CPPIB, FedEx, Citibank, and Fidelity Investments.</p>
-                    <button class="mt-2 px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base open-modal" data-modal="modal2">Details</button>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <img src="bell.png" alt="Bell" class="project-card-logo"><img src="cppib.png" alt="CPPIB" class="project-card-logo"><img src="fedex.jpg" alt="FedEx" class="project-card-logo"><img src="citi.png" alt="Citibank" class="project-card-logo"><img src="fidelity.jpg" alt="Fidelity" class="project-card-logo">
-                    </div>
-                </div>
-                <div class="card p-6 project-card flex flex-col" data-category="java">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2">Java/J2EE</h3>
-                    <p class="text-gray-600 text-sm sm:text-base mb-4">Developed solutions for Statefarm, Thomascook, UHG, Wallgreens AFM</p>
-                    <button class="mt-2 px-3 py-1.5 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base open-modal" data-modal="modal3">Details</button>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <img src="statefarm.png" alt="State Farm" class="project-card-logo"><img src="thomascook.jpg" alt="Thomas Cook" class="project-card-logo"><img src="wallgreens.png" alt="Wallgreens" class="project-card-logo"><img src="uhg.png" alt="UHG" class="project-card-logo">
-                    </div>
-                </div>
-            </div>
+        <div class="case__block">
+          <h4>Challenge</h4>
+          <p>Move the portfolio from activity-based planning to outcome-based product management: clear strategy and roadmaps, OKRs that mean something, prioritization that respects capacity and cross-product dependencies, and product KPIs that leadership can act on.</p>
         </div>
-    </section>
-
-    <!-- ── RESEARCH & CASE STUDIES ── -->
-    <section id="research" class="section bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-2">Research &amp; Case Studies</h2>
-            <p class="text-center text-gray-500 mb-8 text-sm sm:text-base max-w-xl mx-auto">Original product research and case studies demonstrating end-to-end PM thinking — from discovery and data analysis through to strategy, wireframes, and measurable impact.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- OutdoorIQ -->
-                <div class="research-card">
-                    <div class="research-card-header"></div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="research-tag">Research Product</span>
-                            <span class="text-xs text-gray-400">2024 · 10-week study</span>
-                        </div>
-                        <div class="text-3xl mb-3">🌿</div>
-                        <h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">OutdoorIQ — Closing the Generation Gap in Outdoor Exposure</h3>
-                        <p class="text-gray-500 text-sm flex-1 mb-4">A research-driven product case study exploring the sharp decline in outdoor time among children aged 6–18 and the design of a school-enterprise tool empowering educators to make outdoor engagement measurable and actionable.</p>
-                        <div class="flex flex-wrap gap-1.5 mb-5">
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-green-50 text-green-700 border border-green-200">Discovery Research</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Data Analysis</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Wireframes</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">Product Strategy</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">School Enterprise</span>
-                        </div>
-                        <div class="mt-auto flex items-center justify-between">
-                            <span class="text-xs text-gray-400">n=312 survey · 24 educator interviews</span>
-                            <a href="case study outdooriq.html" class="view-study-btn" target="_blank">
-                                View Case Study
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+        <div class="case__block">
+          <h4>My role</h4>
+          <p>I drive the product operating model across the portfolio. I partner with Product Managers and Product Owners on strategy, roadmaps, OKRs and prioritization, guide PI and quarterly planning across pods, and coach Product Managers, Product Owners, Scrum Masters and Release Train Engineers. I provide senior leadership with the analysis behind portfolio decisions rather than owning the decisions alone.</p>
         </div>
-    </section>
-
-    <section id="companies" class="section bg-gray-50">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Companies I've Worked With</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                <div class="card p-4 flex justify-center items-center"><img src="ups.png" alt="UPS" class="company-logo"></div>
-                <div class="card p-4 flex justify-center items-center"><img src="td.png" alt="TD" class="company-logo"></div>
-                <div class="card p-4 flex justify-center items-center"><img src="accenture-logo1.jpg" alt="Accenture" class="company-logo"></div>
-                <div class="card p-4 flex justify-center items-center"><img src="ntt-data.jpg" alt="NTT Data" class="company-logo"></div>
-                <div class="card p-4 flex justify-center items-center"><img src="cognizant.png" alt="Cognizant" class="company-logo"></div>
-                <div class="card p-4 flex justify-center items-center"><img src="tcs.jpg" alt="TCS" class="company-logo"></div>
-                <div class="card p-4 flex justify-center items-center"><img src="cgi.jpg" alt="CGI" class="company-logo"></div>
-            </div>
+        <div class="case__block">
+          <h4>Approach</h4>
+          <p>Start from customer and business outcomes, then work back to roadmaps, quarterly commitments and pod capacity. Make cross-product dependencies explicit before planning, not after. Treat prioritization as a trade-off conversation grounded in data, and build the habits (OKR reviews, KPI check-ins, roadmap refreshes) that let teams run it themselves.</p>
         </div>
-    </section>
-
-    <section id="articles" class="section bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-2">Published Articles</h2>
-            <p class="text-center text-gray-500 mb-6 text-sm sm:text-base max-w-xl mx-auto">Thought leadership on Product Strategy and the evolving role of AI in modern product management.</p>
-            <div class="flex justify-center gap-3 mb-8 flex-wrap">
-                <button class="article-filter-btn active" data-afilter="all">All Articles</button>
-                <button class="article-filter-btn" data-afilter="ai">AI in Product Management</button>
-                <button class="article-filter-btn" data-afilter="strategy">Product Strategy</button>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid">
-                <div class="article-card" data-atag="ai"><div class="article-header header-ai"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-ai mb-3">AI in PM</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">From Roadmaps to Intelligence: How AI is Redefining Product Planning</h3><p class="text-gray-500 text-sm flex-1 mb-4">AI isn't replacing PMs — it's elevating us. Discover how ML-driven prioritization, predictive analytics, and LLM-assisted discovery are transforming how modern product teams plan and execute.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">March 2025 · 6 min read</span><button class="read-more-btn open-article" data-article="a1">Read →</button></div></div></div>
-                <div class="article-card" data-atag="strategy"><div class="article-header header-strategy"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-strategy mb-3">Product Strategy</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">The Jobs-to-Be-Done Framework in Enterprise Product Management</h3><p class="text-gray-500 text-sm flex-1 mb-4">Enterprise products often fail not because of execution, but because of misaligned strategy. JTBD gives PMs a powerful lens to align feature development with the real outcomes customers are hiring your product to achieve.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">January 2025 · 5 min read</span><button class="read-more-btn open-article" data-article="a2">Read →</button></div></div></div>
-                <div class="article-card" data-atag="ai"><div class="article-header header-ai"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-ai mb-3">AI in PM</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">Prompt Engineering as a Core PM Skill: Why Every Product Manager Needs It Now</h3><p class="text-gray-500 text-sm flex-1 mb-4">The ability to communicate precisely with AI systems is quickly becoming as important as writing a good PRD. Here's how I use prompt engineering to accelerate discovery, synthesis, and stakeholder reporting.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">November 2024 · 4 min read</span><button class="read-more-btn open-article" data-article="a3">Read →</button></div></div></div>
-                <div class="article-card" data-atag="strategy"><div class="article-header header-strategy"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-strategy mb-3">Product Strategy</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">Building an Agile Maturity Index: Measuring What Actually Matters</h3><p class="text-gray-500 text-sm flex-1 mb-4">Most Agile metrics measure activity, not outcomes. I built an Agile Maturity Index to give leadership real visibility into team health, delivery predictability, and continuous improvement velocity — here's how.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">September 2024 · 7 min read</span><button class="read-more-btn open-article" data-article="a4">Read →</button></div></div></div>
-                <div class="article-card" data-atag="ai"><div class="article-header header-ai"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-ai mb-3">AI in PM</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">AI-Powered Pricing: How Machine Learning is Transforming Offer Management</h3><p class="text-gray-500 text-sm flex-1 mb-4">Dynamic pricing is no longer a luxury for tech giants. With AI-driven offer engines, product teams can now personalize pricing at scale — and I've seen firsthand how it changes competitive positioning and revenue outcomes.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">July 2024 · 6 min read</span><button class="read-more-btn open-article" data-article="a5">Read →</button></div></div></div>
-                <div class="article-card" data-atag="strategy"><div class="article-header header-strategy"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-strategy mb-3">Product Strategy</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">From Feature Factory to Outcome Machine: Rethinking Your Product Backlog</h3><p class="text-gray-500 text-sm flex-1 mb-4">Too many product teams are drowning in feature requests while starving for outcomes. Here's the backlog strategy I use — rooted in OKRs, customer impact scoring, and risk-weighted prioritization — to shift from delivery to value.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">May 2024 · 5 min read</span><button class="read-more-btn open-article" data-article="a6">Read →</button></div></div></div>
-                <div class="article-card" data-atag="ai"><div class="article-header header-ai"></div><div class="p-6 flex flex-col flex-1"><span class="article-tag tag-ai mb-3">AI in PM</span><h3 class="font-bold text-gray-900 text-base sm:text-lg mb-2 leading-snug">The PM's Guide to Responsible AI: Shipping Ethical Products in the Age of LLMs</h3><p class="text-gray-500 text-sm flex-1 mb-4">As AI features become a competitive necessity, product managers are on the front lines of responsible deployment. From bias detection to explainability requirements, here's the ethical AI checklist I apply before every AI feature ships.</p><div class="flex items-center justify-between mt-auto"><span class="text-xs text-gray-400">March 2024 · 8 min read</span><button class="read-more-btn open-article" data-article="a7">Read →</button></div></div></div>
-            </div>
+        <div class="case__block">
+          <h4>Signals &amp; data</h4>
+          <p>Product KPIs and adoption, operational metrics, capacity and throughput by pod, delivery predictability, dependency maps and risk trends. Power BI models bring these together so that a planning conversation starts from the same picture for every product.</p>
         </div>
-    </section>
-
-    <section id="credentials" class="section bg-gray-50">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Credentials</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="card p-6">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-4">Certifications</h3>
-                    <div class="space-y-4">
-                        <div><h4 class="text-lg sm:text-xl font-semibold">Level II Secret Clearance</h4><p class="text-gray-600 text-sm sm:text-base">Federal Gov. of Canada</p></div>
-                        <div><h4 class="text-lg sm:text-xl font-semibold">Certified SAFe 6.0 Release Train Engineer</h4><p class="text-gray-600 text-sm sm:text-base">ScaledAgile</p></div>
-                        <div><h4 class="text-lg sm:text-xl font-semibold">Certified Product Owner</h4><p class="text-gray-600 text-sm sm:text-base">Scrum Alliance</p></div>
-                        <div><h4 class="text-lg sm:text-xl font-semibold">Certified Scrum Master</h4><p class="text-gray-600 text-sm sm:text-base">Scrum Alliance</p></div>
-                        <div><h4 class="text-lg sm:text-xl font-semibold">Sun Certified Java Developer</h4><p class="text-gray-600 text-sm sm:text-base">Sun</p></div>
-                    </div>
-                </div>
-                <div class="card p-6">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-4">Education</h3>
-                    <div class="space-y-4">
-                        <div><div class="flex items-center space-x-2"><img src="gradcap.png" alt="Graduation Cap" class="w-12 sm:w-16 h-12 sm:h-16"><h4 class="text-lg sm:text-xl font-semibold">Product Management</h4></div><p class="text-gray-600 text-sm sm:text-base">University Of Toronto, Canada</p><p class="text-gray-700 text-sm sm:text-base">Specialized in Product Management and Strategic Leadership.</p></div>
-                        <div><div class="flex items-center space-x-2"><img src="gradcap.png" alt="Graduation Cap" class="w-12 sm:w-16 h-12 sm:h-16"><h4 class="text-lg sm:text-xl font-semibold">B.Tech in Computer Science Engineering</h4></div><p class="text-gray-600 text-sm sm:text-base">Dr. A. P. J. Kalam Technical University, India</p><p class="text-gray-700 text-sm sm:text-base">Graduated with honors, focusing on Software Engineering.</p></div>
-                    </div>
-                </div>
-            </div>
+        <div class="case__block">
+          <h4>Impact</h4>
+          <ul><li>A portfolio-level view of strategy, roadmaps, OKRs and capacity across five products and nineteen pods, replacing product-by-product planning.</li><li>PI and quarterly planning that surfaces cross-product dependencies and constraints early, so trade-offs are made deliberately.</li><li>Product KPIs and operational metrics in Power BI that senior leaders use in decision forums, not just status reviews.</li><li>Stronger Product Manager and Product Owner practice through hands-on coaching on outcomes, prioritization and evidence.</li></ul>
         </div>
-    </section>
-
-    <section id="contact" class="section bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Contact Me</h2>
-            <div class="max-w-md mx-auto">
-                <div class="card p-6">
-                    <form id="contact-form" action="https://formspree.io/f/mvgrzabb" method="POST">
-                        <div class="mb-4"><label class="block text-gray-700 mb-2 text-sm sm:text-base" for="name">Name</label><input class="w-full p-2 border rounded text-sm sm:text-base" id="name" name="name" type="text" placeholder="Your name" required></div>
-                        <div class="mb-4"><label class="block text-gray-700 mb-2 text-sm sm:text-base" for="email">Email</label><input class="w-full p-2 border rounded text-sm sm:text-base" id="email" name="email" type="email" placeholder="Your email" required></div>
-                        <div class="mb-4"><label class="block text-gray-700 mb-2 text-sm sm:text-base" for="message">Message</label><textarea class="w-full p-2 border rounded text-sm sm:text-base" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea></div>
-                        <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base">Send Message</button>
-                        <div id="form-message" class="form-message"></div>
-                    </form>
-                    <p class="text-gray-700 mt-4 text-center">
-                        <a href="https://www.linkedin.com/in/sangitagiri01/" class="linkedin-button text-sm sm:text-base">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                            Connect on LinkedIn
-                        </a>
-                    </p>
-                </div>
-            </div>
+      </div>
+    </article>
+    <article class="case" id="case-td" aria-labelledby="case-td-title">
+      <header class="case__header">
+        <img class="case__logo" src="assets/img/td.png" alt="TD Bank logo" loading="lazy" width="80" height="80">
+        <div>
+          <p class="case__company">TD Bank <span class="case__period">to 2026</span></p>
+          <h3 id="case-td-title" class="case__title">Enterprise product &amp; program delivery</h3>
         </div>
-    </section>
-
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p class="text-sm sm:text-base">© 2025 Sangita Giri. All rights reserved.</p>
+      </header>
+      <p class="case__summary">The bridge between enterprise program leadership and product leadership: owning roadmaps, prioritization and release readiness for enterprise delivery platforms in a regulated bank, and using performance data to steer them.</p>
+      <ul class="chips" aria-label="Scope">
+        <li>Product &amp; technology roadmaps</li>
+        <li>Quarterly planning</li>
+        <li>Release readiness</li>
+        <li>Power BI dashboards</li>
+        <li>Senior governance</li>
+      </ul>
+      <div class="case__grid">
+        <div class="case__block">
+          <h4>Context</h4>
+          <p>Enterprise technology delivery inside a large bank, where every release passes through Business, Product, Architecture, Engineering, Risk and Compliance. The platform work included the migration of delivery pipelines from Jenkins to Azure DevOps, with stability and scalability as non-negotiables.</p>
         </div>
-    </footer>
-
-    <!-- Modals -->
-    <div id="modalUPS" class="modal"><div class="modal-content"><div class="flex items-center gap-3 mb-4"><img src="ups.png" alt="UPS" class="h-10 object-contain"><h3 class="text-xl sm:text-2xl font-semibold">Group Product Manager – Pricing & Offers</h3></div><p class="text-gray-500 text-sm mb-4">UPS · August 2026 – Present</p><ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4"><li>Leading the Pricing & Offers product line, defining strategic roadmap to drive revenue optimization and competitive market positioning.</li><li>Partnering with data science and engineering teams to integrate AI/ML-powered dynamic pricing models, improving offer relevance and conversion rates.</li><li>Managing a portfolio of pricing features across B2B and B2C segments, balancing customer value with margin objectives.</li><li>Driving end-to-end product discovery — from customer research and competitive analysis to MVP definition and iterative delivery.</li><li>Aligning cross-functional stakeholders across Finance, Marketing, Sales, and Technology to ensure cohesive go-to-market execution.</li><li>Implementing OKR-driven backlog prioritization, ensuring every sprint delivers measurable business outcomes.</li><li>Championing a customer-first culture through continuous feedback loops, NPS tracking, and rapid experimentation cycles.</li></ul><button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base close-modal">Close</button></div></div>
-    <div id="modal1" class="modal"><div class="modal-content"><h3 class="text-xl sm:text-2xl font-semibold mb-1">Product Manager – TD Bank</h3><p class="text-gray-500 text-sm mb-4">TD Bank · Until July 2026</p><ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4"><li>Defined and executed product roadmap, prioritizing high-impact features that enhanced pipeline efficiency by 20%.</li><li>Led platform transformation, migrating from Jenkins to Azure DevOps, improving pipeline stability and scalability by 30%.</li><li>Managed backlog prioritization, integrating cross-functional insights to align features with business goals, reducing deployment errors by 25%.</li><li>Developed Agile Maturity Index, measuring team progress and optimizing Agile execution, resulting in a 40% increase in sprint velocity.</li><li>Automated Power BI reporting, cutting reporting time by 50% and enhancing data-driven decision-making.</li><li>Championed customer-centric solutions, increasing user satisfaction by 35%.</li></ul><button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base close-modal">Close</button></div></div>
-    <div id="modal2" class="modal"><div class="modal-content"><h3 class="text-xl sm:text-2xl font-semibold mb-4">Agile Transformation</h3><ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4"><li>Led Agile transformation, training teams and implementing Scrum practices, boosting team velocity by 30% over 6 months.</li><li>Scaled Agile methodologies across enterprise teams, optimizing value flow within Agile Release Trains (ARTs), increasing delivery predictability by 40%.</li><li>Implemented Kanban and information radiators, reducing bottlenecks and improving sprint completion rates by 35%.</li><li>Resolved complex release challenges, cutting deployment failures by 25%.</li><li>Managed strategic financial planning, reducing project costs by 20%.</li><li>Partnered with Product Management, increasing roadmap clarity and execution efficiency by 45%.</li><li>Integrated Agile forecasting, automating Power BI insights, reducing reporting time by 50%.</li></ul><button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base close-modal">Close</button></div></div>
-    <div id="modal3" class="modal"><div class="modal-content"><h3 class="text-xl sm:text-2xl font-semibold mb-4">Java Developer (2007–2012)</h3><ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4"><h4 class="text-lg sm:text-xl font-semibold mb-2">State Farm Insurance – DSS Program</h4><li>Developed enterprise-grade applications using Spring MVC, Spring Boot, and Hibernate ORM.</li><li>Optimized backend architecture, reducing processing time by 30%.</li><li>Built RESTful APIs, improving data exchange efficiency across insurance platforms.</li><li>Automated reconciliation reporting, reducing manual data entry errors by 40%.</li><li>Resolved performance bottlenecks, improving transaction response time by 25%.</li></ul><ul class="list-disc list-inside space-y-2 text-gray-700 text-sm sm:text-base mb-4"><h4 class="text-lg sm:text-xl font-semibold mb-2">Thomas Cook – Payment & Review Features</h4><li>Designed Bin Range Identification logic, improving fraud detection accuracy by 35%.</li><li>Developed transaction review workflows, reducing payment disputes by 20%.</li><li>Integrated Hibernate ORM for optimized query performance.</li><li>Managed backend scalability improvements, increasing system uptime by 30%.</li></ul><button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm sm:text-base close-modal">Close</button></div></div>
-
-    <div id="article-modal" class="article-modal">
-        <div class="article-modal-content">
-            <div id="article-modal-body"></div>
-            <button id="close-article-modal" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm">Close</button>
+        <div class="case__block">
+          <h4>Challenge</h4>
+          <p>Keep a product and technology roadmap moving while managing risk, dependencies and release readiness across many stakeholders, and give leadership a trustworthy picture of delivery health without adding reporting overhead.</p>
         </div>
+        <div class="case__block">
+          <h4>My role</h4>
+          <p>As Product Manager I defined and prioritized the roadmap, ran quarterly planning and capacity planning, managed risks and dependencies, and led release readiness. I built the Agile Maturity Index and Power BI performance dashboards that leadership used to see velocity, throughput, cycle time and predictability, and I represented the product in senior governance forums.</p>
+        </div>
+        <div class="case__block">
+          <h4>Approach</h4>
+          <p>Anchor prioritization in business goals and platform stability rather than in the loudest request. Make readiness criteria explicit before a release, not during it. Measure the delivery system (flow, predictability, quality) so that improvement conversations are about evidence rather than opinion.</p>
+        </div>
+        <div class="case__block">
+          <h4>Signals &amp; data</h4>
+          <p>Velocity, throughput and cycle time by team; predictability against quarterly commitments; pipeline stability and deployment outcomes through the Azure DevOps migration; customer and user feedback on released features; risk and dependency status ahead of each release.</p>
+        </div>
+        <div class="case__block">
+          <h4>Impact</h4>
+          <ul><li>Delivered the Jenkins-to-Azure DevOps platform migration with pipeline stability and scalability treated as explicit product outcomes.</li><li>Roadmap and backlog prioritization tied directly to business goals, with cross-functional input gathered before commitments were made.</li><li>An Agile Maturity Index and automated Power BI reporting that gave leadership a shared, near-real-time view of team performance and reduced manual reporting effort.</li><li>Customer feedback folded into iterative releases as a standing practice rather than a one-off exercise.</li></ul>
+        </div>
+      </div>
+    </article>
+    <article class="case" id="case-cgi" aria-labelledby="case-cgi-title">
+      <header class="case__header">
+        <img class="case__logo" src="assets/img/cgi.png" alt="CGI logo" loading="lazy" width="80" height="80">
+        <div>
+          <p class="case__company">CGI</p>
+          <h3 id="case-cgi-title" class="case__title">Large-scale program &amp; Release Train leadership</h3>
+        </div>
+      </header>
+      <p class="case__summary">Leading enterprise program execution across six or more teams as a Release Train Engineer, with SAFe used as the mechanism for planning, dependency management and predictable delivery at scale.</p>
+      <ul class="chips" aria-label="Scope">
+        <li>6+ teams</li>
+        <li>PI planning</li>
+        <li>Cross-team dependencies</li>
+        <li>Predictability metrics</li>
+        <li>Organizational transformation</li>
+      </ul>
+      <div class="case__grid">
+        <div class="case__block">
+          <h4>Context</h4>
+          <p>A large enterprise program with more than six teams whose work had to land together. Planning happened in silos, dependencies were discovered late and leadership had limited visibility into whether commitments would hold.</p>
+        </div>
+        <div class="case__block">
+          <h4>Challenge</h4>
+          <p>Bring the program onto a single planning cadence, make dependencies and risks visible early, align delivery to the product roadmap and give leadership metrics they could trust.</p>
+        </div>
+        <div class="case__block">
+          <h4>My role</h4>
+          <p>I led program execution as the Release Train Engineer: enterprise and PI planning, cross-team dependency and risk management, roadmap alignment with Product Management, and the metrics and information radiators that tracked flow and predictability. The organizational transformation part of the role meant coaching teams and leaders through the change, not just running events.</p>
+        </div>
+        <div class="case__block">
+          <h4>Approach</h4>
+          <p>Use the planning cadence to force the hard conversations early: capacity, dependencies, architectural and leadership impediments. Partner with Product Management on feature prioritization so the train works on what matters. Instrument the program with flow and forecasting data so that course corrections happen between planning events, not only at them.</p>
+        </div>
+        <div class="case__block">
+          <h4>Signals &amp; data</h4>
+          <p>Planned versus delivered by PI, dependency and risk registers, flow bottlenecks visible through Kanban and information radiators, Power BI forecasting for sprint tracking and program planning.</p>
+        </div>
+        <div class="case__block">
+          <h4>Impact</h4>
+          <ul><li>A shared planning cadence and dependency map across six or more teams, giving leadership an early and honest view of delivery risk.</li><li>Improved predictability of program commitments through explicit capacity planning and impediment resolution.</li><li>Product roadmap and PI priorities aligned through a standing partnership with Product Management.</li><li>Power BI forecasting and flow metrics adopted as the program’s decision-making tools.</li></ul>
+        </div>
+      </div>
+    </article>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-    const articles = {
-        a1:{tag:'AI in PM',tagClass:'tag-ai',date:'March 2025 · 6 min read',title:'From Roadmaps to Intelligence: How AI is Redefining Product Planning',body:`<p>The product management function is undergoing its most significant transformation since the advent of Agile. AI is now firmly in the hands of product teams, and the PMs who embrace it earliest will define the competitive edge of their organizations.</p><h4>AI as a Co-Pilot, Not a Replacement</h4><p>AI removes the cognitive drudgery — synthesizing 500 user interview notes, generating SWOT frameworks, drafting PRD outlines — so that PMs can focus on what only humans can do: empathy, judgment, and strategic storytelling.</p><h4>Predictive Prioritization</h4><p>At TD Bank, we layered Power BI analytics on top of sprint data to create a dynamic prioritization dashboard that updated in real time — reducing planning overhead by 50%.</p><h4>LLM-Assisted Discovery</h4><p>Uploading 200 support tickets and asking an LLM to cluster them by theme is now a matter of minutes, not days. This frees discovery time for the high-value work.</p><h4>What This Means for PM Career Growth</h4><p>The PMs who thrive in the AI era will be those who develop fluency in prompt engineering and can translate AI-generated insights into strategic decisions.</p>`},
-        a2:{tag:'Product Strategy',tagClass:'tag-strategy',date:'January 2025 · 5 min read',title:'The Jobs-to-Be-Done Framework in Enterprise Product Management',body:`<p>Teams build what stakeholders ask for, not what customers actually need. The Jobs-to-Be-Done (JTBD) framework is the antidote.</p><h4>What Is a "Job"?</h4><p>A "job" is the progress a customer is trying to make in a specific circumstance — the underlying motivation, not the feature request.</p><h4>Applying JTBD at Enterprise Scale</h4><p>At the enterprise level, there are multiple "customers": the end user, the business buyer, the IT gatekeeper, and the compliance team. JTBD forces you to segment these jobs explicitly.</p><h4>How I Use It</h4><p>I begin every discovery cycle with a JTBD interview protocol — 8–12 interviews focused on understanding the job, obstacles, and desired outcomes. These insights feed directly into our opportunity scoring model.</p><h4>The Outcome</h4><p>Teams that adopt JTBD build fewer features while creating more value. Less is more, when you're solving the right jobs.</p>`},
-        a3:{tag:'AI in PM',tagClass:'tag-ai',date:'November 2024 · 4 min read',title:'Prompt Engineering as a Core PM Skill: Why Every Product Manager Needs It Now',body:`<p>When I first started experimenting with large language models, I treated them like a search engine. The outputs were mediocre. Then I invested time in learning prompt engineering — and everything changed.</p><h4>What Prompt Engineering Means for PMs</h4><p>It's the practice of designing precise, context-rich inputs that guide AI models toward high-quality, structured outputs — thinking like both a customer and a systems architect simultaneously.</p><h4>Practical Applications</h4><p>I use prompt engineering to synthesize user research into personas, generate competitive analyses, draft acceptance criteria, and simulate stakeholder objections before a roadmap review.</p><h4>The "Chain of Thought" Technique</h4><p>Asking the model to "think step by step" before arriving at an answer surfaces angles I hadn't considered — especially for complex trade-off analyses.</p><h4>Start Small</h4><p>Rewrite your next PRD brief as a structured prompt. The habit of precision it builds will make you a sharper communicator — with AI and with humans.</p>`},
-        a4:{tag:'Product Strategy',tagClass:'tag-strategy',date:'September 2024 · 7 min read',title:'Building an Agile Maturity Index: Measuring What Actually Matters',body:`<p>Velocity is a vanity metric. When I set out to build an Agile Maturity Index at TD Bank, I wanted something that captured the full health of a product organization.</p><h4>The Problem with Standard Agile Metrics</h4><p>Most frameworks focus on throughput. These metrics are easy to game and rarely correlate with customer outcomes.</p><h4>What the Index Measures</h4><p>Five dimensions: Delivery Predictability, Customer Value Alignment, Team Health, Continuous Improvement Rate, and Technical Debt Ratio — each scored 1–5.</p><h4>How It's Implemented</h4><p>Automated data pulls from JIRA, Power BI, and GitHub, plus lightweight quarterly surveys. Composite scores surface to leadership in a real-time Power BI dashboard.</p><h4>The Results</h4><p>Within two quarters, sprint velocity improved by 40% and deployment errors dropped by 25%. Teams started having better conversations about what "good" looked like.</p>`},
-        a5:{tag:'AI in PM',tagClass:'tag-ai',date:'July 2024 · 6 min read',title:'AI-Powered Pricing: How Machine Learning is Transforming Offer Management',body:`<p>Pricing used to be an art. In logistics and financial services, that model is becoming obsolete — rapidly.</p><h4>The Shift to Dynamic Pricing</h4><p>AI is making dynamic pricing accessible and practical for any product organization with the right data infrastructure.</p><h4>How ML Models Drive Offer Personalization</h4><p>ML models predict willingness to pay, price elasticity, and churn risk at the individual customer level — dynamically selecting the right price point in milliseconds.</p><h4>The PM's Role in AI Pricing</h4><p>PMs need to own the feature logic layer — defining guardrails, override rules, and the A/B testing framework that governs how models are applied.</p><h4>The Competitive Advantage</h4><p>Organizations that get AI-powered pricing right don't just improve margins — they improve customer trust, because offers feel relevant rather than random.</p>`},
-        a6:{tag:'Product Strategy',tagClass:'tag-strategy',date:'May 2024 · 5 min read',title:'From Feature Factory to Outcome Machine: Rethinking Your Product Backlog',body:`<p>The feature factory is the graveyard of great product teams. Symptoms: backlogs with hundreds of items all marked "high priority"; sprint reviews that celebrate completed stories rather than outcomes.</p><h4>Why Backlogs Get Bloated</h4><p>Feature requests accumulate for cultural reasons. Without a rigorous filtering mechanism, the backlog becomes a repository of organizational anxiety.</p><h4>The Outcome-First Backlog</h4><p>Anchor every backlog item to an explicit, measurable outcome. If a feature can't be tied to an outcome, it doesn't get prioritized. This eliminates roughly 40% of backlog items in the first pass.</p><h4>OKR-Driven Prioritization</h4><p>Each key result maps to a set of backlog items. Items that map to multiple key results get a multiplier. Items that map to none get archived.</p><h4>Risk-Weighted Scoring</h4><p>High-impact, low-risk items rise to the top. High-impact, high-risk items get discovery investment before they enter a sprint.</p>`},
-        a7:{tag:'AI in PM',tagClass:'tag-ai',date:'March 2024 · 8 min read',title:"The PM's Guide to Responsible AI: Shipping Ethical Products in the Age of LLMs",body:`<p>Every PM shipping AI features is making ethical decisions — about whose data trains the model, whose outcomes get optimized, whose risks get minimized.</p><h4>The Responsibility Gap</h4><p>PMs sit at the intersection of technical capability and customer impact. That makes us the natural owners of responsible AI.</p><h4>My Pre-Launch Ethical AI Checklist</h4><p>Five questions before any AI feature ships: (1) Whose data? Did they consent? (2) Does the model perform consistently across demographic groups? (3) Can users understand and appeal AI decisions? (4) What's the failure mode? (5) Does this create unhealthy dependency?</p><h4>Bias Detection in Practice</h4><p>Define fairness metrics before model training, not after. Post-launch monitoring dashboards must include disaggregated metrics by customer segment.</p><h4>Explainability as a Product Feature</h4><p>Customers who understand why an AI made a decision trust the product more, complain less, and churn less. Explainability is good ethics and good business.</p>`}
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-        AOS.init({ duration: 1000 });
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                e.preventDefault();
-                const el = document.getElementById(this.getAttribute('href').substring(1));
-                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - document.querySelector('.navbar').offsetHeight, behavior: 'smooth' });
-            });
-        });
-
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => { navMenu.classList.toggle('hidden'); navMenu.classList.toggle('visible'); });
-            navMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { navMenu.classList.add('hidden'); navMenu.classList.remove('visible'); }));
-        }
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const f = btn.getAttribute('data-filter');
-                document.querySelectorAll('.project-card').forEach(c => { c.style.display = (f==='all'||c.getAttribute('data-category')===f)?'flex':'none'; });
-            });
-        });
-
-        document.querySelectorAll('.open-modal').forEach(btn => { btn.addEventListener('click', () => { document.getElementById(btn.getAttribute('data-modal')).style.display='flex'; }); });
-        document.querySelectorAll('.close-modal').forEach(btn => { btn.addEventListener('click', () => btn.closest('.modal').style.display='none'); });
-        window.addEventListener('click', e => { if(e.target.classList.contains('modal')) e.target.style.display='none'; });
-
-        document.querySelectorAll('.article-filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.article-filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const f = btn.getAttribute('data-afilter');
-                document.querySelectorAll('#articles-grid .article-card').forEach(c => { c.style.display=(f==='all'||c.getAttribute('data-atag')===f)?'flex':'none'; });
-            });
-        });
-
-        const articleModal = document.getElementById('article-modal');
-        const articleModalBody = document.getElementById('article-modal-body');
-        document.querySelectorAll('.open-article').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const a = articles[btn.getAttribute('data-article')];
-                if (!a) return;
-                articleModalBody.innerHTML = `<span class="article-tag ${a.tagClass} mb-3 inline-block">${a.tag}</span><h2 class="mt-2">${a.title}</h2><p class="text-xs text-gray-400 mb-4">${a.date}</p>${a.body}`;
-                articleModal.style.display = 'flex';
-            });
-        });
-        document.getElementById('close-article-modal').addEventListener('click', () => { articleModal.style.display='none'; });
-        articleModal.addEventListener('click', e => { if(e.target===articleModal) articleModal.style.display='none'; });
-
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            formMessage.classList.remove('success','error');
-            try {
-                const res = await fetch(contactForm.action, { method:'POST', body:new FormData(contactForm), headers:{'Accept':'application/json'} });
-                if (res.ok) { formMessage.classList.add('success'); formMessage.textContent='Thank you for your message! I will get back to you soon.'; contactForm.reset(); }
-                else { formMessage.classList.add('error'); formMessage.textContent='Failed to send message. Please try again later.'; }
-            } catch { formMessage.classList.add('error'); formMessage.textContent='An error occurred. Please check your connection and try again.'; }
-        });
-    });
-    </script>
+    <div class="foundation" aria-labelledby="foundation-heading">
+      <div class="foundation__head">
+        <h3 id="foundation-heading">Earlier career: technical foundation</h3>
+        <p>The first decade built the technical and delivery credibility the product work stands on: shipping enterprise software, then analyzing systems, then running programs.</p>
+      </div>
+      <ol class="foundation__roles">
+        <li>
+          <p class="foundation__company">Cognizant</p>
+          <p class="foundation__title">Technical Project Manager</p>
+          <p class="foundation__summary">Enterprise technology delivery: planning, execution and stakeholder management across delivery teams.</p>
+        </li>
+        <li>
+          <p class="foundation__company">NTT DATA</p>
+          <p class="foundation__title">Agile Consultant</p>
+          <p class="foundation__summary">Guided enterprise teams through Agile adoption and aligned pods around shared goals.</p>
+        </li>
+        <li>
+          <p class="foundation__company">Accenture (USA)</p>
+          <p class="foundation__title">Systems Analyst, State Farm</p>
+          <p class="foundation__summary">Systems analysis and enterprise Java delivery for the State Farm DSS program: REST APIs, reconciliation reporting and performance work.</p>
+        </li>
+        <li>
+          <p class="foundation__company">Accenture (India)</p>
+          <p class="foundation__title">Senior Software Engineer</p>
+          <p class="foundation__summary">Java / J2EE engineering for clients including Thomas Cook (payment and review workflows), UnitedHealth Group and Walgreens.</p>
+        </li>
+      </ol>
+      <p class="foundation__note">Software engineering (Java, Spring, Hibernate, REST) from 2007 to 2012 is my technical foundation. It is why I can hold my own with architects and engineers on trade-offs, platform risk and delivery reality.</p>
+      <p class="foundation__note foundation__note--muted">Consulting engagements across the career have included Bell, CPPIB, FedEx, Citibank and Fidelity Investments.</p>
+    </div>
+  </div>
+</section>
+<section class="logos" aria-labelledby="orgs-heading">
+  <div class="container">
+    <h2 id="orgs-heading" class="logos__heading">Organizations</h2>
+    <ul class="logos__list">
+      <li><img src="assets/img/ups.png" alt="UPS" height="40"></li>
+      <li><img src="assets/img/td.png" alt="TD Bank" height="40"></li>
+      <li><img src="assets/img/cgi.png" alt="CGI" height="40"></li>
+      <li><img src="assets/img/cognizant.png" alt="Cognizant" height="40"></li>
+      <li><img src="assets/img/ntt-data.png" alt="NTT DATA" height="40"></li>
+      <li><img src="assets/img/accenture.png" alt="Accenture" height="40"></li>
+      <li><img src="assets/img/tcs.png" alt="Tata Consultancy Services" height="40"></li>
+    </ul>
+  </div>
+</section>
+<section class="section" id="approach" aria-labelledby="approach-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Product thinking</p>
+      <h2 id="approach-heading">How I approach product leadership</h2>
+      <p class="section__intro">The same loop whether the problem is one product or a portfolio. The value is in doing it with evidence and with the people who have to live with the decision.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step__num" aria-hidden="true">01</span>
+        <h3 class="step__name">Understand</h3>
+        <p class="step__text">Customer problem, business context and the data we already have.</p>
+      </li>
+      <li class="step">
+        <span class="step__num" aria-hidden="true">02</span>
+        <h3 class="step__name">Prioritize</h3>
+        <p class="step__text">Outcomes, value, constraints and the trade-offs nobody wants to say out loud.</p>
+      </li>
+      <li class="step">
+        <span class="step__num" aria-hidden="true">03</span>
+        <h3 class="step__name">Build</h3>
+        <p class="step__text">Partner with Product, Design, Engineering and stakeholders on the smallest thing that tests the idea.</p>
+      </li>
+      <li class="step">
+        <span class="step__num" aria-hidden="true">04</span>
+        <h3 class="step__name">Measure</h3>
+        <p class="step__text">KPIs, adoption, outcomes and operational performance, not just delivery.</p>
+      </li>
+      <li class="step">
+        <span class="step__num" aria-hidden="true">05</span>
+        <h3 class="step__name">Learn</h3>
+        <p class="step__text">Use the evidence to adjust direction, and be explicit about what changed and why.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+<section class="section section--dark" id="data" aria-labelledby="data-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Data-driven product leadership</p>
+      <h2 id="data-heading">From dashboards to decisions</h2>
+      <p class="section__intro">I use data to answer the questions behind the metrics: What is changing? Why is it changing? What decision should we make next? Reporting is the by-product. The point is a better decision, made sooner, by people who can see the same picture.</p>
+    </div>
+    <div class="data-grid">
+      <div class="data-col">
+        <h3>Signals I read</h3>
+        <ul><li>Product KPIs and adoption</li><li>Capacity and resource signals</li><li>Velocity, throughput and cycle time</li><li>Flow and predictability</li><li>Operational performance</li><li>Trends and risk indicators</li></ul>
+      </div>
+      <div class="data-col">
+        <h3>What I do with them</h3>
+        <ul><li>Separate a real shift from noise before anyone reacts to it</li><li>Trace a metric back to the product, team or dependency behind it</li><li>Frame the decision, the options and what each one costs</li><li>Set the follow-up measure so we know if the decision worked</li></ul>
+      </div>
+      <div class="data-col">
+        <h3>How it shows up</h3>
+        <ul><li>Power BI models for portfolio, program and team performance</li><li>Planning conversations that start from the same evidence</li><li>Leadership forums that use the data to decide, not to report</li><li>An Agile Maturity Index that turned improvement into something measurable</li></ul>
+      </div>
+    </div>
+    <p class="data-tools"><span>Enabling tools</span> <strong>Power BI</strong> · <strong>Jira</strong> · <strong>Azure DevOps</strong></p>
+  </div>
+</section>
+<section class="section" id="ai" aria-labelledby="ai-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">AI + Product</p>
+      <h2 id="ai-heading">AI as a product and productivity capability</h2>
+      <p class="section__intro">I use AI every day as part of how product work gets done. It compresses the time between a question and a first answer, which leaves more room for judgement, conversation and decisions. It does not replace any of those.</p>
+    </div>
+    <ul class="ai-grid">
+      <li class="ai-card">
+        <h3>Discovery and research</h3>
+        <p>Synthesizing interviews, feedback and market context faster, and finding the patterns worth testing.</p>
+      </li>
+      <li class="ai-card">
+        <h3>Hypotheses and assumptions</h3>
+        <p>Exploring alternatives and deliberately challenging the assumptions behind a roadmap or an OKR.</p>
+      </li>
+      <li class="ai-card">
+        <h3>Requirements and product thinking</h3>
+        <p>Sharpening problem statements, acceptance criteria and product narratives before they reach a team.</p>
+      </li>
+      <li class="ai-card">
+        <h3>Data interpretation</h3>
+        <p>Asking better questions of dashboards and datasets, and pressure-testing the story the numbers seem to tell.</p>
+      </li>
+      <li class="ai-card">
+        <h3>Rapid prototyping and experimentation</h3>
+        <p>Turning an idea into something a stakeholder can react to in hours rather than weeks.</p>
+      </li>
+      <li class="ai-card">
+        <h3>Documentation at pace</h3>
+        <p>Producing roadmaps, briefs and decision records quickly so the thinking is captured while it is fresh.</p>
+      </li>
+    </ul>
+    <p class="ai-note">I am a product leader who uses AI well, not an AI engineer or data scientist. The judgement, the accountability and the decision stay with the humans in the room.</p>
+  </div>
+</section>
+<section class="section section--alt" id="journey" aria-labelledby="journey-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Progression</p>
+      <h2 id="journey-heading">Career journey</h2>
+      <p class="section__intro">One progression rather than a series of job changes: each stage added a wider scope of responsibility and a different kind of decision.</p>
+    </div>
+    <ol class="timeline">
+      <li class="timeline__item">
+        <p class="timeline__year">01 · 2007</p>
+        <h3 class="timeline__stage">Software Engineering</h3>
+        <p class="timeline__where">Accenture (India)</p>
+        <p class="timeline__text">Building enterprise Java systems and learning how software really ships.</p>
+      </li>
+      <li class="timeline__item">
+        <p class="timeline__year">02</p>
+        <h3 class="timeline__stage">Systems Analysis</h3>
+        <p class="timeline__where">Accenture (USA), State Farm</p>
+        <p class="timeline__text">Translating business needs into system behaviour on a large insurance program.</p>
+      </li>
+      <li class="timeline__item">
+        <p class="timeline__year">03</p>
+        <h3 class="timeline__stage">Technical Project &amp; Enterprise Delivery</h3>
+        <p class="timeline__where">Cognizant</p>
+        <p class="timeline__text">Owning delivery plans, risks and stakeholders across enterprise projects.</p>
+      </li>
+      <li class="timeline__item">
+        <p class="timeline__year">04</p>
+        <h3 class="timeline__stage">Agile &amp; Program Leadership</h3>
+        <p class="timeline__where">NTT DATA, CGI</p>
+        <p class="timeline__text">Coaching enterprise teams, then leading multi-team programs as a Release Train Engineer.</p>
+      </li>
+      <li class="timeline__item">
+        <p class="timeline__year">05 · to 2026</p>
+        <h3 class="timeline__stage">Enterprise Product Delivery</h3>
+        <p class="timeline__where">TD Bank</p>
+        <p class="timeline__text">Product roadmaps, prioritization, release readiness and performance data in a regulated enterprise.</p>
+      </li>
+      <li class="timeline__item">
+        <p class="timeline__year">06 · 2026</p>
+        <h3 class="timeline__stage">Product Transformation &amp; Portfolio Leadership</h3>
+        <p class="timeline__where">UPS</p>
+        <p class="timeline__text">Product strategy, OKRs, planning and capability building across five products and nineteen pods.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+<section class="section" id="credentials" aria-labelledby="credentials-heading">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="credentials-heading">Credentials</h2>
+    </div>
+    <div class="creds">
+      <div class="creds__col">
+        <h3>Education</h3>
+        <ul class="cred-list"><li><span class="cred__title">Product Management</span><span class="cred__org">University of Toronto</span><span class="cred__note">Product management and strategic leadership.</span></li><li><span class="cred__title">B.Tech, Computer Science &amp; Engineering</span><span class="cred__org">Dr. A. P. J. Abdul Kalam Technical University</span><span class="cred__note">Software engineering focus.</span></li></ul>
+      </div>
+      <div class="creds__col">
+        <h3>Certifications</h3>
+        <ul class="cred-list cred-list--compact"><li><span class="cred__title">SAFe Program Consultant (SPC)</span><span class="cred__org">Scaled Agile</span></li><li><span class="cred__title">SAFe Release Train Engineer (RTE)</span><span class="cred__org">Scaled Agile</span></li><li><span class="cred__title">Certified Scrum Product Owner</span><span class="cred__org">Scrum Alliance</span></li><li><span class="cred__title">Certified Scrum Master</span><span class="cred__org">Scrum Alliance</span></li></ul>
+        <h3 class="creds__sub">Other</h3>
+        <ul class="cred-list cred-list--compact"><li><span class="cred__title">Level II Secret Clearance</span><span class="cred__org">Government of Canada</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--dark section--contact" id="contact" aria-labelledby="contact-heading">
+  <div class="container contact">
+    <div class="contact__lead">
+      <h2 id="contact-heading">Let’s build products that make complex decisions simpler.</h2>
+      <p class="section__intro">If you are hiring for senior product, portfolio or product transformation leadership, or you want to compare notes on running product at enterprise scale, I would like to hear from you.</p>
+      <div class="contact__actions">
+        <a class="btn btn--primary" href="https://www.linkedin.com/in/sangitagiri01/" target="_blank" rel="noopener noreferrer me"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Connect on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a class="btn btn--secondary" href="assets/resume/Sangita-Giri-Resume.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download Resume<span class="visually-hidden"> (PDF)</span></a>
+      </div>
+    </div>
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mvgrzabb" method="POST" novalidate>
+      <h3>Send a message</h3>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button class="btn btn--primary" type="submit">Send message</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite" data-success="Thank you. Your message has been sent and I will reply soon." data-error="The message could not be sent. Please try again or reach me on LinkedIn."></p>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p>&copy; 2026 Sangita Giri. Product &amp; Transformation Leader, Toronto, Canada.</p>
+    <p><a href="https://www.linkedin.com/in/sangitagiri01/" target="_blank" rel="noopener noreferrer me">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a> · <a href="#top">Back to top</a></p>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -155,7 +155,7 @@ export const work = {
       'Fifteen years of shipping enterprise software, analyzing systems, running enterprise projects and leading large-scale Agile delivery. It is why I can hold my own with architects and engineers on trade-offs, platform risk and delivery reality.',
     roles: [
       { company: 'TCS', title: 'Agile Delivery Manager', years: '2020 – 2022', summary: 'Large-scale Agile delivery across client programs: the step from project delivery into program and transformation leadership.' },
-      { company: 'Cognizant', title: 'Technical Project Manager', years: 'Nov 2016 – Dec 2019', summary: 'Enterprise technology delivery: planning, execution and stakeholder management across delivery teams.' },
+      { company: 'Cognizant', title: 'Technical Project Manager', years: '2016 – 2019', summary: 'Enterprise technology delivery: planning, execution and stakeholder management across delivery teams.' },
       { company: 'NTT DATA', title: 'Agile Consultant', years: '2014 – 2016', summary: 'Guided enterprise teams through Agile adoption and aligned pods around shared goals.' },
       { company: 'Accenture (USA)', title: 'Systems Analyst, State Farm', years: '2012 – 2014', summary: 'Systems analysis and enterprise Java delivery for the State Farm DSS program: REST APIs, reconciliation reporting, performance work.' },
       { company: 'Accenture (India)', title: 'Senior Software Engineer', years: '2007 – 2011', summary: 'Java / J2EE engineering for Thomas Cook (payment and review workflows), UnitedHealth Group and Walgreens.' },
@@ -235,7 +235,7 @@ export const journey = {
       years: '2014 – 2019',
       roles: [
         { company: 'NTT DATA', title: 'Agile Consultant', years: '2014 – 2016' },
-        { company: 'Cognizant', title: 'Technical Project Manager', years: 'Nov 2016 – Dec 2019' },
+        { company: 'Cognizant', title: 'Technical Project Manager', years: '2016 – 2019' },
       ],
       text: 'Agile adoption across enterprise teams, then owning delivery plans, risks and stakeholders.',
     },

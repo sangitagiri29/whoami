@@ -975,34 +975,63 @@ a:hover {
   }
 }
 
+.foundation__footer {
+  display: grid;
+  gap: 1rem 2.5rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
 .foundation__note {
-  margin-top: 1rem;
   font-size: var(--text-sm);
   color: var(--muted);
   max-width: var(--measure);
 }
 
 .logos__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 0.75rem;
   align-items: center;
-  gap: 1rem 1.75rem;
-  margin-top: 1.25rem;
+}
+
+.logos__list li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 36px;
 }
 
 .logos__list img {
-  height: 28px;
+  height: 30px;
   width: auto;
-  max-width: 96px;
+  max-width: 100%;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.65;
-  transition: filter 0.2s ease, opacity 0.2s ease;
 }
 
-.logos__list li:hover img {
-  filter: none;
-  opacity: 1;
+@media (min-width: 720px) {
+  .logos__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.75rem;
+  }
+
+  .logos__list img {
+    max-width: 108px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .foundation__footer {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .logos__list {
+    justify-content: flex-end;
+    max-width: 640px;
+  }
 }
 
 /* Product thinking flow --------------------------------------------------- */

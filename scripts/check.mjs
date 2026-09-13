@@ -60,7 +60,7 @@ for (const file of ['index.html', '404.html']) {
   }
 
   // 6. Nothing from the confidential / de-emphasised list should have crept in.
-  const banned = [/founder/i, /startup/i, /side project/i, /Java Developer/, /Agile Transformation Manager/, /\b\d{2}%/, /2026 – present/, /to 2026/, /Certified Scrum Product Owner/, /Secret Clearance/];
+  const banned = [/founder/i, /startup/i, /side project/i, /Java Developer/, /Agile Transformation Manager/, /\b\d{2}%/, /2026 – present/, /to 2026/, /Certified Scrum Product Owner/, /Secret Clearance/, /Nov 2016/];
   for (const re of banned) {
     if (re.test(html)) note(`${file}: contains banned content matching ${re}`);
   }

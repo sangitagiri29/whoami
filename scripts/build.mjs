@@ -230,10 +230,12 @@ function work() {
           )
           .join('\n        ')}
       </ol>
-      <p class="foundation__note">${h(f.techNote)} ${h(f.clientsNote)}</p>
-      <ul class="logos__list" aria-label="${h(c.organizations.heading)}">
-        ${c.organizations.logos.map((l) => `<li><img src="${h(l.src)}" alt="${h(l.alt)}" height="32"></li>`).join('\n        ')}
-      </ul>
+      <div class="foundation__footer">
+        <p class="foundation__note">${h(f.techNote)} ${h(f.clientsNote)}</p>
+        <ul class="logos__list" aria-label="${h(c.organizations.heading)}">
+          ${c.organizations.logos.map((l) => `<li><img src="${h(l.src)}" alt="${h(l.alt)}" height="30" loading="lazy"></li>`).join('\n          ')}
+        </ul>
+      </div>
     </div>
   </div>
 </section>`;
